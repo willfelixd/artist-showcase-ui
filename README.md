@@ -1,8 +1,8 @@
 # 🎤 Artist Showcase UI
 
-![CI](https://github.com/willfelixd/artist-showcase-ui/actions/workflows/ci.yml/badge.svg) ![Em Desenvolvimento](https://img.shields.io/badge/status-em%20desenvolvimento-yellow) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
+![CI](https://github.com/willfelixd/artist-showcase-ui/actions/workflows/ci.yml/badge.svg) ![Em Desenvolvimento](https://img.shields.io/badge/status-em%20desenvolvimento-yellow) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/) [![Kanban](https://img.shields.io/badge/Project-Kanban-blue?style=flat&logo=github)](https://github.com/users/willfelixd/projects/4)
 
-> Interface web para o portfólio da cantora Isa Tavares — landing page pública
+> Interface web para o portfólio da cantora Isa — landing page pública
 > e painel administrativo, com dark/light mode e suporte a pt-BR e English.
 
 ---
@@ -12,6 +12,14 @@
 Este projeto consiste na interface web completa do portfólio da cantora Isa,
 consumindo a Artist Showcase API. Inclui páginas públicas para o público
 geral e um painel administrativo protegido para gerenciamento de conteúdo.
+
+### 📋 Kanban
+
+🗂️ **Acompanhe o progresso:** [Kanban - artist-showcase](https://github.com/users/willfelixd/projects/4)
+
+<p>
+  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/kanban-artist-showcase.gif" alt="Project Kanban" width="700"/>
+</p>
 
 > ⚠️ Projeto em desenvolvimento ativo. Novas funcionalidades serão adicionadas
 > a cada fase.
@@ -134,6 +142,61 @@ Acesse `http://localhost:5173`
 
 ---
 
+## 🔀 Fluxo de desenvolvimento
+
+Este projeto segue o GitHub Flow adaptado com branch de desenvolvimento:
+
+```
+main (protegida — só via PR de release)
+└── develop (branch principal de trabalho)
+    └── feature/nome-da-feature
+        ↓ commit
+        ↓ push
+        ↓ PR → develop
+        ↓ CI passa
+        ↓ merge
+```
+
+### Padrão de branches
+
+| Branch | Descrição |
+|---|---|
+| `main` | Produção — protegida, só recebe PR de release |
+| `develop` | Desenvolvimento — base para todas as features |
+| `feature/*` | Nova funcionalidade — ex: `feature/dark-light-theme` |
+| `hotfix/*` | Correção urgente em produção |
+
+### Padrão de commits
+
+Segui [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+feat: add dark/light theme system
+feat: add i18n with pt-BR and English support
+chore: update CI pipeline
+docs: update README with demo screenshots
+```
+
+### Ciclo completo de uma feature
+
+1. Criar Issue no GitHub
+2. `git checkout develop`
+3. `git checkout -b feature/nome-da-feature`
+4. Desenvolver e commitar
+5. `git push origin feature/nome-da-feature`
+6. Abrir PR → develop com template
+7. CI passa
+8. Merge → develop
+9. Deletar branch da feature
+
+### Release para produção
+
+```
+develop → PR → main → CI/CD → deploy automático na Vercel
+```
+
+---
+
 ## 📁 Estrutura de pastas
 
 ```
@@ -174,11 +237,13 @@ bloqueiam o CI antes de chegar em produção.
 *(Em breve — prints das páginas e do painel admin)*
 
 <!--<p>
-  <img src="docs/screenshot-home.png" alt="Página Home" width="700"/>
+<p>
+  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/screenshot-home.png" alt="Página Home" width="700"/>
 </p>
 
 <p>
-  <img src="docs/demo.gif" alt="Demo do fluxo" width="700"/>
+  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/demo.gif" alt="Demo do fluxo" width="700"/>
+</p>
 </p>-->
 
 ---
@@ -215,7 +280,7 @@ bloqueiam o CI antes de chegar em produção.
       <a href="https://github.com/willfelixd">
         <img src="https://avatars.githubusercontent.com/willfelixd?v=4" width="120px;" />
       </a><br/>
-      <a href="https://github.com/willfelixd"><b>William Felix</b></a><br/>
+      <h6><a href="https://github.com/willfelixd"><b>William Felix</b></a><br/><br/>
       <a href="https://www.linkedin.com/in/william-felix-souza/">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn"/>
       </a>
