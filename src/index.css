@@ -1,111 +1,80 @@
+/* ===========================
+   TOKENS DE DESIGN — TEMA
+   =========================== */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Paleta da Isa Cantora */
+  --color-areia:    #C9A882;
+  --color-marfim:   #FAF5EE;
+  --color-terracota:#B5654A;
+  --color-cacau:    #4A2E1E;
+  --color-rosa:     #E8C4B0;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Tipografia */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* Transição suave entre temas */
+  --transition-theme: background-color 0.3s ease, color 0.3s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* ===========================
+   TEMA CLARO (padrão)
+   =========================== */
+[data-theme='light'] {
+  --bg-primary:     #FAF5EE;
+  --bg-secondary:   #F0E8DC;
+  --bg-card:        #FFFFFF;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  --text-primary:   #4A2E1E;
+  --text-secondary: #7A5C4A;
+  --text-muted:     #A08070;
+
+  --border:         #E0D0C0;
+
+  --accent-primary: #B5654A;
+  --accent-hover:   #9A4F38;
+
+  --shadow: 0 2px 12px rgba(74, 46, 30, 0.08);
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* ===========================
+   TEMA ESCURO
+   =========================== */
+[data-theme='dark'] {
+  --bg-primary:     #1A1008;
+  --bg-secondary:   #2A1E12;
+  --bg-card:        #2E2010;
+
+  --text-primary:   #FAF5EE;
+  --text-secondary: #C9A882;
+  --text-muted:     #8A7060;
+
+  --border:         #3A2A1A;
+
+  --accent-primary: #C9A882;
+  --accent-hover:   #E8C4B0;
+
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ===========================
+   RESET E BASE
+   =========================== */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--transition-theme);
+  line-height: 1.6;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
