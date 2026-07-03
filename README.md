@@ -66,7 +66,7 @@ idioma. Os components são reutilizáveis e desacoplados das páginas.
 ## 📈 Evolução do projeto
 
 - [x] #1 Setup inicial do projeto
-- [ ] #2 Tema dark/light mode
+- [x] #2 Tema dark/light mode
 - [ ] #3 Internacionalização pt-BR / English
 - [ ] #4 Página Home
 - [ ] #5 Página Repertório

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
+import { ThemeProvider } from './contexts/ThemeContext'
 import Home from './pages/Home'
 import Videos from './pages/Videos'
 import Schedule from './pages/Schedule'
@@ -35,11 +36,13 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes>
-        </AppRoutes>
-      </AuthProvider>
-    </BrowserRouter>
+    // ThemeProvider envolve tudo — tema disponível em qualquer componente
+    <ThemeProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
