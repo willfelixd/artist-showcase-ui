@@ -68,7 +68,7 @@ idioma. Os components são reutilizáveis e desacoplados das páginas.
 - [x] #1 Setup inicial do projeto
 - [x] #2 Tema dark/light mode
 - [x] #3 Internacionalização pt-BR / English
-- [ ] #4 Página Home
+- [x] #4 Página Home
 - [ ] #5 Página Repertório
 - [ ] #6 Página Vídeos
 - [ ] #7 Página Agenda
