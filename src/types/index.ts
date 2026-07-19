@@ -62,12 +62,12 @@ export interface ContactMessage {
 // Resposta paginada do Spring Data
 export interface Page<T> {
   content: T[]
-  totalElements: number
-  totalPages: number
-  number: number
-  size: number
-  first: boolean
-  last: boolean
+  page: {
+    totalElements: number
+    totalPages: number
+    size: number
+    number: number
+  }
 }
 
 // Auth
