@@ -69,7 +69,7 @@ idioma. Os components são reutilizáveis e desacoplados das páginas.
 - [x] #2 Tema dark/light mode
 - [x] #3 Internacionalização pt-BR / English
 - [x] #4 Página Home
-- [ ] #5 Página Repertório
+- [x] #5 Página Repertório
 - [ ] #6 Página Vídeos
 - [ ] #7 Página Agenda
 - [ ] #8 Página Contato
