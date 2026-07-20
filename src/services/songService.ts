@@ -18,7 +18,14 @@ interface SongRequest {
 
 export const songService = {
   findAll: async (filters: SongFilters = {}): Promise<Page<Song>> => {
-    const { data } = await api.get('/songs', { params: filters })
+    // Remove strings vazias — backend espera null para ignorar filtro
+    const params = Object.fromEntries(
+      Object.entries(filters).filter(([_, v]) => {
+        if (typeof v === 'string') return v.trim() !== ''
+        return v !== undefined && v !== null
+      })
+    )
+    const { data } = await api.get('/songs', { params })
     return data
   },
 
