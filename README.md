@@ -70,7 +70,7 @@ idioma. Os components são reutilizáveis e desacoplados das páginas.
 - [x] #3 Internacionalização pt-BR / English
 - [x] #4 Página Home
 - [x] #5 Página Repertório
-- [ ] #6 Página Vídeos
+- [x] #6 Página Vídeos
 - [ ] #7 Página Agenda
 - [ ] #8 Página Contato
 - [ ] #9 Painel Admin
