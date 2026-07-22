@@ -101,7 +101,7 @@ export default function Repertoire() {
           fontFamily: 'var(--font-body)',
           fontSize: '16px',
         }}>
-          {totalElements > 0 && `${totalElements} músicas disponíveis`}
+          {totalElements > 0 && t('repertoire.available_count', { count: totalElements })}
         </p>
       </div>
 

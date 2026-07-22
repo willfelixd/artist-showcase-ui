@@ -23,6 +23,7 @@ const en = {
 
   repertoire: {
     title: 'Repertoire',
+    available_count: '{{count}} songs available',
     search_placeholder: 'Search song...',
     filter_genre: 'Filter by genre',
     all_genres: 'All genres',
@@ -34,6 +35,7 @@ const en = {
 
   videos: {
     title: 'Videos',
+    available_count: '{{count}} videos available',
     featured: 'Featured',
     all_videos: 'All Videos',
     no_videos: 'No videos available.',
@@ -44,6 +46,9 @@ const en = {
   schedule: {
     title: 'Schedule',
     subtitle: 'Request a show',
+    selected_date: 'Selected date',
+    unavailable_date: 'Unavailable date',
+    select_date_hint: 'Select an available date on the calendar to continue',
     form: {
       name: 'Your name',
       email: 'Your email',
@@ -59,7 +64,7 @@ const en = {
     },
     success: 'Request sent successfully! We will contact you soon.',
     conflict: 'This date and time are already booked. Please choose another.',
-    unavailable_dates: 'Unavailable dates',
+    unavailable_dates: 'Select an available date',
   },
 
   contact: {

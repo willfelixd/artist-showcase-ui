@@ -26,6 +26,7 @@ const ptBR = {
   // Página Repertório
   repertoire: {
     title: 'Repertório',
+    available_count: '{{count}} músicas disponíveis',
     search_placeholder: 'Buscar música...',
     filter_genre: 'Filtrar por gênero',
     all_genres: 'Todos os gêneros',
@@ -38,6 +39,7 @@ const ptBR = {
   // Página Vídeos
   videos: {
     title: 'Vídeos',
+    available_count: '{{count}} vídeos disponíveis',
     featured: 'Em Destaque',
     all_videos: 'Todos os Vídeos',
     no_videos: 'Nenhum vídeo disponível.',
@@ -49,6 +51,9 @@ const ptBR = {
   schedule: {
     title: 'Agenda',
     subtitle: 'Solicite um show',
+    selected_date: 'Data selecionada',
+    unavailable_date: 'Data indisponível',
+    select_date_hint: 'Selecione uma data disponível no calendário para continuar',
     form: {
       name: 'Seu nome',
       email: 'Seu e-mail',
@@ -64,7 +69,7 @@ const ptBR = {
     },
     success: 'Solicitação enviada com sucesso! Entraremos em contato em breve.',
     conflict: 'Esta data e horário já estão reservados. Por favor, escolha outro.',
-    unavailable_dates: 'Datas indisponíveis',
+    unavailable_dates: 'Selecione uma data disponível',
   },
 
   // Página Contato
