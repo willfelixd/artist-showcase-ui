@@ -17,6 +17,7 @@ export default function Videos() {
   const [error, setError] = useState(false)
   const [page, setPage] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
+  const [totalElements, setTotalElements] = useState(0)
 
   const allVideosRef = useRef<HTMLDivElement>(null)
 
@@ -32,6 +33,7 @@ export default function Videos() {
         if (featuredData) setFeatured(featuredData.content)
         setVideos(allData.content)
         setTotalPages(allData.page.totalPages)
+        setTotalElements(allData.page.totalElements)
         setPage(pageNum)
       })
       .catch(() => setError(true))
@@ -77,6 +79,14 @@ export default function Videos() {
         }}>
           {t('videos.title')}
         </h1>
+        <p style={{
+          color: 'var(--text-secondary)',
+          fontFamily: 'var(--font-body)',
+          fontSize: '16px',
+          marginTop: '12px',
+        }}>
+          {totalElements > 0 && t('videos.available_count', { count: totalElements })}
+        </p>
       </div>
 
       {loading && <LoadingSpinner />}

@@ -71,7 +71,7 @@ idioma. Os components são reutilizáveis e desacoplados das páginas.
 - [x] #4 Página Home
 - [x] #5 Página Repertório
 - [x] #6 Página Vídeos
-- [ ] #7 Página Agenda
+- [x] #7 Página Agenda
 - [ ] #8 Página Contato
 - [ ] #9 Painel Admin
 - [ ] #10 Deploy Vercel e CD
