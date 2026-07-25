@@ -114,6 +114,23 @@ export function Footer() {
         }}>
           © {new Date().getFullYear()} Isa Tavares. Todos os direitos reservados.
         </p>
+
+        {/* Admin */}
+
+        <a href="/admin/login"
+          style={{
+          color: 'var(--text-muted)',
+          fontSize: '11px',
+          fontFamily: 'var(--font-body)',
+          textDecoration: 'none',
+          opacity: 0.5,
+          transition: 'opacity 0.2s ease',
+        }}
+          onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.opacity = '1'}
+          onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.opacity = '0.5'}
+        >
+          Admin
+        </a>
       </div>
     </footer>
   )
