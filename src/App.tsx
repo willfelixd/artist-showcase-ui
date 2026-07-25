@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { AuthProvider, useAuth } from './contexts/AuthContext'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { Header } from './components/layout/Header'
@@ -10,14 +10,12 @@ import Schedule from './pages/Schedule'
 import Repertoire from './pages/Repertoire'
 import Contact from './pages/Contact'
 import Admin from './pages/Admin'
-
-// Rota protegida — redireciona para login se não autenticado
-function PrivateRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth()
-  return isAuthenticated ? <>{children}</> : <Navigate to="/admin/login" replace />
-}
+import { useLocation } from 'react-router-dom'
 
 function AppLayout() {
+  const location = useLocation()
+  const isAdmin = location.pathname.startsWith('/admin')
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -26,7 +24,7 @@ function AppLayout() {
       backgroundColor: 'var(--bg-primary)',
       transition: 'var(--transition-theme)',
     }}>
-      <Header />
+      {!isAdmin && <Header />}
       <div style={{ flex: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,17 +32,10 @@ function AppLayout() {
           <Route path="/agenda" element={<Schedule />} />
           <Route path="/repertorio" element={<Repertoire />} />
           <Route path="/contato" element={<Contact />} />
-          <Route
-            path="/admin/*"
-            element={
-              <PrivateRoute>
-                <Admin />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/admin/*" element={<Admin />} />
         </Routes>
       </div>
-      <Footer />
+      {!isAdmin && <Footer />}
     </div>
   )
 }
