@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/develop/.github/assets/logo-artist-showcase.svg" alt="Logo Artist Showcase" width="120"/>
+  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/logo-artist-showcase.svg" alt="Logo Artist Showcase" width="120"/>
 </p>
 
 <h1 align="center">🎤 Artist Showcase</h1>
@@ -278,7 +278,7 @@ bloqueiam o CI antes de chegar em produção.
 
 ## 📄 Licença
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/willfelixd/artist-showcase-ui/tree/main?tab=MIT-1-ov-file)
 
 ---
 
