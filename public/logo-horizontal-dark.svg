@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="80" viewBox="0 0 420 80" role="img">
+  <title>Isa Tavares Cantora</title>
+
+  <defs>
+    <style>
+      .logo-circle { fill: transparent; stroke: #C9A882; stroke-width: 1.8; }
+      .logo-note { fill: #C9A882; }
+      .logo-stem { stroke: #C9A882; stroke-width: 3; stroke-linecap: round; fill: none; }
+      .logo-flag { stroke: #C9A882; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .logo-name {
+        font-family: Georgia, serif;
+        font-size: 22px;
+        font-weight: 600;
+        fill: #C9A882;
+        letter-spacing: 0.5px;
+      }
+      .logo-sub {
+        font-family: system-ui, sans-serif;
+        font-size: 11px;
+        fill: #C9A882;
+        opacity: 0.85;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+
+  <!-- Círculo à esquerda -->
+  <circle cx="40" cy="40" r="34" class="logo-circle"/>
+
+  <!-- Cabeça da nota -->
+  <ellipse cx="30" cy="54" rx="9" ry="6.5"
+    transform="rotate(-20 30 54)" class="logo-note"/>
+  <!-- Haste -->
+  <line x1="38" y1="50" x2="38" y2="16" class="logo-stem"/>
+  <!-- Bandeirola 1 -->
+  <path d="M38 16 Q58 23 53 36" class="logo-flag"/>
+  <!-- Bandeirola 2 -->
+  <path d="M38 27 Q57 33 52 45" class="logo-flag"/>
+
+  <!-- Divisor vertical -->
+  <line x1="84" y1="20" x2="84" y2="60"
+    stroke="#C9A882" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Nome principal -->
+  <text x="96" y="40" class="logo-name">Isa Tavares Cantora</text>
+
+  <!-- Subtítulo -->
+  <text x="96" y="58"
+    class="logo-sub"
+    textLength="238"
+    lengthAdjust="spacing">PORTFÓLIO ARTÍSTICO</text>
+
+</svg>

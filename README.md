@@ -1,15 +1,25 @@
-# 🎤 Artist Showcase UI
+<p align="center">
+  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/logo-artist-showcase.svg" alt="Logo Artist Showcase" width="120"/>
+</p>
+
+<h1 align="center">🎤 Artist Showcase</h1>
+<p align="center"><sub>🎨 UI</sub></p>
+
+<p align="center">
+  Interface web para o portfólio digital da cantora <strong>Isa Tavares</strong>,
+  consumindo a <a href="https://github.com/willfelixd/artist-showcase-api">Artist Showcase API</a>.
+</p>
 
 ![CI](https://github.com/willfelixd/artist-showcase-ui/actions/workflows/ci.yml/badge.svg) ![Em Desenvolvimento](https://img.shields.io/badge/status-em%20desenvolvimento-yellow) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/) [![Kanban](https://img.shields.io/badge/Project-Kanban-blue?style=flat&logo=github)](https://github.com/users/willfelixd/projects/4)
 
-> Interface web para o portfólio da cantora Isa — landing page pública
+> Interface web para o portfólio da artista — landing page pública
 > e painel administrativo, com dark/light mode e suporte a pt-BR e English.
 
 ---
 
 ## 📌 Sobre o projeto
 
-Este projeto consiste na interface web completa do portfólio da cantora Isa,
+Este projeto consiste na interface web completa do portfólio da artista,
 consumindo a Artist Showcase API. Inclui páginas públicas para o público
 geral e um painel administrativo protegido para gerenciamento de conteúdo.
 
@@ -66,14 +76,14 @@ idioma. Os components são reutilizáveis e desacoplados das páginas.
 ## 📈 Evolução do projeto
 
 - [x] #1 Setup inicial do projeto
-- [ ] #2 Tema dark/light mode
-- [ ] #3 Internacionalização pt-BR / English
-- [ ] #4 Página Home
-- [ ] #5 Página Repertório
-- [ ] #6 Página Vídeos
-- [ ] #7 Página Agenda
-- [ ] #8 Página Contato
-- [ ] #9 Painel Admin
+- [x] #2 Tema dark/light mode
+- [x] #3 Internacionalização pt-BR / English
+- [x] #4 Página Home
+- [x] #5 Página Repertório
+- [x] #6 Página Vídeos
+- [x] #7 Página Agenda
+- [x] #8 Página Contato
+- [x] #9 Painel Admin
 - [ ] #10 Deploy Vercel e CD
 
 ---
@@ -268,7 +278,7 @@ bloqueiam o CI antes de chegar em produção.
 
 ## 📄 Licença
 
-[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/willfelixd/artist-showcase-ui/tree/main?tab=MIT-1-ov-file)
 
 ---
 
@@ -280,7 +290,7 @@ bloqueiam o CI antes de chegar em produção.
       <a href="https://github.com/willfelixd">
         <img src="https://avatars.githubusercontent.com/willfelixd?v=4" width="120px;" />
       </a><br/>
-      <h6><a href="https://github.com/willfelixd"><b>William Felix</b></a><br/><br/>
+      <b>William Felix</b><br/>
       <a href="https://www.linkedin.com/in/william-felix-souza/">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn"/>
       </a>

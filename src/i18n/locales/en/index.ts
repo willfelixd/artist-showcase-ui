@@ -1,0 +1,130 @@
+const en = {
+  nav: {
+    home: 'Home',
+    repertoire: 'Repertoire',
+    videos: 'Videos',
+    schedule: 'Schedule',
+    contact: 'Contact',
+    admin: 'Admin',
+  },
+
+  home: {
+    hero: {
+      greeting: 'Welcome to the portfolio of',
+      cta_schedule: 'Book a Show',
+      cta_repertoire: 'View Repertoire',
+      cta_contact: 'Get in Touch',
+    },
+    sections: {
+      mostRequested: 'Most Requested',
+      featured_videos: 'Featured Videos',
+    },
+  },
+
+  repertoire: {
+    title: 'Repertoire',
+    available_count: '{{count}} songs available',
+    search_placeholder: 'Search song...',
+    filter_genre: 'Filter by genre',
+    all_genres: 'All genres',
+    most_requested: 'Most Requested',
+    full_repertoire: 'Full Repertoire',
+    no_results: 'No songs found.',
+    load_more: 'Load more',
+  },
+
+  videos: {
+    title: 'Videos',
+    available_count: '{{count}} videos available',
+    featured: 'Featured',
+    all_videos: 'All Videos',
+    no_videos: 'No videos available.',
+    load_more: 'Load more',
+    watch: 'Watch',
+  },
+
+  schedule: {
+    title: 'Schedule',
+    subtitle: 'Request a show',
+    selected_date: 'Selected date',
+    unavailable_date: 'Unavailable date',
+    select_date_hint: 'Select an available date on the calendar to continue',
+    form: {
+      name: 'Your name',
+      email: 'Your email',
+      phone: 'Your phone',
+      event_name: 'Event name',
+      event_date: 'Event date',
+      start_time: 'Start time',
+      end_time: 'End time',
+      location: 'Event location',
+      notes: 'Notes (optional)',
+      submit: 'Request Booking',
+      submitting: 'Sending...',
+    },
+    success: 'Request sent successfully! We will contact you soon.',
+    conflict: 'This date and time are already booked. Please choose another.',
+    unavailable_dates: 'Select an available date',
+  },
+
+  contact: {
+    title: 'Contact',
+    subtitle: 'Send a message',
+    form: {
+      name: 'Your name',
+      email: 'Your email',
+      phone: 'Your phone (optional)',
+      subject: 'Subject',
+      message: 'Message',
+      submit: 'Send Message',
+      submitting: 'Sending...',
+    },
+    success: 'Message sent successfully! We will get back to you soon.',
+    rate_limit: 'Too many messages sent. Please try again in 1 hour.',
+    error: 'Error sending message. Please try again.',
+  },
+
+  admin: {
+    login: {
+      title: 'Admin Access',
+      username: 'Username',
+      password: 'Password',
+      submit: 'Sign In',
+      error: 'Invalid credentials.',
+    },
+    dashboard: {
+      title: 'Admin Panel',
+      songs: 'Songs',
+      videos: 'Videos',
+      bookings: 'Bookings',
+      messages: 'Messages',
+      logout: 'Sign Out',
+    },
+    actions: {
+      add: 'Add',
+      edit: 'Edit',
+      delete: 'Delete',
+      save: 'Save',
+      cancel: 'Cancel',
+      confirm: 'Confirm',
+      confirm_delete: 'Are you sure you want to delete?',
+    },
+    booking_status: {
+      PENDING: 'Pending',
+      CONFIRMED: 'Confirmed',
+      CANCELLED: 'Cancelled',
+    },
+  },
+
+  common: {
+    loading: 'Loading...',
+    error: 'An error occurred. Please try again.',
+    not_found: 'Not found.',
+    back: 'Back',
+    close: 'Close',
+    see_more: 'See more',
+    required_field: 'Required field',
+  },
+}
+
+export default en
