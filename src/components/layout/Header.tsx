@@ -4,8 +4,10 @@ import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { LanguageToggle } from '../ui/LanguageToggle'
+import { useTheme } from '../../contexts/ThemeContext'
 
 export function Header() {
+  const { isDark } = useTheme()
   const { t } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -48,15 +50,12 @@ export function Header() {
         justifyContent: 'space-between',
       }}>
 
-        {/* Logo Horizontal */}
+        {/* Logo — alterna conforme o tema */}
         <NavLink to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <img
-            src="/logo-horizontal.svg"
-            alt="Logo Horizontal"
-            style={{
-              height: '48px',
-              width: 'auto',
-            }}
+            src={isDark ? '/logo-horizontal-dark.svg' : '/logo-horizontal.svg'}
+            alt="Isa Tavares Cantora"
+            style={{ height: '48px', width: 'auto' }}
           />
         </NavLink>
 

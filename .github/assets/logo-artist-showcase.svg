@@ -10,37 +10,37 @@
       .logo-flag { stroke: #B5654A; stroke-width: 2.5; fill: none; stroke-linecap: round; }
       .logo-name {
         font-family: Georgia, serif;
-        font-size: 13px;
+        font-size: 15px;
         font-weight: 600;
         fill: #B5654A;
         letter-spacing: 0.3px;
       }
       .logo-sub {
         font-family: system-ui, sans-serif;
-        font-size: 6.5px;
-        letter-spacing: 2px;
+        font-size: 11px;
         fill: #B5654A;
-        opacity: 0.7;
+        opacity: 0.85;
+        font-weight: 500;
       }
       .logo-line { stroke: #B5654A; stroke-width: 0.8; opacity: 0.4; }
     </style>
   </defs>
 
-  <!-- Círculo sem preenchimento — transparente nos dois temas -->
-  <circle cx="100" cy="85" r="60" class="logo-circle"/>
+  <!-- Círculo -->
+  <circle cx="100" cy="80" r="60" class="logo-circle"/>
 
   <!-- Nota musical — cabeça -->
-  <ellipse cx="88" cy="112" rx="10" ry="7"
-    transform="rotate(-20 88 112)" class="logo-note"/>
+  <ellipse cx="88" cy="107" rx="10" ry="7"
+    transform="rotate(-20 88 107)" class="logo-note"/>
 
   <!-- Haste -->
-  <line x1="97" y1="108" x2="97" y2="58" class="logo-stem"/>
+  <line x1="97" y1="103" x2="97" y2="53" class="logo-stem"/>
 
   <!-- Bandeirola 1 -->
-  <path d="M97 58 Q122 66 116 82" class="logo-flag"/>
+  <path d="M97 53 Q122 61 116 77" class="logo-flag"/>
 
   <!-- Bandeirola 2 -->
-  <path d="M97 70 Q120 78 114 93" class="logo-flag"/>
+  <path d="M97 65 Q120 73 114 88" class="logo-flag"/>
 
   <!-- Nome -->
   <text x="100" y="160" text-anchor="middle" class="logo-name">
@@ -48,10 +48,11 @@
   </text>
 
   <!-- Subtítulo -->
-  <text x="100" y="175" text-anchor="middle" class="logo-sub">
-    PORTFÓLIO ARTÍSTICO
-  </text>
+  <text x="100" y="178" text-anchor="middle"
+    class="logo-sub"
+    textLength="138"
+    lengthAdjust="spacing">PORTFÓLIO ARTÍSTICO</text>
 
   <!-- Linha decorativa -->
-  <line x1="45" y1="182" x2="155" y2="182" class="logo-line"/>
+  <line x1="31" y1="186" x2="169" y2="186" class="logo-line"/>
 </svg>
