@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Menu, X, Music } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { LanguageToggle } from '../ui/LanguageToggle'
@@ -48,18 +48,16 @@ export function Header() {
         justifyContent: 'space-between',
       }}>
 
-        {/* Logo */}
+        {/* Logo Horizontal */}
         <NavLink to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Music size={22} color="var(--accent-primary)" />
-          <span style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.4rem',
-            color: 'var(--text-primary)',
-            fontWeight: '600',
-            letterSpacing: '0.5px',
-          }}>
-            Isa Cantora
-          </span>
+          <img
+            src="/logo-horizontal.svg"
+            alt="Logo Horizontal"
+            style={{
+              height: '48px',
+              width: 'auto',
+            }}
+          />
         </NavLink>
 
         {/* Navegação desktop */}
