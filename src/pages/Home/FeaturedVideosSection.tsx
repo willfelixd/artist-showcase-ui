@@ -24,7 +24,6 @@ export function FeaturedVideosSection() {
   return (
     <section style={{
       padding: '80px 24px',
-      backgroundColor: 'var(--bg-primary)',
       transition: 'var(--transition-theme)',
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
