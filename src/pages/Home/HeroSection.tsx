@@ -17,11 +17,6 @@ export function HeroSection({ artist }: HeroSectionProps) {
       display: 'flex',
       alignItems: 'center',
       padding: '48px 24px',
-      background: `linear-gradient(
-        135deg,
-        var(--bg-primary) 0%,
-        var(--bg-secondary) 100%
-      )`,
     }}>
       <div style={{
         maxWidth: '1200px',
@@ -127,7 +122,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              backgroundColor: 'transparent',
+              backgroundColor: 'var(--bg-primary)',
               color: 'var(--accent-primary)',
               border: '2px solid var(--accent-primary)',
               borderRadius: '8px',
@@ -137,6 +132,12 @@ export function HeroSection({ artist }: HeroSectionProps) {
               fontSize: '15px',
               fontWeight: '500',
               transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-hover2)'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--bg-primary)'
             }}
           >
             <Music size={18} />
@@ -149,7 +150,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              backgroundColor: 'transparent',
+              backgroundColor: 'var(--bg-primary)',
               color: 'var(--text-secondary)',
               border: '2px solid var(--border)',
               borderRadius: '8px',
@@ -158,6 +159,12 @@ export function HeroSection({ artist }: HeroSectionProps) {
               fontFamily: 'var(--font-body)',
               fontSize: '15px',
               transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-hover2)'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--bg-primary)'
             }}
           >
             <Mail size={18} />
