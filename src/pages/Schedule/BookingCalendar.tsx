@@ -18,7 +18,7 @@ export function BookingCalendar({
 
   return (
     <div style={{
-      backgroundColor: 'var(--bg-card)',
+      backgroundColor: 'var(--bg-primary)',
       border: '1px solid var(--border)',
       borderRadius: '12px',
       padding: '16px',
@@ -27,7 +27,7 @@ export function BookingCalendar({
       <style>{`
         .rdp-root {
           --rdp-accent-color: var(--accent-primary);
-          --rdp-accent-background-color: var(--bg-secondary);
+          --rdp-accent-background-color: var(--bg-primary);
           color: var(--text-primary);
           font-family: var(--font-body);
         }
@@ -36,7 +36,7 @@ export function BookingCalendar({
         }
         .rdp-selected .rdp-day_button {
           background-color: var(--accent-primary);
-          color: var(--color-marfim);
+          color: var(--text-primary);
         }
         .rdp-disabled .rdp-day_button {
           color: var(--text-muted);

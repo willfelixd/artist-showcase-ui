@@ -3,21 +3,21 @@
 
   <defs>
     <style>
-      .logo-circle { fill: transparent; stroke: #C9A882; stroke-width: 1.8; }
-      .logo-note { fill: #C9A882; }
-      .logo-stem { stroke: #C9A882; stroke-width: 3; stroke-linecap: round; fill: none; }
-      .logo-flag { stroke: #C9A882; stroke-width: 2.5; fill: none; stroke-linecap: round; }
+      .logo-circle { fill: transparent; stroke: #FF4D8D; stroke-width: 1.8; }
+      .logo-note { fill: #FF4D8D; }
+      .logo-stem { stroke: #FF4D8D; stroke-width: 3; stroke-linecap: round; fill: none; }
+      .logo-flag { stroke: #FF4D8D; stroke-width: 2.5; fill: none; stroke-linecap: round; }
       .logo-name {
         font-family: Georgia, serif;
         font-size: 22px;
         font-weight: 600;
-        fill: #C9A882;
+        fill: #FF4D8D;
         letter-spacing: 0.5px;
       }
       .logo-sub {
         font-family: system-ui, sans-serif;
         font-size: 11px;
-        fill: #C9A882;
+        fill: #FF4D8D;
         opacity: 0.85;
         font-weight: 500;
       }
@@ -39,7 +39,7 @@
 
   <!-- Divisor vertical -->
   <line x1="84" y1="20" x2="84" y2="60"
-    stroke="#C9A882" stroke-width="0.8" opacity="0.3"/>
+    stroke="#FF4D8D" stroke-width="0.8" opacity="0.3"/>
 
   <!-- Nome principal -->
   <text x="96" y="40" class="logo-name">Isa Tavares Cantora</text>

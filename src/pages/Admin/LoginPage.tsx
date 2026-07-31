@@ -71,7 +71,7 @@ export default function LoginPage() {
               fontSize: '1.8rem',
               color: 'var(--text-primary)',
             }}>
-              Isa Cantora
+              Isa Tavres Cantora
             </span>
           </div>
           <p style={{
@@ -87,7 +87,7 @@ export default function LoginPage() {
         <form
           onSubmit={handleSubmit(onSubmit)}
           style={{
-            backgroundColor: 'var(--bg-card)',
+            backgroundColor: 'var(--bg-primary)',
             border: '1px solid var(--border)',
             borderRadius: '12px',
             padding: '32px',

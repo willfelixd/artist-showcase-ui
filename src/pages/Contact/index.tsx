@@ -151,7 +151,7 @@ export default function Contact() {
       <form
         onSubmit={handleSubmit(onSubmit)}
         style={{
-          backgroundColor: 'var(--bg-card)',
+          backgroundColor: 'var(--bg-primary)',
           border: '1px solid var(--border)',
           borderRadius: '12px',
           padding: '32px',

@@ -13,7 +13,7 @@ export function SongCard({ song, index, showIndex = false }: SongCardProps) {
       display: 'flex',
       alignItems: 'center',
       gap: '16px',
-      backgroundColor: 'var(--bg-card)',
+      backgroundColor: 'var(--bg-primary)',
       border: '1px solid var(--border)',
       borderRadius: '12px',
       padding: '16px',

@@ -149,7 +149,7 @@ export default function SongsPage() {
       {/* Formulário */}
       {showForm && (
         <div style={{
-          backgroundColor: 'var(--bg-card)',
+          backgroundColor: 'var(--bg-primary)',
           border: '1px solid var(--accent-primary)',
           borderRadius: '12px',
           padding: '24px',
@@ -291,7 +291,7 @@ export default function SongsPage() {
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
-              backgroundColor: 'var(--bg-card)',
+              backgroundColor: 'var(--bg-primary)',
               border: '1px solid var(--border)',
               borderRadius: '10px',
               padding: '12px 16px',

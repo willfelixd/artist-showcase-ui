@@ -48,7 +48,7 @@ export function SongFilters({
           style={{
             width: '100%',
             padding: '10px 12px 10px 38px',
-            backgroundColor: 'var(--bg-card)',
+            backgroundColor: 'var(--bg-primary)',
             border: '1px solid var(--border)',
             borderRadius: '8px',
             color: 'var(--text-primary)',
@@ -73,10 +73,10 @@ export function SongFilters({
         onChange={e => onGenreChange(e.target.value)}
         style={{
           padding: '10px 16px',
-          backgroundColor: 'var(--bg-card)',
+          backgroundColor: 'var(--bg-primary)',
           border: '1px solid var(--border)',
           borderRadius: '8px',
-          color: 'var(--text-primary)',
+          color: 'var(--text-secondary)',
           fontFamily: 'var(--font-body)',
           fontSize: '14px',
           outline: 'none',
@@ -98,7 +98,7 @@ export function SongFilters({
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: 'transparent',
+            backgroundColor: 'var(--bg-primary)',
             border: '1px solid var(--border)',
             borderRadius: '8px',
             padding: '10px 16px',
