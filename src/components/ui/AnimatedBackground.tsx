@@ -70,8 +70,8 @@ export function AnimatedBackground() {
 
   const { isDark } = useTheme()
   const color = isDark
-    ? "#E6C79C"
-    : "#A45A3F"
+    ? "#FF8FB8"
+    : "#FF2D75"
 
   const config = useMemo(
     () => getDeviceConfig(),

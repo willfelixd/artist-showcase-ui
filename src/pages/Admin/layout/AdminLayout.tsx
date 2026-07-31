@@ -39,12 +39,13 @@ export default function AdminLayout() {
     gap: '10px',
     padding: '10px 16px',
     borderRadius: '8px',
+    border: '1px solid var(--border)',
     textDecoration: 'none',
     fontFamily: 'var(--font-body)',
     fontSize: '14px',
     fontWeight: isActive ? '600' : '400',
     color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
-    backgroundColor: isActive ? 'var(--bg-secondary)' : 'transparent',
+    backgroundColor: isActive ? 'var(--bg-primary)' : 'transparent',
     transition: 'all 0.2s ease',
   })
 

@@ -57,7 +57,7 @@ export function Footer() {
             fontSize: '1.2rem',
             color: 'var(--text-primary)',
           }}>
-            Isa Cantora
+            Isa Tavares Cantora
           </span>
         </div>
 

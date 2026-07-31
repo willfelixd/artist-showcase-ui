@@ -3,61 +3,75 @@
    =========================== */
 
 :root {
-  /* Paleta da Isa Cantora */
-  --color-areia:    #C9A882;
-  --color-marfim:   #FAF5EE;
-  --color-terracota:#B5654A;
-  --color-cacau:    #4A2E1E;
-  --color-rosa:     #E8C4B0;
+  /* 🎤 NOVA IDENTIDADE */
+  --color-pink:        #FF4D8D;
+  --color-pink-soft:   #FF8FB8;
+  --color-pink-glow:   #FF2D75;
+
+  --color-black-deep:  #0A0A0A;
+  --color-black-soft:  #121212;
+
+  --color-metal:       #D6D6D6;
+  --color-metal-dark:  #8A8A8A;
 
   /* Tipografia */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-signature: "Sacramento", cursive;
+  --font-display: "Poppins", sans-serif;
+  --font-body:    "Inter", sans-serif;
 
-  /* Transição suave entre temas */
-  --transition-theme: background-color 0.3s ease, color 0.3s ease;
+  --transition-theme: background 0.4s ease, color 0.3s ease;
 }
 
 /* ===========================
    TEMA CLARO (padrão)
    =========================== */
 [data-theme='light'] {
-  --bg-primary:     #FAF5EE;
-  --bg-secondary:   #F0E8DC;
-  --bg-card:        #FFFFFF;
+  --bg-primary: #FFD6E6;
+  --bg-secondary: #ffccdf;
+  --bg-card: #ffccdf;
 
-  --text-primary:   #4A2E1E;
-  --text-secondary: #7A5C4A;
-  --text-muted:     #A08070;
+  --text-primary: #2A1A22;
+  --text-secondary: #6B4A57;
+  --text-muted: #A07C8C;
 
-  --border:         #E0D0C0;
+  --border: rgba(255, 77, 141, 0.2);
 
-  --accent-primary: #B5654A;
-  --accent-hover:   #9A4F38;
-  --accent-hover2:  #ffe7de;
+  --accent-primary: var(--color-pink);
+  --accent-hover: var(--color-pink-glow);
+  --accent-hover2: #FFD6E6;
 
-  --shadow: 0 2px 12px rgba(74, 46, 30, 0.08);
+  --shadow:
+    0 10px 30px rgba(255, 77, 141, 0.12);
+
+  /* ✨ brilho sutil */
+  --glow:
+    0 0 20px rgba(255, 77, 141, 0.25);
 }
 
 /* ===========================
    TEMA ESCURO
    =========================== */
 [data-theme='dark'] {
-  --bg-primary:     #1A1008;
-  --bg-secondary:   #2A1E12;
-  --bg-card:        #2E2010;
+  --bg-primary: #121212;
+  --bg-secondary: #1a1919;
+  --bg-card: #1a1919;
 
-  --text-primary:   #FAF5EE;
-  --text-secondary: #C9A882;
-  --text-muted:     #8A7060;
+  --text-primary: #FFFFFF;
+  --text-secondary: #FF8FB8;
+  --text-muted: #B08A9A;
 
-  --border:         #3A2A1A;
+  --border: rgba(255, 77, 141, 0.2);
 
-  --accent-primary: #C9A882;
-  --accent-hover:   #E8C4B0;
-  --accent-hover2:  #2A1E12;
+  --accent-primary: var(--color-pink);
+  --accent-hover: var(--color-pink-soft);
+  --accent-hover2: #1A0A12;
 
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  --shadow:
+    0 3px 10px rgba(20, 20, 20, 0.6);
+
+  /* 💡 glow de palco */
+  --glow:
+    0 0 30px rgba(255, 45, 117, 0.35);
 }
 
 /* ===========================
@@ -79,4 +93,45 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
+}
+
+.btn-premium {
+  background: linear-gradient(135deg, #FF4D8D, #FF2D75);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+
+  box-shadow: var(--glow);
+  transition: all 0.3s ease;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 40px rgba(255, 45, 117, 0.5);
+}
+
+.card-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  box-shadow: var(--shadow);
+}
+
+.text-glow {
+  color: var(--accent-primary);
+  text-shadow: var(--glow);
+}
+
+.stage-line {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #FF4D8D,
+    transparent
+  );
+  opacity: 0.6;
 }

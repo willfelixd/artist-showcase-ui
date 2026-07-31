@@ -36,7 +36,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
             height: '160px',
             borderRadius: '50%',
             overflow: 'hidden',
-            border: '4px solid var(--accent-primary)',
+            border: '4px solid var(--text-secondary)',
             boxShadow: 'var(--shadow)',
           }}>
             <img
@@ -61,11 +61,12 @@ export function HeroSection({ artist }: HeroSectionProps) {
           </p>
 
           <h1 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-            color: 'var(--text-primary)',
+            fontFamily: 'var(--font-signature)',
+            fontSize: 'clamp(3.5rem, 6vw, 5rem)',
+            color: 'var(--text-secondary)',
             lineHeight: '1.1',
             fontWeight: '400',
+            textShadow: 'var(--shadow)',
           }}>
             {artist.name}
           </h1>
@@ -73,7 +74,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
           <p style={{
             color: 'var(--text-secondary)',
             fontFamily: 'var(--font-body)',
-            fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+            fontSize: 'clamp(1rem, 2vw, 1.1rem)',
             maxWidth: '600px',
             lineHeight: '1.7',
           }}>

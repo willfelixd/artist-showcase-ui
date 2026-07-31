@@ -146,7 +146,7 @@ export default function VideosPage() {
       {/* Formulário */}
       {showForm && (
         <div style={{
-          backgroundColor: 'var(--bg-card)',
+          backgroundColor: 'var(--bg-primary)',
           border: '1px solid var(--accent-primary)',
           borderRadius: '12px',
           padding: '24px',
@@ -273,7 +273,7 @@ export default function VideosPage() {
           <div
             key={video.id}
             style={{
-              backgroundColor: 'var(--bg-card)',
+              backgroundColor: 'var(--bg-primary)',
               border: '1px solid var(--border)',
               borderRadius: '10px',
               overflow: 'hidden',
