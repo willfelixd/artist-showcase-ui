@@ -64,7 +64,7 @@ export default function BookingsPage() {
             <div
               key={booking.id}
               style={{
-                backgroundColor: 'var(--bg-card)',
+                backgroundColor: 'var(--bg-primary)',
                 border: '1px solid var(--border)',
                 borderRadius: '12px',
                 padding: '20px',
@@ -160,6 +160,7 @@ export default function BookingsPage() {
                   padding: '8px 12px',
                   backgroundColor: 'var(--bg-secondary)',
                   borderRadius: '6px',
+                  border: '1px solid var(--border)',
                 }}>
                   {booking.notes}
                 </p>

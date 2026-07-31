@@ -190,7 +190,7 @@ export default function Videos() {
                       disabled={page === 0}
                       style={{
                         padding: '8px 16px',
-                        backgroundColor: 'var(--bg-card)',
+                        backgroundColor: 'var(--bg-primary)',
                         border: '1px solid var(--border)',
                         borderRadius: '8px',
                         cursor: page === 0 ? 'not-allowed' : 'pointer',
@@ -208,7 +208,7 @@ export default function Videos() {
                         onClick={() => fetchVideos(i)}
                         style={{
                           padding: '8px 14px',
-                          backgroundColor: i === page ? 'var(--accent-primary)' : 'var(--bg-card)',
+                          backgroundColor: i === page ? 'var(--accent-primary)' : 'var(--bg-primary)',
                           border: '1px solid var(--border)',
                           borderRadius: '8px',
                           cursor: 'pointer',
@@ -227,7 +227,7 @@ export default function Videos() {
                       disabled={page === totalPages - 1}
                       style={{
                         padding: '8px 16px',
-                        backgroundColor: 'var(--bg-card)',
+                        backgroundColor: 'var(--bg-primary)',
                         border: '1px solid var(--border)',
                         borderRadius: '8px',
                         cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer',

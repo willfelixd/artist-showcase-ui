@@ -53,13 +53,19 @@ export function MostRequestedSection() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '16px',
-                backgroundColor: 'var(--bg-card)',
+                backgroundColor: 'var(--bg-primary)',
                 border: '1px solid var(--border)',
                 borderRadius: '12px',
                 padding: '16px',
                 boxShadow: 'var(--shadow)',
                 transition: 'var(--transition-theme)',
               }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)'
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'
+                }}
             >
               {/* Número */}
               <span style={{

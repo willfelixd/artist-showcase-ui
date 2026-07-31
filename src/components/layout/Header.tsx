@@ -35,7 +35,7 @@ export function Header() {
       position: 'sticky',
       top: 0,
       zIndex: 100,
-      backgroundColor: 'var(--bg-primary)',
+      backgroundColor: 'var(--bg-secondary)',
       borderBottom: '1px solid var(--border)',
       boxShadow: 'var(--shadow)',
       transition: 'var(--transition-theme)',

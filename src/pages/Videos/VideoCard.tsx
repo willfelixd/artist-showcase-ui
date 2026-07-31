@@ -16,7 +16,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
         overflow: 'hidden',
         border: '1px solid var(--border)',
         boxShadow: 'var(--shadow)',
-        backgroundColor: 'var(--bg-card)',
+        backgroundColor: 'var(--bg-primary)',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
       }}
       onMouseEnter={e => {

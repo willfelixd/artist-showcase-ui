@@ -41,7 +41,7 @@ export default function MessagesPage() {
             <div
               key={msg.id}
               style={{
-                backgroundColor: 'var(--bg-card)',
+                backgroundColor: 'var(--bg-primary)',
                 border: '1px solid var(--border)',
                 borderRadius: '12px',
                 padding: '20px',
@@ -124,6 +124,7 @@ export default function MessagesPage() {
                 backgroundColor: 'var(--bg-secondary)',
                 padding: '12px 16px',
                 borderRadius: '8px',
+                border: '1px solid var(--border)',
                 marginBottom: '8px',
               }}>
                 {msg.message}

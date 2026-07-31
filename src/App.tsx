@@ -11,6 +11,7 @@ import Repertoire from './pages/Repertoire'
 import Contact from './pages/Contact'
 import Admin from './pages/Admin'
 import { useLocation } from 'react-router-dom'
+import { AnimatedBackground } from './components/ui/AnimatedBackground'
 
 function AppLayout() {
   const location = useLocation()
@@ -23,9 +24,12 @@ function AppLayout() {
       flexDirection: 'column',
       backgroundColor: 'var(--bg-primary)',
       transition: 'var(--transition-theme)',
+      position: 'relative', // ← essencial para o absolute funcionar
     }}>
+      {/* Background animado — só nas páginas públicas */}
+      {!isAdmin && <AnimatedBackground />}
       {!isAdmin && <Header />}
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, position: 'relative', zIndex: 1 }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/videos" element={<Videos />} />

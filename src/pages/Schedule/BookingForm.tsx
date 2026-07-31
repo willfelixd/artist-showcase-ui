@@ -103,7 +103,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         alignItems: 'center',
         justifyContent: 'center',
         height: '200px',
-        backgroundColor: 'var(--bg-card)',
+        backgroundColor: 'var(--bg-primary)',
         border: '1px solid var(--border)',
         borderRadius: '12px',
         color: 'var(--text-muted)',
@@ -121,7 +121,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
     <form
       onSubmit={handleSubmit(handleFormSubmit)}
       style={{
-        backgroundColor: 'var(--bg-card)',
+        backgroundColor: 'var(--bg-primary)',
         border: '1px solid var(--border)',
         borderRadius: '12px',
         padding: '24px',
@@ -133,7 +133,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
     >
       {/* Data selecionada */}
       <div style={{
-        backgroundColor: 'var(--bg-secondary)',
+        backgroundColor: 'var(--bg-card)',
         borderRadius: '8px',
         padding: '12px 16px',
         color: 'var(--accent-primary)',
@@ -150,6 +150,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           {...register('requesterName')}
           style={inputStyle}
           placeholder="João Silva"
+          onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+          onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
       </Field>
 
@@ -159,6 +161,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           type="email"
           style={inputStyle}
           placeholder="joao@email.com"
+          onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+          onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
       </Field>
 
@@ -167,6 +171,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           {...register('requesterPhone')}
           style={inputStyle}
           placeholder="(11) 99999-9999"
+          onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+          onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
       </Field>
 
@@ -175,6 +181,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           {...register('eventName')}
           style={inputStyle}
           placeholder="Casamento Silva"
+          onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+          onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
       </Field>
 
@@ -189,6 +197,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
             {...register('startTime')}
             type="time"
             style={inputStyle}
+            onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+            onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
         </Field>
 
@@ -197,6 +207,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
             {...register('endTime')}
             type="time"
             style={inputStyle}
+            onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+            onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
         </Field>
       </div>
@@ -206,6 +218,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           {...register('location')}
           style={inputStyle}
           placeholder="Salão de Festas, São Paulo"
+          onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+          onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
       </Field>
 
@@ -219,6 +233,8 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
             lineHeight: '1.5',
           }}
           placeholder="Informações adicionais sobre o evento..."
+          onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+          onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
       </Field>
 
