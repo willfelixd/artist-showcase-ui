@@ -46,9 +46,10 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
       <button
         onClick={onClose}
         style={{
-          position: 'absolute',
+          position: 'fixed',
           top: '16px',
           right: '16px',
+          zIndex: 201,
           background: 'rgba(255,255,255,0.1)',
           border: 'none',
           borderRadius: '50%',

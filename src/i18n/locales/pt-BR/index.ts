@@ -18,7 +18,15 @@ const ptBR = {
       cta_contact: 'Entre em Contato',
     },
     sections: {
-      mostRequested: 'Mais Pedidas',
+      about: {
+      label: 'Sobre mim',
+      bio: `"Nasci para transformar sentimentos em melodias. Com uma voz que transita entre a suavidade do acústico e a alma do sertanejo, construo canções que chegam devagar e ficam para sempre.  
+        Apaixonada pela música desde cedo, encontro no violão e na voz a forma mais verdadeira de me expressar. Cada apresentação é um convite à emoção e ao encontro entre artista e quem ouve.
+        Minha música não segue fórmulas. Segue o coração."`,
+      },
+      scroll_hint: 'Clique aqui ou role para ver mais',
+      scroll_top: 'Clique aqui para voltar ao topo',
+      mostRequested: 'Músicas em Destaque',
       featured_videos: 'Vídeos em Destaque',
     },
   },
@@ -30,7 +38,7 @@ const ptBR = {
     search_placeholder: 'Buscar música...',
     filter_genre: 'Filtrar por gênero',
     all_genres: 'Todos os gêneros',
-    most_requested: 'Mais Pedidas',
+    most_requested: 'Top 10 Músicas Mais Pedidas',
     full_repertoire: 'Repertório Completo',
     no_results: 'Nenhuma música encontrada.',
     load_more: 'Carregar mais',
@@ -40,7 +48,7 @@ const ptBR = {
   videos: {
     title: 'Vídeos',
     available_count: '{{count}} vídeos disponíveis',
-    featured: 'Em Destaque',
+    featured: 'Top 6 Vídeos Em Destaque',
     all_videos: 'Todos os Vídeos',
     no_videos: 'Nenhum vídeo disponível.',
     load_more: 'Carregar mais',

@@ -4,10 +4,8 @@ import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { LanguageToggle } from '../ui/LanguageToggle'
-import { useTheme } from '../../contexts/ThemeContext'
 
 export function Header() {
-  const { isDark } = useTheme()
   const { t } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -22,9 +20,10 @@ export function Header() {
   const navLinkStyle = ({ isActive }: { isActive: boolean }) => ({
     color: isActive ? 'var(--accent-primary)' : 'var(--text-primary)',
     textDecoration: 'none',
+    textTransform: 'uppercase',
     fontFamily: 'var(--font-body)',
-    fontSize: '15px',
-    fontWeight: isActive ? '600' : '400',
+    fontSize: '12px',
+    fontWeight: isActive ? 'bold' : 'bold',
     padding: '4px 0',
     borderBottom: isActive ? '2px solid var(--accent-primary)' : '2px solid transparent',
     transition: 'all 0.2s ease',
@@ -35,7 +34,7 @@ export function Header() {
       position: 'sticky',
       top: 0,
       zIndex: 100,
-      backgroundColor: 'var(--bg-secondary)',
+      background: 'var(--bg-background-header)',
       borderBottom: '1px solid var(--border)',
       boxShadow: 'var(--shadow)',
       transition: 'var(--transition-theme)',
@@ -50,10 +49,10 @@ export function Header() {
         justifyContent: 'space-between',
       }}>
 
-        {/* Logo — alterna conforme o tema */}
+        {/* Logo */}
         <NavLink to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
           <img
-            src={isDark ? '/logo-horizontal-dark.svg' : '/logo-horizontal.svg'}
+            src={'/logo-isa-v1.svg'}
             alt="Isa Tavares Cantora"
             style={{ height: '48px', width: 'auto' }}
           />
@@ -108,7 +107,7 @@ export function Header() {
       {menuOpen && (
         <nav style={{
           borderTop: '1px solid var(--border)',
-          backgroundColor: 'var(--bg-secondary)',
+          background: 'var(--bg-background-header)',
           padding: '16px 24px',
           display: 'flex',
           flexDirection: 'column',

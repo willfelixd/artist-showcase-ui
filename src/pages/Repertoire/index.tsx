@@ -89,9 +89,9 @@ export default function Repertoire() {
       <div style={{ marginBottom: '40px', textAlign: 'center' }}>
         <h1 style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          fontSize: 'clamp(2rem, 5vw, 3.0rem)',
           color: 'var(--text-primary)',
-          fontWeight: '400',
+          fontWeight: 'bold',
           marginBottom: '12px',
         }}>
           {t('repertoire.title')}
@@ -100,6 +100,8 @@ export default function Repertoire() {
           color: 'var(--text-secondary)',
           fontFamily: 'var(--font-body)',
           fontSize: '16px',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
         }}>
           {totalElements > 0 && t('repertoire.available_count', { count: totalElements })}
         </p>
@@ -112,7 +114,7 @@ export default function Repertoire() {
             fontFamily: 'var(--font-display)',
             fontSize: 'clamp(1.4rem, 3vw, 2rem)',
             color: 'var(--text-primary)',
-            fontWeight: '400',
+            fontWeight: 'bold',
             marginBottom: '20px',
             display: 'flex',
             alignItems: 'center',
@@ -149,7 +151,7 @@ export default function Repertoire() {
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(1.4rem, 3vw, 2rem)',
           color: 'var(--text-primary)',
-          fontWeight: '400',
+          fontWeight: 'bold',
           marginBottom: '24px',
         }}>
           {t('repertoire.full_repertoire')}

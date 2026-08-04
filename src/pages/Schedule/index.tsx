@@ -60,9 +60,9 @@ export default function Schedule() {
       <div style={{ marginBottom: '40px', textAlign: 'center' }}>
         <h1 style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          fontSize: 'clamp(2rem, 5vw, 3.0rem)',
           color: 'var(--text-primary)',
-          fontWeight: '400',
+          fontWeight: 'bold',
           marginBottom: '12px',
         }}>
           {t('schedule.title')}
@@ -106,7 +106,7 @@ export default function Schedule() {
               fontFamily: 'var(--font-display)',
               fontSize: '1.3rem',
               color: 'var(--text-primary)',
-              fontWeight: '400',
+              fontWeight: 'bold',
               marginBottom: '16px',
             }}>
               📅 {t('schedule.unavailable_dates')}
@@ -167,7 +167,7 @@ export default function Schedule() {
               fontFamily: 'var(--font-display)',
               fontSize: '1.3rem',
               color: 'var(--text-primary)',
-              fontWeight: '400',
+              fontWeight: 'bold',
               marginBottom: '16px',
             }}>
               📋 {t('schedule.subtitle')}

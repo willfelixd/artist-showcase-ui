@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Play } from 'lucide-react'
 import { videoService } from '../../services/videoService'
 import { LoadingSpinner } from '../../components/ui/LoadingSpinner'
 import type { Video } from '../../types'
+import { VideoCarousel } from '../../components/ui/VideoCarousel'
 
 export function FeaturedVideosSection() {
   const { t } = useTranslation()
@@ -24,9 +24,10 @@ export function FeaturedVideosSection() {
   return (
     <section style={{
       padding: '80px 24px',
+      background: 'transparent',
       transition: 'var(--transition-theme)',
     }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
         <h2 style={{
           fontFamily: 'var(--font-display)',
@@ -34,74 +35,15 @@ export function FeaturedVideosSection() {
           color: 'var(--text-primary)',
           marginBottom: '40px',
           textAlign: 'center',
-          fontWeight: '400',
+          fontWeight: 'bold',
         }}>
           {t('home.sections.featured_videos')}
         </h2>
 
-        {/* Grid de vídeos */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '24px',
-        }}>
-          {videos.map(video => (
-            <div
-              key={video.id}
-              onClick={() => setSelectedVideo(video)}
-              style={{
-                cursor: 'pointer',
-                borderRadius: '12px',
-                overflow: 'hidden',
-                border: '1px solid var(--border)',
-                boxShadow: 'var(--shadow)',
-                backgroundColor: 'var(--bg-primary)',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              }}
-              onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)'
-              }}
-              onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)'
-              }}
-            >
-              {/* Thumbnail */}
-              <div style={{ position: 'relative' }}>
-                <img
-                  src={video.thumbnailUrl}
-                  alt={video.title}
-                  style={{ width: '100%', aspectRatio: '16/9', objectFit: 'cover' }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundColor: 'rgba(0,0,0,0.3)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  opacity: 0,
-                  transition: 'opacity 0.2s ease',
-                }}
-                  className="play-overlay"
-                >
-                  <Play size={48} color="white" fill="white" />
-                </div>
-              </div>
-
-              {/* Info */}
-              <div style={{ padding: '16px' }}>
-                <p style={{
-                  color: 'var(--text-primary)',
-                  fontWeight: '500',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '15px',
-                }}>
-                  {video.title}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <VideoCarousel
+          videos={videos}
+          onVideoClick={setSelectedVideo}
+        />
       </div>
 
       {/* Modal do player */}
@@ -119,6 +61,42 @@ export function FeaturedVideosSection() {
             padding: '24px',
           }}
         >
+          
+          {/* Botão X — FORA do container do player */}
+          <button
+            onClick={e => {
+              e.stopPropagation()
+              setSelectedVideo(null)
+            }}
+            style={{
+              position: 'fixed', // ← fixed em vez de absolute
+              top: '16px',
+              right: '16px',
+              background: 'rgba(255,255,255,0.15)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              color: 'white',
+              fontSize: '22px',
+              zIndex: 201, // ← acima do modal
+              transition: 'background 0.2s ease',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.3)'
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.15)'
+            }}
+            aria-label="Fechar"
+          >
+            ✕
+          </button>
+
           <div
             onClick={e => e.stopPropagation()}
             style={{
@@ -143,6 +121,72 @@ export function FeaturedVideosSection() {
       <style>{`
         .play-overlay { opacity: 0 !important; }
         div:hover > div > .play-overlay { opacity: 1 !important; }
+      `}</style>
+
+      {/* Indicador de scroll — voltar ao topo */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%',
+      }}>
+        <div
+          style={{
+            display: 'inline-flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
+            marginTop: '48px',
+            cursor: 'pointer',
+            
+            // 👇 IMPORTANTE
+            animation: 'bounceUp 2s ease-in-out infinite',
+            willChange: 'transform',
+          }}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }}
+        >
+          <div style={{
+            width: '24px',
+            height: '38px',
+            border: '2px solid var(--border)',
+            borderRadius: '12px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'flex-end',
+            paddingBottom: '8px',
+          }}>
+            <div style={{
+              width: '4px',
+              height: '8px',
+              backgroundColor: 'var(--accent-primary)',
+              borderRadius: '2px',
+              animation: 'scrollDotUp 2s infinite',
+            }} />
+          </div>
+
+          <span style={{
+            color: 'var(--text-muted)',
+            fontFamily: 'var(--font-body)',
+            fontSize: 'clamp(0.5rem, 2vw, 0.5rem)',
+            letterSpacing: '2px',
+            textTransform: 'uppercase',
+          }}>
+            {t('home.sections.scroll_top')}
+          </span>
+        </div>
+      </div>
+
+      <style>{`
+      @keyframes bounceUp {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+
+      @keyframes scrollDotUp {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-10px); opacity: 0; }
+      }
       `}</style>
     </section>
   )

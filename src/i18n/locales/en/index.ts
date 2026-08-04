@@ -16,7 +16,15 @@ const en = {
       cta_contact: 'Get in Touch',
     },
     sections: {
-      mostRequested: 'Most Requested',
+      about: {
+      label: 'About me',
+      bio: `"I was born to transform feelings into melodies. With a voice that moves between the softness of acoustic and the soul of sertanejo, I craft songs that arrive gently and stay forever.
+      Passionate about music from an early age, I find in guitar and voice the most authentic way to express myself. Every performance is an invitation to emotion and a meeting between artist and listener.
+      My music doesn't follow formulas. It follows the heart."`,
+      },
+      scroll_hint: 'Click here or scroll to see more',
+      scroll_top: 'Click here to return to the top',
+      mostRequested: 'Featured Songs',
       featured_videos: 'Featured Videos',
     },
   },
@@ -27,7 +35,7 @@ const en = {
     search_placeholder: 'Search song...',
     filter_genre: 'Filter by genre',
     all_genres: 'All genres',
-    most_requested: 'Most Requested',
+    most_requested: 'Top 10 Most Requested Songs',
     full_repertoire: 'Full Repertoire',
     no_results: 'No songs found.',
     load_more: 'Load more',
@@ -36,7 +44,7 @@ const en = {
   videos: {
     title: 'Videos',
     available_count: '{{count}} videos available',
-    featured: 'Featured',
+    featured: 'Top 6 Featured Videos',
     all_videos: 'All Videos',
     no_videos: 'No videos available.',
     load_more: 'Load more',
