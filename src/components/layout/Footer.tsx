@@ -34,7 +34,7 @@ export function Footer() {
   return (
     <footer style={{
       zIndex: 0,
-      backgroundColor: 'var(--bg-secondary)',
+      background: 'var(--bg-background-footer)',
       borderTop: '1px solid var(--border)',
       padding: '40px 24px',
       marginTop: 'auto',
@@ -54,7 +54,9 @@ export function Footer() {
           <Music size={20} color="var(--accent-primary)" />
           <span style={{
             fontFamily: 'var(--font-display)',
-            fontSize: '1.2rem',
+            fontSize: '1.0rem',
+            fontWeight: 'bold',
+            fontStyle: 'italic',
             color: 'var(--text-primary)',
           }}>
             Isa Tavares Cantora
@@ -66,7 +68,7 @@ export function Footer() {
           <div style={{ display: 'flex', gap: '16px' }}>
             {artist.instagramUrl && (
               <a
-                href={artist.instagramUrl}
+                href="https://www.instagram.com/isatavarescantora?igsh=Z253bTVuY2xucnB4"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

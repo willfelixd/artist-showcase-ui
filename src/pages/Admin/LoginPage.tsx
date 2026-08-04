@@ -41,7 +41,7 @@ export default function LoginPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: 'var(--bg-primary)',
+      background: 'var(transparent)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -69,6 +69,8 @@ export default function LoginPage() {
             <span style={{
               fontFamily: 'var(--font-display)',
               fontSize: '1.8rem',
+              fontWeight: 'bold',
+              fontStyle: 'italic',
               color: 'var(--text-primary)',
             }}>
               Isa Tavres Cantora
@@ -77,7 +79,9 @@ export default function LoginPage() {
           <p style={{
             color: 'var(--text-muted)',
             fontFamily: 'var(--font-body)',
-            fontSize: '14px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            fontStyle: 'italic',
           }}>
             {t('admin.login.title')}
           </p>

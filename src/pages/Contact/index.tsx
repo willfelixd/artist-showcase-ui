@@ -111,9 +111,9 @@ export default function Contact() {
       <div style={{ marginBottom: '40px', textAlign: 'center' }}>
         <h1 style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          fontSize: 'clamp(2rem, 5vw, 3.0rem)',
           color: 'var(--text-primary)',
-          fontWeight: '400',
+          fontWeight: 'bold',
           marginBottom: '12px',
         }}>
           {t('contact.title')}
@@ -122,6 +122,8 @@ export default function Contact() {
           color: 'var(--text-secondary)',
           fontFamily: 'var(--font-body)',
           fontSize: '16px',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
         }}>
           {t('contact.subtitle')}
         </p>

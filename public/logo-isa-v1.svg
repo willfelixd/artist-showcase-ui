@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" width="520" height="320">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF3CAC"/>
+      <stop offset="50%" style="stop-color:#C850C0"/>
+      <stop offset="100%" style="stop-color:#4158D0"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6EB4"/>
+      <stop offset="100%" style="stop-color:#7B2FBE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Faixa de fundo suave -->
+  <rect x="0" y="55" width="520" height="95" fill="url(#g1)" opacity="0.06" rx="8"/>
+
+  <!-- ISABELLY -->
+  <text x="260" y="125"
+    font-family="'Arial Black', Impact, sans-serif"
+    font-size="78"
+    font-weight="900"
+    font-style="italic"
+    fill="url(#g1)"
+    text-anchor="middle"
+    letter-spacing="2">ISABELLY</text>
+
+  <!-- Separador -->
+  <line x1="60" y1="140" x2="195" y2="140" stroke="url(#g1)" stroke-width="1" opacity="0.4"/>
+  <text x="248" y="146" font-size="10" fill="#FF3CAC" opacity="0.9" text-anchor="middle">✦</text>
+  <line x1="305" y1="140" x2="458" y2="140" stroke="url(#g1)" stroke-width="1" opacity="0.4"/>
+
+  <!-- TAVARES — mesmas cores do ISABELLY, preenchido -->
+  <text x="260" y="215"
+    font-family="'Arial Black', Impact, sans-serif"
+    font-size="72"
+    font-weight="900"
+    font-style="italic"
+    fill="url(#g1)"
+    text-anchor="middle"
+    letter-spacing="2">TAVARES</text>
+
+  <!-- CANTORA — bem maior e visível -->
+  <text x="260" y="278"
+    font-family="Arial, sans-serif"
+    font-size="28"
+    font-weight="400"
+    letter-spacing="16"
+    fill="url(#g2)"
+    opacity="0.9"
+    text-anchor="middle">C A N T O R A</text>
+</svg>

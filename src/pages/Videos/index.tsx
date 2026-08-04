@@ -6,6 +6,7 @@ import { VideoModal } from './VideoModal'
 import { LoadingSpinner } from '../../components/ui/LoadingSpinner'
 import { ErrorMessage } from '../../components/ui/ErrorMessage'
 import type { Video } from '../../types'
+import { VideoCarousel } from '../../components/ui/VideoCarousel'
 
 export default function Videos() {
   const { t } = useTranslation()
@@ -73,9 +74,9 @@ export default function Videos() {
       <div style={{ marginBottom: '40px', textAlign: 'center' }}>
         <h1 style={{
           fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+          fontSize: 'clamp(2rem, 5vw, 3.0rem)',
           color: 'var(--text-primary)',
-          fontWeight: '400',
+          fontWeight: 'bold',
         }}>
           {t('videos.title')}
         </h1>
@@ -84,6 +85,8 @@ export default function Videos() {
           fontFamily: 'var(--font-body)',
           fontSize: '16px',
           marginTop: '12px',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
         }}>
           {totalElements > 0 && t('videos.available_count', { count: totalElements })}
         </p>
@@ -107,24 +110,15 @@ export default function Videos() {
                 fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(1.4rem, 3vw, 2rem)',
                 color: 'var(--text-primary)',
-                fontWeight: '400',
+                fontWeight: 'bold',
                 marginBottom: '24px',
               }}>
                 ⭐ {t('videos.featured')}
               </h2>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-                gap: '24px',
-              }}>
-                {featured.map(video => (
-                  <VideoCard
-                    key={video.id}
-                    video={video}
-                    onClick={setSelectedVideo}
-                  />
-                ))}
-              </div>
+              <VideoCarousel
+                videos={featured}
+                onVideoClick={setSelectedVideo}
+              />
             </section>
           )}
 
@@ -143,7 +137,7 @@ export default function Videos() {
                 fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(1.4rem, 3vw, 2rem)',
                 color: 'var(--text-primary)',
-                fontWeight: '400',
+                fontWeight: 'bold',
                 marginBottom: '24px',
               }}>
                 {t('videos.all_videos')}

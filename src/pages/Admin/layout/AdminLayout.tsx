@@ -68,6 +68,8 @@ export default function AdminLayout() {
         gap: '8px',
         padding: '0 8px',
         marginBottom: '24px',
+        fontWeight: 'bold',
+        fontStyle: 'italic',
       }}>
         <Music size={20} color="var(--accent-primary)" />
         <span style={{
@@ -168,6 +170,7 @@ export default function AdminLayout() {
     <div style={{
       display: 'flex',
       minHeight: '100vh',
+      fontWeight: 'bold',
       backgroundColor: 'var(--bg-primary)',
       transition: 'var(--transition-theme)',
     }}>
