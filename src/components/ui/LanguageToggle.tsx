@@ -1,27 +1,66 @@
 import { useLanguage } from '../../contexts/LanguageContext'
+import { useTheme } from '../../contexts/ThemeContext'
 
 export function LanguageToggle() {
   const { language, toggleLanguage } = useLanguage()
+  const { isDark } = useTheme()
+
+  const isEN = language === 'en'
+
+  const trackStyle: React.CSSProperties = {
+    position: 'relative',
+    width: '44px',
+    height: '24px',
+    borderRadius: '999px',
+    background: 'transparent',
+    border: '1px solid var(--border)',
+    cursor: 'pointer',
+    padding: '2px',
+  }
+
+  const contentStyle: React.CSSProperties = {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0 6px',
+    fontSize: '8px',
+    fontWeight: 700,
+    color: 'var(--text-secondary)',
+    pointerEvents: 'none',
+  }
+
+  const thumbStyle: React.CSSProperties = {
+    width: '18px',
+    height: '18px',
+    borderRadius: '50%',
+    background: 'var(--pink-gradient)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transform: isEN ? 'translateX(20px)' : 'translateX(0px)',
+    transition: 'transform 0.60s cubic-bezier(0.4, 0, 0.2, 1)',
+    boxShadow: 'var(--shadow)',
+    fontSize: '8px',
+    fontWeight: 700,
+    color: isDark ? '#fff' : '#1a1919',
+    position: 'relative',
+    zIndex: 2,
+  }
 
   return (
-    <button
-      onClick={toggleLanguage}
-      aria-label={language === 'pt-BR' ? 'Switch to English' : 'Mudar para Português'}
-      style={{
-        background: 'none',
-        border: '1px solid var(--border)',
-        borderRadius: '8px',
-        padding: '6px 10px',
-        cursor: 'pointer',
-        color: 'var(--text-primary)',
-        fontSize: '13px',
-        fontWeight: '500',
-        fontFamily: 'var(--font-body)',
-        transition: 'var(--transition-theme)',
-        letterSpacing: '0.5px',
-      }}
-    >
-      {language === 'pt-BR' ? 'EN' : 'PT'}
+    <button onClick={toggleLanguage} style={trackStyle}>
+      {/* Labels fixos */}
+      <div style={contentStyle}>
+        <span>En</span>
+        <span>Pt</span>
+      </div>
+
+      {/* Thumb */}
+      <div style={thumbStyle}>
+        {isEN ? 'Pt' : 'En'}
+      </div>
     </button>
   )
 }

@@ -1,5 +1,6 @@
 import { X } from 'lucide-react'
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import type { Video } from '../../types'
 
 interface VideoModalProps {
@@ -26,7 +27,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
     }
   }, [])
 
-  return (
+  return createPortal(
     <div
       onClick={onClose}
       style={{
@@ -37,9 +38,10 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 200,
+        zIndex: 99999, // agora está acima de tudo
         padding: '24px',
         animation: 'fadeIn 0.2s ease',
+        isolation: 'isolate', // evita conflitos de stacking context
       }}
     >
       {/* Botão fechar */}
@@ -49,7 +51,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           position: 'fixed',
           top: '16px',
           right: '16px',
-          zIndex: 201,
+          zIndex: 100000, // sempre acima (até do iframe)
           background: 'rgba(255,255,255,0.1)',
           border: 'none',
           borderRadius: '50%',
@@ -60,7 +62,6 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           justifyContent: 'center',
           cursor: 'pointer',
           color: 'white',
-          transition: 'background 0.2s ease',
         }}
         onMouseEnter={e => {
           (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.2)'
@@ -103,6 +104,8 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           borderRadius: '12px',
           overflow: 'hidden',
           boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+          position: 'relative',
+          zIndex: 1, // evita iframe subir demais
         }}>
           <iframe
             src={`${video.embedUrl}?autoplay=1&rel=0`}
@@ -126,7 +129,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           </p>
         )}
 
-        {/* Dica para fechar */}
+        {/* Dica */}
         <p style={{
           color: 'rgba(255,255,255,0.4)',
           fontFamily: 'var(--font-body)',
@@ -143,6 +146,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           to { opacity: 1; }
         }
       `}</style>
-    </div>
+    </div>,
+    document.body // aqui acontece a mágica
   )
 }
