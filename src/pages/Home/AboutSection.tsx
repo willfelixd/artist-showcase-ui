@@ -60,7 +60,7 @@ export function AboutSection({ artist }: AboutSectionProps) {
               fontFamily: 'var(--font-display)',
               fontSize: '16px',
               fontWeight: 'bold',
-              letterSpacing: '2px',
+              letterSpacing: '1px',
               textTransform: 'uppercase',
               marginBottom: '12px',
             }}>
@@ -70,6 +70,7 @@ export function AboutSection({ artist }: AboutSectionProps) {
               color: 'var(--text-primary)',
               fontWeight: 'bold',
               fontStyle: 'italic',
+              textAlign: 'justify',
               fontFamily: 'var(--font-body)',
               fontSize: '14px',
               lineHeight: '1.8',

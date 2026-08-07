@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { videoService } from '../../services/videoService'
 import { LoadingSpinner } from '../../components/ui/LoadingSpinner'
-import type { Video } from '../../types'
 import { VideoCarousel } from '../../components/ui/VideoCarousel'
+import { VideoModal } from '../../pages/Videos/VideoModal'
+import type { Video } from '../../types'
 
 export function FeaturedVideosSection() {
   const { t } = useTranslation()
@@ -46,76 +47,12 @@ export function FeaturedVideosSection() {
         />
       </div>
 
-      {/* Modal do player */}
+      {/* Modal reutilizando VideoModal — X, título e dica já incluídos */}
       {selectedVideo && (
-        <div
-          onClick={() => setSelectedVideo(null)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            backgroundColor: 'rgba(0,0,0,0.85)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 200,
-            padding: '24px',
-          }}
-        >
-          
-          {/* Botão X — FORA do container do player */}
-          <button
-            onClick={e => {
-              e.stopPropagation()
-              setSelectedVideo(null)
-            }}
-            style={{
-              position: 'fixed', // ← fixed em vez de absolute
-              top: '16px',
-              right: '16px',
-              background: 'rgba(255,255,255,0.15)',
-              border: 'none',
-              borderRadius: '50%',
-              width: '44px',
-              height: '44px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              color: 'white',
-              fontSize: '22px',
-              zIndex: 201, // ← acima do modal
-              transition: 'background 0.2s ease',
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.3)'
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.15)'
-            }}
-            aria-label="Fechar"
-          >
-            ✕
-          </button>
-
-          <div
-            onClick={e => e.stopPropagation()}
-            style={{
-              width: '100%',
-              maxWidth: '900px',
-              aspectRatio: '16/9',
-              borderRadius: '12px',
-              overflow: 'hidden',
-            }}
-          >
-            <iframe
-              src={selectedVideo.embedUrl + '?autoplay=1'}
-              title={selectedVideo.title}
-              style={{ width: '100%', height: '100%', border: 'none' }}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-              allowFullScreen
-            />
-          </div>
-        </div>
+        <VideoModal
+          video={selectedVideo}
+          onClose={() => setSelectedVideo(null)}
+        />
       )}
 
       <style>{`
@@ -137,14 +74,10 @@ export function FeaturedVideosSection() {
             gap: '8px',
             marginTop: '48px',
             cursor: 'pointer',
-            
-            // 👇 IMPORTANTE
             animation: 'bounceUp 2s ease-in-out infinite',
             willChange: 'transform',
           }}
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-          }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <div style={{
             width: '24px',
@@ -164,7 +97,6 @@ export function FeaturedVideosSection() {
               animation: 'scrollDotUp 2s infinite',
             }} />
           </div>
-
           <span style={{
             color: 'var(--text-muted)',
             fontFamily: 'var(--font-body)',
@@ -178,15 +110,14 @@ export function FeaturedVideosSection() {
       </div>
 
       <style>{`
-      @keyframes bounceUp {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-6px); }
-      }
-
-      @keyframes scrollDotUp {
-        0% { transform: translateY(0); opacity: 1; }
-        100% { transform: translateY(-10px); opacity: 0; }
-      }
+        @keyframes bounceUp {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes scrollDotUp {
+          0% { transform: translateY(0); opacity: 1; }
+          100% { transform: translateY(-10px); opacity: 0; }
+        }
       `}</style>
     </section>
   )

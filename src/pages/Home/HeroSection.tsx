@@ -233,15 +233,16 @@ export function HeroSection({ artist }: HeroSectionProps) {
                 fontStyle:'italic',
                 fontSize:
                   'clamp(3.5rem,5vw,5rem)',
-                lineHeight:'1.1',
+                lineHeight:'1.2',
                 fontWeight:'400',
+                //textDecoration: 'var(--pink-gradient)',
               }}
             >
               {artist.name}
             </h1>
             <p
               style={{
-                color:'var(--accent-hover)',
+                color:'var(--accent-primary)',
                 fontFamily:'var(--font-body)',
                 fontStyle:'italic',
                 fontSize:'1rem',
@@ -257,6 +258,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
             style={{
               display:'flex',
               flexWrap:'wrap',
+              marginTop: '15px',
               gap:'16px',
               justifyContent:
                 isDesktop
@@ -382,7 +384,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
                     rel="noopener noreferrer"
                     aria-label="Instagram"
                     style={{
-                      color: 'var(--accent-hover)',
+                      color: 'var(--accent-primary)',
                       transition: 'all 0.3s ease',
                       opacity: 0,
                       transform: 'translateY(10px)',
@@ -390,10 +392,10 @@ export function HeroSection({ artist }: HeroSectionProps) {
                       animationDelay: '1.4s',
                     }}
                     onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
                     }}
                     onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
                     }}
                   >
                     <InstagramIcon />
@@ -405,9 +407,9 @@ export function HeroSection({ artist }: HeroSectionProps) {
                     href={YOUTUBE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Instagram"
+                    aria-label="YouTube"
                     style={{
-                      color: 'var(--accent-hover)',
+                      color: 'var(--accent-primary)',
                       transition: 'all 0.3s ease',
                       opacity: 0,
                       transform: 'translateY(10px)',
@@ -415,10 +417,10 @@ export function HeroSection({ artist }: HeroSectionProps) {
                       animationDelay: '1.5s',
                     }}
                     onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
                     }}
                     onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
                     }}
                   >
                     <YouTubeIcon />
@@ -430,9 +432,9 @@ export function HeroSection({ artist }: HeroSectionProps) {
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Instagram"
+                    aria-label="WhatsApp"
                     style={{
-                      color: 'var(--accent-hover)',
+                      color: 'var(--accent-primary)',
                       transition: 'all 0.3s ease',
                       opacity: 0,
                       transform: 'translateY(10px)',
@@ -440,10 +442,10 @@ export function HeroSection({ artist }: HeroSectionProps) {
                       animationDelay: '1.6s',
                     }}
                     onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
                     }}
                     onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
+                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
                     }}
                   >
                     <WhatsAppIcon />
