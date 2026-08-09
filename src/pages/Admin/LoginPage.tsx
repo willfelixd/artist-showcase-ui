@@ -204,6 +204,14 @@ export default function LoginPage() {
               fontWeight: '500',
               transition: 'background-color 0.2s ease',
             }}
+            onMouseEnter={e => {
+              if (!isSubmitting)
+                (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-hover)'
+            }}
+            onMouseLeave={e => {
+              if (!isSubmitting)
+                (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-primary)'
+            }}
           >
             {isSubmitting ? '...' : t('admin.login.submit')}
           </button>

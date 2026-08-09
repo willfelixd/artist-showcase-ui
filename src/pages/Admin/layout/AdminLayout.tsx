@@ -88,6 +88,7 @@ export default function AdminLayout() {
             key={item.path}
             to={item.path}
             style={navLinkStyle}
+            className="admin-nav-link"
             onClick={() => setSidebarOpen(false)}
           >
             {item.icon}
@@ -157,6 +158,18 @@ export default function AdminLayout() {
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
             transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            const el = e.currentTarget as HTMLButtonElement
+            el.style.borderColor = 'var(--accent-primary)'
+            el.style.color = 'var(--accent-primary)'
+            el.style.backgroundColor = 'rgba(239,68,68,0.08)'
+          }}
+          onMouseLeave={e => {
+            const el = e.currentTarget as HTMLButtonElement
+            el.style.borderColor = 'var(--border)'
+            el.style.color = 'var(--text-secondary)'
+            el.style.backgroundColor = 'transparent'
           }}
         >
           <LogOut size={16} />
@@ -261,13 +274,15 @@ export default function AdminLayout() {
               }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLAnchorElement
-                el.style.color = 'var(--accent-primary)'
                 el.style.borderColor = 'var(--accent-primary)'
+                el.style.color = 'var(--accent-primary)'
+                el.style.backgroundColor = 'rgba(239,68,68,0.08)'
               }}
               onMouseLeave={e => {
                 const el = e.currentTarget as HTMLAnchorElement
-                el.style.color = 'var(--text-secondary)'
                 el.style.borderColor = 'var(--border)'
+                el.style.color = 'var(--text-secondary)'
+                el.style.backgroundColor = 'transparent'
               }}
             >
               <ExternalLink size={13} />
@@ -285,6 +300,13 @@ export default function AdminLayout() {
       </div>
 
       <style>{`
+        .admin-nav-link:hover {
+        color: var(--accent-primary) !important;
+        background-color: var(--bg-secondary) !important;
+        }
+        .admin-nav-link:hover svg {
+          color: var(--accent-primary) !important;
+        }
         @media (max-width: 768px) {
           .admin-sidebar-desktop { display: none !important; }
           .admin-menu-btn { display: flex !important; }

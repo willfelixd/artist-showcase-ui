@@ -20,13 +20,14 @@ export function Header() {
   const navLinkStyle = ({ isActive }: { isActive: boolean }) => ({
     color: isActive ? 'var(--accent-primary)' : 'var(--text-primary)',
     textDecoration: 'none',
-    textTransform: 'uppercase',
     fontFamily: 'var(--font-body)',
-    fontSize: '12px',
+    fontSize: '14px',
     fontWeight: isActive ? 'bold' : 'bold',
-    padding: '4px 0',
+    padding: '4px 8px',
+    borderRadius: '8px',
     borderBottom: isActive ? '2px solid var(--accent-primary)' : '2px solid transparent',
     transition: 'all 0.2s ease',
+    backgroundColor: isActive ? 'var(--bg-secondary)' : 'transparent',
   })
 
   return (
@@ -72,6 +73,7 @@ export function Header() {
               to={item.path}
               end={item.path === '/'}
               style={navLinkStyle}
+              className="nav-link"
             >
               {item.label}
             </NavLink>
@@ -120,6 +122,7 @@ export function Header() {
               end={item.path === '/'}
               style={navLinkStyle}
               onClick={() => setMenuOpen(false)}
+              className="mobile-nav-link"
             >
               {item.label}
             </NavLink>
@@ -132,6 +135,15 @@ export function Header() {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+        }
+        .nav-link:hover {
+          color: var(--accent-primary) !important;
+          background-color: var(--bg-secondary) !important;
+        }
+        .mobile-nav-link:hover {
+          color: var(--accent-primary) !important;
+          background-color: var(--bg-secondary) !important;
+          padding-left: 20px !important;
         }
       `}</style>
     </header>

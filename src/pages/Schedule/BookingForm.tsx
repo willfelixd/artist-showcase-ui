@@ -112,7 +112,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         textAlign: 'center',
         padding: '24px',
       }}>
-           {t('schedule.select_date_hint')}
+        {t('schedule.select_date_hint')}
       </div>
     )
   }
@@ -252,6 +252,14 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           fontSize: '15px',
           fontWeight: '500',
           transition: 'background-color 0.2s ease',
+        }}
+        onMouseEnter={e => {
+          if (!isSubmitting)
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-hover)'
+        }}
+        onMouseLeave={e => {
+          if (!isSubmitting)
+            (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-primary)'
         }}
       >
         {isSubmitting
