@@ -9,11 +9,10 @@ export function ThemeToggle() {
     width: '44px',
     height: '24px',
     borderRadius: '999px',
-    background: 'transparent',
-    border: '1px solid var(--border)',
+    background: 'var(--bg-background-footer)',
+    border: isDark ? '1px solid var(--border)' : '0px solid var(--border)',
     cursor: 'pointer',
     padding: '2px',
-    transition: 'background 0.60s ease',
   }
 
   const contentStyle: React.CSSProperties = {
@@ -41,7 +40,16 @@ export function ThemeToggle() {
   }
 
   return (
-    <button onClick={toggleTheme} style={trackStyle}>
+    <button onClick={toggleTheme} style={trackStyle}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.background = 'var(--accent-hover2)'
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.background = 'var(--bg-background-footer)'
+      }}
+    >
       {/* Ícones fixos */}
       <div style={contentStyle}>
         <Moon size={10} color="var(--text-secondary)" />

@@ -12,8 +12,8 @@ export function LanguageToggle() {
     width: '44px',
     height: '24px',
     borderRadius: '999px',
-    background: 'transparent',
-    border: '1px solid var(--border)',
+    background: 'var(--bg-background-footer)',
+    border: isDark ? '1px solid var(--border)' : '0px solid var(--border)',
     cursor: 'pointer',
     padding: '2px',
   }
@@ -50,7 +50,16 @@ export function LanguageToggle() {
   }
 
   return (
-    <button onClick={toggleLanguage} style={trackStyle}>
+    <button onClick={toggleLanguage} style={trackStyle}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.background = 'var(--accent-hover2)'
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.background = 'var(--bg-background-footer)'
+      }}
+    >
       {/* Labels fixos */}
       <div style={contentStyle}>
         <span>En</span>
