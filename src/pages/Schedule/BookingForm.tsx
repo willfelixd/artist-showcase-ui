@@ -149,7 +149,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         <input
           {...register('requesterName')}
           style={inputStyle}
-          placeholder="João Silva"
+          placeholder= {t('placeholders.full_name')}
           onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
           onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
@@ -160,7 +160,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           {...register('requesterEmail')}
           type="email"
           style={inputStyle}
-          placeholder="joao@email.com"
+          placeholder={t('placeholders.email')}
           onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
           onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
@@ -170,7 +170,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         <input
           {...register('requesterPhone')}
           style={inputStyle}
-          placeholder="(11) 99999-9999"
+          placeholder={t('placeholders.phone')}
           onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
           onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
@@ -180,7 +180,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         <input
           {...register('eventName')}
           style={inputStyle}
-          placeholder="Casamento Silva"
+          placeholder={t('placeholders.event_name')}
           onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
           onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
@@ -217,7 +217,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         <input
           {...register('location')}
           style={inputStyle}
-          placeholder="Salão de Festas, São Paulo"
+          placeholder={t('placeholders.location')}
           onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
           onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
@@ -232,7 +232,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
             resize: 'vertical',
             lineHeight: '1.5',
           }}
-          placeholder="Informações adicionais sobre o evento..."
+          placeholder={t('placeholders.notes')}
           onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
           onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />

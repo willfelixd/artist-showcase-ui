@@ -167,36 +167,42 @@ export default function VideosPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                Título *
+                {t('admin.add.title')}
               </label>
               <input
                 value={form.title}
                 onChange={e => setForm(p => ({ ...p, title: e.target.value }))}
                 style={inputStyle}
-                placeholder="Show ao Vivo"
+                placeholder={t('placeholders.video_title')}
+                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                URL do YouTube *
+                {t('admin.add.url')}
               </label>
               <input
                 value={form.youtubeUrl}
                 onChange={e => setForm(p => ({ ...p, youtubeUrl: e.target.value }))}
                 style={inputStyle}
-                placeholder="https://youtube.com/watch?v=..."
+                placeholder={t('placeholders.youtube_url')}
+                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                Descrição
+                {t('admin.add.description')}
               </label>
               <textarea
                 value={form.description}
                 onChange={e => setForm(p => ({ ...p, description: e.target.value }))}
                 rows={3}
                 style={{ ...inputStyle, resize: 'vertical', lineHeight: '1.5' }}
-                placeholder="Apresentação completa no Teatro Municipal"
+                placeholder={t('placeholders.video_desc')}
+                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
           </div>
@@ -209,6 +215,7 @@ export default function VideosPage() {
             color: 'var(--text-primary)',
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
+            width: 'fit-content', // ← limita a área clicável ao conteúdo
           }}>
             <input
               type="checkbox"
@@ -216,7 +223,7 @@ export default function VideosPage() {
               onChange={e => setForm(p => ({ ...p, featured: e.target.checked }))}
             />
             <Star size={14} color="var(--accent-primary)" />
-            Marcar como destaque
+            {t('admin.add.mark_featured')}
           </label>
 
           <div style={{ display: 'flex', gap: '8px' }}>

@@ -20,7 +20,7 @@ export default function BookingsPage() {
     setLoading(true)
     bookingService.findAll()
       .then(data => setBookings(data.content))
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false))
   }
 
@@ -142,6 +142,8 @@ export default function BookingsPage() {
                       color: 'var(--text-primary)',
                       fontSize: '14px',
                       fontFamily: 'var(--font-body)',
+                      wordBreak: 'break-word',   // ← quebra palavras longas
+                      overflowWrap: 'anywhere',  // ← fallback para emails longos
                     }}>
                       {item.value}
                     </p>

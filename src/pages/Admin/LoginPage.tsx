@@ -142,6 +142,7 @@ export default function LoginPage() {
                 fontSize: '14px',
                 outline: 'none',
               }}
+              placeholder={t('placeholders.username')}
               onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
@@ -179,6 +180,7 @@ export default function LoginPage() {
                 fontSize: '14px',
                 outline: 'none',
               }}
+              placeholder={t('placeholders.password')}
               onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
