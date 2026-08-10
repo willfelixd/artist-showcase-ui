@@ -9,6 +9,7 @@ import {
   Music,
   Menu,
   ExternalLink,
+  Telescope,
 } from 'lucide-react'
 import { useAuth } from '../../../contexts/AuthContext'
 import { ThemeToggle } from '../../../components/ui/ThemeToggle'
@@ -52,6 +53,7 @@ export default function AdminLayout() {
   const Sidebar = () => (
     <aside style={{
       width: '220px',
+      height: '100%',
       minHeight: '100vh',
       backgroundColor: 'var(--bg-card)',
       borderRight: '1px solid var(--border)',
@@ -60,6 +62,8 @@ export default function AdminLayout() {
       padding: '24px 16px',
       gap: '8px',
       transition: 'var(--transition-theme)',
+      position: 'sticky',    // ← adicione para sidebar ficar visível ao rolar
+      top: 0,
     }}>
       {/* Logo */}
       <div style={{
@@ -124,7 +128,7 @@ export default function AdminLayout() {
         }}
       >
         <ExternalLink size={16} />
-        Voltar ao portfólio
+        {t('admin.dashboard.return_portfolio')}
       </a>
 
       {/* Footer da sidebar */}
@@ -183,13 +187,16 @@ export default function AdminLayout() {
     <div style={{
       display: 'flex',
       minHeight: '100vh',
+      height: '100%',
       fontWeight: 'bold',
       backgroundColor: 'var(--bg-primary)',
       transition: 'var(--transition-theme)',
     }}>
 
       {/* Sidebar desktop */}
-      <div className="admin-sidebar-desktop">
+      <div className="admin-sidebar-desktop"
+      style={{ alignSelf: 'stretch' }} // ← estica até o fim do container pai
+      >
         <Sidebar />
       </div>
 
@@ -285,8 +292,8 @@ export default function AdminLayout() {
                 el.style.backgroundColor = 'transparent'
               }}
             >
-              <ExternalLink size={13} />
-              Ver portfólio
+              <Telescope size={13} />
+              {t('admin.dashboard.view_portfolio')}
             </a>
             <ThemeToggle />
             <LanguageToggle />

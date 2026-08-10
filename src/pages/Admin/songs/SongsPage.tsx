@@ -174,46 +174,41 @@ export default function SongsPage() {
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                Título *
+                {t('admin.add.title')}
               </label>
               <input
                 value={form.title}
                 onChange={e => setForm(p => ({ ...p, title: e.target.value }))}
                 style={inputStyle}
-                placeholder="Garota de Ipanema"
+                placeholder={t('placeholders.song_title')}
+                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                Artista *
+                {t('admin.add.artist')}
               </label>
               <input
                 value={form.artist}
                 onChange={e => setForm(p => ({ ...p, artist: e.target.value }))}
                 style={inputStyle}
-                placeholder="Tom Jobim"
+                placeholder={t('placeholders.song_artist')}
+                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                Gênero *
+                {t('admin.add.genre')}
               </label>
               <input
                 value={form.genre}
                 onChange={e => setForm(p => ({ ...p, genre: e.target.value }))}
                 style={inputStyle}
-                placeholder="Bossa Nova"
-              />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                URL do YouTube
-              </label>
-              <input
-                value={form.youtubeUrl}
-                onChange={e => setForm(p => ({ ...p, youtubeUrl: e.target.value }))}
-                style={inputStyle}
-                placeholder="https://youtube.com/watch?v=..."
+                placeholder={t('placeholders.song_genre')}
+                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
           </div>
@@ -227,6 +222,7 @@ export default function SongsPage() {
             color: 'var(--text-primary)',
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
+            width: 'fit-content', // ← limita a área clicável ao conteúdo
           }}>
             <input
               type="checkbox"
@@ -234,7 +230,7 @@ export default function SongsPage() {
               onChange={e => setForm(p => ({ ...p, mostRequested: e.target.checked }))}
             />
             <Star size={14} color="var(--accent-primary)" />
-            Marcar como mais pedida
+            {t('admin.add.mark')}
           </label>
 
           {/* Botões */}

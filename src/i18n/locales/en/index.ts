@@ -17,8 +17,8 @@ const en = {
     },
     sections: {
       about: {
-      label: 'About me',
-      bio: `"I was born to transform feelings into melodies. With a voice that moves between the softness of acoustic and the soul of sertanejo, I craft songs that arrive gently and stay forever.
+        label: 'About me',
+        bio: `"I was born to transform feelings into melodies. With a voice that moves between the softness of acoustic and the soul of sertanejo, I craft songs that arrive gently and stay forever.
       Passionate about music from an early age, I find in guitar and voice the most authentic way to express myself. Every performance is an invitation to emotion and a meeting between artist and listener.
       My music doesn't follow formulas. It follows the heart."`,
       },
@@ -102,10 +102,12 @@ const en = {
     },
     dashboard: {
       title: 'Admin Panel',
+      view_portfolio: 'View portfolio',
       songs: 'Songs',
       videos: 'Videos',
       bookings: 'Bookings',
       messages: 'Messages',
+      return_portfolio: 'Return to portfolio',
       logout: 'Sign Out',
     },
     actions: {
@@ -122,6 +124,37 @@ const en = {
       CONFIRMED: 'Confirmed',
       CANCELLED: 'Cancelled',
     },
+    add: {
+      title: 'Title *',
+      artist: 'Artist *',
+      genre: 'Gender *',
+      mark: 'Mark as most requested',
+      mark_featured: 'Mark as featured',
+      url: 'YouTube URL *',
+      description: 'Description (optional)',
+    },
+  },
+
+  placeholders: {
+    name: 'Enter your name (min. 2 characters)',
+    full_name: 'Enter your full name (min. 2 characters)',
+    email: 'Enter your best email',
+    email_reply: 'Enter your best email for reply',
+    phone: 'Enter your phone with area code: (11) 99999-9999',
+    phone_opt: 'E.g: (11) 99999-9999',
+    event_name: 'Enter the event name — e.g: Sweet 15 party, etc.',
+    location: 'Venue name and city — e.g: Festive Hall, Brasília',
+    notes: 'Additional info — theme, guests, special needs...',
+    subject: 'Message subject (min. 3 characters)',
+    message: 'Type your message (min. 10 and max. 2000 characters)...',
+    song_title: 'Enter the song title',
+    song_artist: 'Original artist name',
+    song_genre: 'E.g: MPB, Sertanejo, etc.',
+    youtube_url: 'Paste the YouTube link — e.g: https://youtube.com/watch?v=...',
+    video_title: 'Enter the video title',
+    video_desc: 'Video description — venue, date, event...',
+    username: 'Enter your username',
+    password: 'Enter your password',
   },
 
   common: {

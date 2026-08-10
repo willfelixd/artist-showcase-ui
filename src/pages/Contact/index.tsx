@@ -179,7 +179,7 @@ export default function Contact() {
             <input
               {...register('senderName')}
               style={inputStyle}
-              placeholder="João Silva"
+              placeholder={t('placeholders.name')}
               onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
@@ -194,7 +194,7 @@ export default function Contact() {
               {...register('senderEmail')}
               type="email"
               style={inputStyle}
-              placeholder="joao@email.com"
+              placeholder={t('placeholders.email_reply')}
               onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
@@ -209,7 +209,7 @@ export default function Contact() {
           <input
             {...register('senderPhone')}
             style={inputStyle}
-            placeholder="(11) 99999-9999"
+            placeholder={t('placeholders.phone_opt')}
             onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
             onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
@@ -223,7 +223,7 @@ export default function Contact() {
           <input
             {...register('subject')}
             style={inputStyle}
-            placeholder="Orçamento para evento"
+            placeholder={t('placeholders.subject')}
             onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
             onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
@@ -241,7 +241,7 @@ export default function Contact() {
               resize: 'vertical',
               lineHeight: '1.6',
             }}
-            placeholder="Olá! Gostaria de saber sobre..."
+            placeholder={t('placeholders.message')}
             onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
             onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
