@@ -13,7 +13,7 @@ export default function MessagesPage() {
   useEffect(() => {
     contactService.findAll()
       .then(data => setMessages(data.content))
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false))
   }, [])
 
@@ -26,6 +26,7 @@ export default function MessagesPage() {
         fontSize: '2rem',
         color: 'var(--text-primary)',
         fontWeight: '400',
+        textShadow: '0 2px 4px var(--shadow)',
         marginBottom: '32px',
       }}>
         {t('admin.dashboard.messages')}
@@ -46,6 +47,19 @@ export default function MessagesPage() {
                 borderRadius: '12px',
                 padding: '20px',
                 boxShadow: 'var(--shadow)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'translateY(-2px)'
+                el.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
+                el.style.borderColor = 'var(--accent-primary)'
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'translateY(0)'
+                el.style.boxShadow = 'var(--shadow)'
+                el.style.borderColor = 'var(--border)'
               }}
             >
               {/* Header */}
@@ -63,6 +77,7 @@ export default function MessagesPage() {
                     fontFamily: 'var(--font-body)',
                     fontSize: '15px',
                     fontWeight: '600',
+                    textShadow: '0 2px 6px var(--shadow)',
                     marginBottom: '4px',
                   }}>
                     {msg.subject}
@@ -78,6 +93,7 @@ export default function MessagesPage() {
                       gap: '4px',
                       color: 'var(--text-secondary)',
                       fontSize: '13px',
+                      textShadow: '0 2px 4px var(--shadow)',
                       fontFamily: 'var(--font-body)',
                     }}>
                       <Mail size={12} />
@@ -90,6 +106,7 @@ export default function MessagesPage() {
                         gap: '4px',
                         color: 'var(--text-muted)',
                         fontSize: '13px',
+                        textShadow: '0 2px 4px var(--shadow)',
                         fontFamily: 'var(--font-body)',
                       }}>
                         <Phone size={12} />
@@ -105,6 +122,7 @@ export default function MessagesPage() {
                   alignItems: 'center',
                   gap: '4px',
                   fontSize: '12px',
+                  textShadow: '0 2px 4px var(--shadow)',
                   fontFamily: 'var(--font-body)',
                   color: msg.emailSent ? '#10b981' : '#ef4444',
                 }}>
@@ -120,6 +138,7 @@ export default function MessagesPage() {
                 color: 'var(--text-primary)',
                 fontFamily: 'var(--font-body)',
                 fontSize: '14px',
+                textShadow: '0 2px 4px var(--shadow)',
                 lineHeight: '1.6',
                 backgroundColor: 'var(--bg-secondary)',
                 padding: '12px 16px',
@@ -134,6 +153,7 @@ export default function MessagesPage() {
               <p style={{
                 color: 'var(--text-muted)',
                 fontSize: '12px',
+                textShadow: '0 2px 4px var(--shadow)',
                 fontFamily: 'var(--font-body)',
               }}>
                 {new Date(msg.createdAt).toLocaleString('pt-BR')}

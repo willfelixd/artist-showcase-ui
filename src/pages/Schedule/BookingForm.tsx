@@ -43,6 +43,7 @@ function Field({
         fontSize: '13px',
         fontFamily: 'var(--font-body)',
         fontWeight: '500',
+        textShadow: '0 2px 4px var(--shadow)',
       }}>
         {label}
       </label>
@@ -52,6 +53,7 @@ function Field({
           color: '#e53935',
           fontSize: '12px',
           fontFamily: 'var(--font-body)',
+          textShadow: '0 2px 4px var(--shadow)',
         }}>
           {error}
         </span>
@@ -68,6 +70,7 @@ const inputStyle = {
   color: 'var(--text-primary)',
   fontFamily: 'var(--font-body)',
   fontSize: '14px',
+  textShadow: '0 2px 4px var(--shadow)',
   outline: 'none',
   width: '100%',
   boxSizing: 'border-box' as const,
@@ -111,6 +114,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         fontSize: '15px',
         textAlign: 'center',
         padding: '24px',
+        textShadow: '0 2px 4px var(--shadow)',
       }}>
         {t('schedule.select_date_hint')}
       </div>
@@ -140,6 +144,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         fontFamily: 'var(--font-body)',
         fontSize: '15px',
         fontWeight: '500',
+        textShadow: '0 2px 4px var(--shadow)',
       }}>
         📅 {format(selectedDate, 'dd/MM/yyyy')}
       </div>
@@ -149,7 +154,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         <input
           {...register('requesterName')}
           style={inputStyle}
-          placeholder= {t('placeholders.full_name')}
+          placeholder={t('placeholders.full_name')}
           onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
           onBlur={e => e.target.style.borderColor = 'var(--border)'}
         />
@@ -242,7 +247,7 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
         type="submit"
         disabled={isSubmitting}
         style={{
-          backgroundColor: isSubmitting ? 'var(--text-muted)' : 'var(--accent-primary)',
+          background: isSubmitting ? 'var(--text-muted)' : 'var(--pink-gradient)',
           color: 'var(--color-marfim)',
           border: 'none',
           borderRadius: '8px',
@@ -251,15 +256,30 @@ export function BookingForm({ selectedDate, onSubmit, isSubmitting }: BookingFor
           fontFamily: 'var(--font-body)',
           fontSize: '15px',
           fontWeight: '500',
-          transition: 'background-color 0.2s ease',
+          textShadow: '0 2px 4px var(--shadow)',
+          transition: 'all 0.3s ease',
+          boxShadow: '0 3px 8px var(--shadow)',
         }}
         onMouseEnter={e => {
-          if (!isSubmitting)
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-hover)'
+          if (!isSubmitting) {
+            const button = e.currentTarget as HTMLButtonElement
+
+            button.style.background =
+              'linear-gradient(135deg, color-mix(in srgb, var(--accent-hover) 85%, white) 0%, var(--accent-hover) 100%)'
+
+            button.style.transform = 'translateY(-1px)'
+            button.style.boxShadow = '0 5px 14px var(--shadow)'
+          }
         }}
         onMouseLeave={e => {
-          if (!isSubmitting)
-            (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-primary)'
+          if (!isSubmitting) {
+            const button = e.currentTarget as HTMLButtonElement
+
+            button.style.background = 'var(--pink-gradient)'
+
+            button.style.transform = 'translateY(0)'
+            button.style.boxShadow = '0 3px 8px var(--shadow)'
+          }
         }}
       >
         {isSubmitting

@@ -30,12 +30,14 @@ export function BookingCalendar({
           --rdp-accent-background-color: var(--bg-primary);
           color: var(--text-primary);
           font-family: var(--font-body);
+          textShadow: 0 2px 4px var(--shadow);
         }
         .rdp-day_button {
           color: var(--text-primary);
+          textShadow: 0 2px 4px var(--shadow);
         }
         .rdp-selected .rdp-day_button {
-          background-color: var(--accent-primary);
+          background: var(--pink-gradient);
           color: var(--text-primary);
         }
         .rdp-disabled .rdp-day_button {
@@ -51,12 +53,40 @@ export function BookingCalendar({
           fill: var(--accent-primary);
         }
         .rdp-month_caption {
-          color: var(--text-primary);
           font-family: var(--font-display);
+          textShadow: 0 2px 4px var(--shadow);
+          background: linear-gradient(
+            90deg,
+            var(--text-primary),
+            var(--accent-primary),
+            var(--text-primary)
+          );
+
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+
+          background-size: 200% auto;
+          animation: gradientSection 6s ease-in-out infinite;
+        }
+
+        @keyframes gradientSection {
+          0% {
+            background-position: 0% center;
+          }
+
+          50% {
+            background-position: 100% center;
+          }
+
+          100% {
+            background-position: 0% center;
+          }
         }
         .rdp-weekday {
           color: var(--text-muted);
           font-size: 13px;
+          textShadow: '0 2px 4px var(--shadow)';
         }
       `}</style>
 

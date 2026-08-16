@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { Artist } from '../../types'
 
@@ -11,6 +12,31 @@ export function AboutSection({ artist }: AboutSectionProps) {
   // Substitua pelo ID real do vídeo de apresentação da Isa
   const presentationVideoId = 'j6ocHIEMarE'
 
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const element = aboutRef.current
+
+    if (!element) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.2,
+      },
+    )
+
+    observer.observe(element)
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section style={{
       minHeight: 'calc(100vh - 64px)',
@@ -20,8 +46,8 @@ export function AboutSection({ artist }: AboutSectionProps) {
     }}>
       {/* LINHA VISUAL */}
       <div className="stage-line" />
-      
-      <div style={{
+
+      <div ref={aboutRef} style={{
         maxWidth: '1200px',
         margin: '0 auto',
         display: 'grid',
@@ -29,7 +55,7 @@ export function AboutSection({ artist }: AboutSectionProps) {
         gap: '48px',
         alignItems: 'center',
       }}
-        className="about-grid"
+        className={`about-grid ${isVisible ? 'about-visible' : ''}`}
       >
         {/* Mini player YouTube — autoplay com áudio */}
         <div style={{
@@ -55,26 +81,28 @@ export function AboutSection({ artist }: AboutSectionProps) {
           gap: '24px',
         }}>
           <div>
-            <h1 style={{
-              color: 'var(--accent-primary)',
-              fontFamily: 'var(--font-display)',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              marginBottom: '12px',
-            }}>
+            <h1 className="text-gradient-section"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '20px',
+                fontWeight: 600,
+                letterSpacing: '0.7px',
+                textTransform: 'uppercase',
+                marginBottom: '12px',
+                textShadow: '0 2px 6px var(--shadow)',
+              }}>
               {t('home.sections.about.label')}
             </h1>
             <p style={{
               color: 'var(--text-primary)',
-              fontWeight: 'bold',
               fontStyle: 'italic',
               textAlign: 'justify',
               fontFamily: 'var(--font-body)',
-              fontSize: '14px',
+              fontSize: '15px',
               lineHeight: '1.8',
+              fontWeight: 500,
               whiteSpace: 'pre-line',
+              textShadow: '0 2px 4px var(--shadow)',
             }}>
               {t('home.sections.about.bio')}
             </p>
@@ -93,52 +121,53 @@ export function AboutSection({ artist }: AboutSectionProps) {
 
       {/* LINHA VISUAL */}
       <div className="stage-line" />
-      
-      {/* Indicador de scroll */}
-        <div style={{
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '8px',
-          animation: 'bounce 2s infinite',
-          cursor: 'pointer',
-        }}
-          onClick={() => {
-            window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })
-          }}
-        >
-          <span style={{
-            color: 'var(--text-muted)',
-            fontFamily: 'var(--font-body)',
-            fontSize: 'clamp(0.5rem, 2vw, 0.5rem)',
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-          }}>
-            {t('home.sections.scroll_hint')}
-          </span>
-          <div style={{
-            width: '24px',
-            height: '38px',
-            border: '2px solid var(--border)',
-            borderRadius: '12px',
-            display: 'flex',
-            justifyContent: 'center',
-            paddingTop: '8px',
-          }}>
-            <div style={{
-              width: '4px',
-              height: '8px',
-              backgroundColor: 'var(--accent-primary)',
-              borderRadius: '2px',
-              animation: 'scrollDot 2s infinite',
-            }} />
-          </div>
-        </div>
 
-        <style>{`
+      {/* Indicador de scroll */}
+      <div style={{
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '8px',
+        animation: 'bounce 2s infinite',
+        cursor: 'pointer',
+      }}
+        onClick={() => {
+          window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })
+        }}
+      >
+        <span style={{
+          color: 'var(--text-muted)',
+          fontFamily: 'var(--font-body)',
+          fontSize: 'clamp(0.5rem, 2vw, 0.5rem)',
+          letterSpacing: '2px',
+          textTransform: 'uppercase',
+          textShadow: '0 2px 4px var(--shadow)',
+        }}>
+          {t('home.sections.scroll_hint')}
+        </span>
+        <div style={{
+          width: '24px',
+          height: '38px',
+          border: '2px solid var(--border)',
+          borderRadius: '12px',
+          display: 'flex',
+          justifyContent: 'center',
+          paddingTop: '8px',
+        }}>
+          <div style={{
+            width: '4px',
+            height: '8px',
+            backgroundColor: 'var(--accent-primary)',
+            borderRadius: '2px',
+            animation: 'scrollDot 2s infinite',
+          }} />
+        </div>
+      </div>
+
+      <style>{`
           @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50%       { transform: translateX(-50%) translateY(-6px); }

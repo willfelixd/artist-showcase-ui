@@ -72,20 +72,22 @@ export default function Videos() {
 
       {/* Título */}
       <div style={{ marginBottom: '40px', textAlign: 'center' }}>
-        <h1 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3.0rem)',
-          color: 'var(--text-primary)',
-          fontWeight: 'bold',
-        }}>
+        <h1 className="text-gradient-section"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.8rem, 4vw, 2.0rem)',
+            fontWeight: 600,
+            textShadow: '0 2px 6px var(--shadow)',
+          }}>
           {t('videos.title')}
         </h1>
         <p style={{
           color: 'var(--text-secondary)',
           fontFamily: 'var(--font-body)',
-          fontSize: '16px',
+          fontSize: '14px',
           marginTop: '12px',
-          fontWeight: 'bold',
+          fontWeight: 500,
+          textShadow: '0 2px 4px var(--shadow)',
           fontStyle: 'italic',
         }}>
           {totalElements > 0 && t('videos.available_count', { count: totalElements })}
@@ -106,14 +108,23 @@ export default function Videos() {
           {/* Vídeos em destaque */}
           {featured.length > 0 && (
             <section style={{ marginBottom: '48px' }}>
-              <h2 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-                color: 'var(--text-primary)',
-                fontWeight: 'bold',
-                marginBottom: '24px',
-              }}>
-                ⭐ {t('videos.featured')}
+              <h2
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(1.4rem, 3vw, 1.6rem)',
+                  fontWeight: 600,
+                  textShadow: '0 2px 6px var(--shadow)',
+                  marginBottom: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}
+              >
+                <span>⭐</span>
+
+                <span className="text-gradient-section">
+                  {t('videos.featured')}
+                </span>
               </h2>
               <VideoCarousel
                 videos={featured}
@@ -133,13 +144,14 @@ export default function Videos() {
           {/* Todos os vídeos */}
           <section>
             <div ref={allVideosRef}>
-              <h2 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-                color: 'var(--text-primary)',
-                fontWeight: 'bold',
-                marginBottom: '24px',
-              }}>
+              <h2 className="text-gradient-section"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(1.4rem, 3vw, 1.6rem)',
+                  fontWeight: 600,
+                  textShadow: '0 2px 6px var(--shadow)',
+                  marginBottom: '24px',
+                }}>
                 {t('videos.all_videos')}
               </h2>
             </div>
@@ -150,6 +162,7 @@ export default function Videos() {
                 padding: '48px',
                 color: 'var(--text-muted)',
                 fontFamily: 'var(--font-body)',
+                textShadow: '0 2px 4px var(--shadow)',
               }}>
                 {t('videos.no_videos')}
               </div>
@@ -184,13 +197,23 @@ export default function Videos() {
                       disabled={page === 0}
                       style={{
                         padding: '8px 16px',
-                        backgroundColor: 'var(--bg-primary)',
+                        background: 'var(--bg-primary)',
                         border: '1px solid var(--border)',
                         borderRadius: '8px',
                         cursor: page === 0 ? 'not-allowed' : 'pointer',
                         color: page === 0 ? 'var(--text-muted)' : 'var(--text-primary)',
                         fontFamily: 'var(--font-body)',
                         fontSize: '14px',
+                        transition: 'all 0.3s ease',
+                        textShadow: '0 2px 4px var(--shadow)',
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLButtonElement).style.color = 'var(--accent-primary)',
+                          (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-secondary)'
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)',
+                          (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-primary)'
                       }}
                     >
                       ← Anterior
@@ -202,7 +225,7 @@ export default function Videos() {
                         onClick={() => fetchVideos(i)}
                         style={{
                           padding: '8px 14px',
-                          backgroundColor: i === page ? 'var(--accent-primary)' : 'var(--bg-primary)',
+                          background: i === page ? 'var(--pink-gradient)' : 'var(--bg-primary)',
                           border: '1px solid var(--border)',
                           borderRadius: '8px',
                           cursor: 'pointer',
@@ -210,7 +233,26 @@ export default function Videos() {
                           fontFamily: 'var(--font-body)',
                           fontSize: '14px',
                           fontWeight: i === page ? '600' : '400',
+                          transition: 'all 0.3s ease',
+                          textShadow: '0 2px 4px var(--shadow)',
                         }}
+
+                        // Página atual
+                        onMouseEnter={i === page ? (e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, color-mix(in srgb, var(--accent-hover) 85%, white) 0%, var(--accent-hover) 100%)'
+                        } : (e) => {
+                          e.currentTarget.style.color = 'var(--accent-primary)'
+                          e.currentTarget.style.background = 'var(--bg-secondary)'
+                        }
+                        }
+                        onMouseLeave={i === page ? (e) => {
+                          e.currentTarget.style.color = 'var(--color-marfim)'
+                          e.currentTarget.style.background = 'var(--pink-gradient)'
+                        } : (e) => {
+                          e.currentTarget.style.color = 'var(--text-primary)'
+                          e.currentTarget.style.background = 'var(--bg-primary)'
+                        }
+                        }
                       >
                         {i + 1}
                       </button>
@@ -221,13 +263,23 @@ export default function Videos() {
                       disabled={page === totalPages - 1}
                       style={{
                         padding: '8px 16px',
-                        backgroundColor: 'var(--bg-primary)',
+                        background: 'var(--bg-primary)',
                         border: '1px solid var(--border)',
                         borderRadius: '8px',
                         cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer',
                         color: page === totalPages - 1 ? 'var(--text-muted)' : 'var(--text-primary)',
                         fontFamily: 'var(--font-body)',
                         fontSize: '14px',
+                        transition: 'all 0.3s ease',
+                        textShadow: '0 2px 4px var(--shadow)',
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLButtonElement).style.color = 'var(--accent-primary)',
+                          (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-secondary)'
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)',
+                          (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-primary)'
                       }}
                     >
                       Próxima →

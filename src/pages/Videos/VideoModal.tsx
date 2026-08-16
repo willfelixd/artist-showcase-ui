@@ -83,7 +83,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           display: 'flex',
           flexDirection: 'column',
           gap: '16px',
-          marginTop: '48px',
+          marginTop: '28px',
         }}
       >
         {/* Título */}
@@ -92,6 +92,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           fontFamily: 'var(--font-display)',
           fontSize: 'clamp(1.2rem, 3vw, 1.8rem)',
           fontWeight: '400',
+          textShadow: '0 2px 6px var(--shadow)',
           textAlign: 'center',
         }}>
           {video.title}
@@ -124,6 +125,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
             fontSize: '14px',
             textAlign: 'center',
             lineHeight: '1.6',
+            textShadow: '0 2px 4px var(--shadow)',
           }}>
             {video.description}
           </p>
@@ -135,6 +137,7 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
           fontFamily: 'var(--font-body)',
           fontSize: '12px',
           textAlign: 'center',
+          textShadow: '0 2px 4px var(--shadow)',
         }}>
           Pressione ESC ou clique fora para fechar
         </p>

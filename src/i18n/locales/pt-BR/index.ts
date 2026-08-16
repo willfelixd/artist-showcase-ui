@@ -58,7 +58,7 @@ const ptBR = {
   // Página Agenda
   schedule: {
     title: 'Agenda',
-    subtitle: 'Solicite um show',
+    subtitle: 'Solicite um Show',
     selected_date: 'Data selecionada',
     unavailable_date: 'Data indisponível',
     select_date_hint: 'Selecione uma data disponível no calendário para continuar',
@@ -173,6 +173,7 @@ const ptBR = {
     close: 'Fechar',
     see_more: 'Ver mais',
     required_field: 'Campo obrigatório',
+    clear_button: 'Limpar',
   },
 }
 

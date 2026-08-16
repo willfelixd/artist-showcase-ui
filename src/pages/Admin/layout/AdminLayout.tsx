@@ -37,7 +37,7 @@ export default function AdminLayout() {
   const navLinkStyle = ({ isActive }: { isActive: boolean }) => ({
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
+    gap: '8px',
     padding: '10px 16px',
     borderRadius: '8px',
     border: '1px solid var(--border)',
@@ -45,6 +45,7 @@ export default function AdminLayout() {
     fontFamily: 'var(--font-body)',
     fontSize: '14px',
     fontWeight: isActive ? '600' : '400',
+    textShadow: '0 2px 4px var(--shadow)',
     color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
     backgroundColor: isActive ? 'var(--bg-primary)' : 'transparent',
     transition: 'all 0.2s ease',
@@ -72,15 +73,16 @@ export default function AdminLayout() {
         gap: '8px',
         padding: '0 8px',
         marginBottom: '24px',
-        fontWeight: 'bold',
+        fontWeight: 600,
+        textShadow: '0 2px 6px var(--shadow)',
         fontStyle: 'italic',
       }}>
         <Music size={20} color="var(--accent-primary)" />
-        <span style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '1.1rem',
-          color: 'var(--text-primary)',
-        }}>
+        <span className="text-gradient-section"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.1rem',
+          }}>
           Admin
         </span>
       </div>
@@ -106,12 +108,13 @@ export default function AdminLayout() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
+          gap: '8px',
           padding: '10px 16px',
           borderRadius: '8px',
           textDecoration: 'none',
           fontFamily: 'var(--font-body)',
           fontSize: '14px',
+          textShadow: '0 2px 4px var(--shadow)',
           color: 'var(--text-muted)',
           transition: 'all 0.2s ease',
           marginTop: '8px',
@@ -144,6 +147,7 @@ export default function AdminLayout() {
           fontSize: '12px',
           fontFamily: 'var(--font-body)',
           padding: '0 8px',
+          textShadow: '0 2px 4px var(--shadow)',
         }}>
           {username}
         </p>
@@ -161,7 +165,8 @@ export default function AdminLayout() {
             color: 'var(--text-secondary)',
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
-            transition: 'all 0.2s ease',
+            textShadow: '0 2px 4px var(--shadow)',
+            transition: 'all 0.60s ease',
           }}
           onMouseEnter={e => {
             const el = e.currentTarget as HTMLButtonElement
@@ -195,7 +200,7 @@ export default function AdminLayout() {
 
       {/* Sidebar desktop */}
       <div className="admin-sidebar-desktop"
-      style={{ alignSelf: 'stretch' }} // ← estica até o fim do container pai
+        style={{ alignSelf: 'stretch' }} // ← estica até o fim do container pai
       >
         <Sidebar />
       </div>
@@ -212,9 +217,9 @@ export default function AdminLayout() {
             display: 'flex',
           }}
         >
-          <div 
+          <div
             onClick={e => e.stopPropagation()}
-            style={{ width: '220px' }}  
+            style={{ width: '220px' }}
           >
             <Sidebar />
           </div>
@@ -254,11 +259,13 @@ export default function AdminLayout() {
             <Menu size={20} />
           </button>
 
-          <span style={{
-            color: 'var(--text-primary)',
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.1rem',
-          }}>
+          <span className="text-gradient-section"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              textShadow: '0 2px 6px var(--shadow)',
+            }}>
             {t('admin.dashboard.title')}
           </span>
 
@@ -274,10 +281,11 @@ export default function AdminLayout() {
                 textDecoration: 'none',
                 fontFamily: 'var(--font-body)',
                 fontSize: '13px',
+                textShadow: '0 2px 4px var(--shadow)',
                 padding: '6px 10px',
                 borderRadius: '8px',
                 border: '1px solid var(--border)',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.60s ease',
               }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLAnchorElement

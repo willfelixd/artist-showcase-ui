@@ -82,6 +82,7 @@ export function SongFilters({
           outline: 'none',
           cursor: 'pointer',
           minWidth: '160px',
+          textShadow: '0 2px 4px var(--shadow)',
         }}
       >
         <option value="">{t('repertoire.all_genres')}</option>
@@ -98,7 +99,7 @@ export function SongFilters({
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: 'var(--bg-primary)',
+            background: 'var(--bg-primary)',
             border: '1px solid var(--border)',
             borderRadius: '8px',
             padding: '10px 16px',
@@ -106,10 +107,20 @@ export function SongFilters({
             color: 'var(--text-secondary)',
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
+            transition: 'all 0.3s ease',
+            textShadow: '0 2px 4px var(--shadow)',
+          }}
+          onMouseEnter={e => {
+            (e.currentTarget as HTMLButtonElement).style.color = 'var(--accent-primary)',
+              (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-secondary)'
+          }}
+          onMouseLeave={e => {
+            (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)',
+              (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-primary)'
           }}
         >
-          <X size={14} />
-          Limpar
+          <X size={15} />
+          {t('common.clear_button')}
         </button>
       )}
     </div>
