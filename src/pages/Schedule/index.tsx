@@ -21,7 +21,7 @@ export default function Schedule() {
       .then(dates => {
         setUnavailableDates(dates.map(d => new Date(d + 'T12:00:00')))
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoadingDates(false))
   }, [])
 
@@ -55,16 +55,17 @@ export default function Schedule() {
       margin: '0 auto',
       padding: '48px 24px',
     }}>
-      
+
       {/* Título */}
       <div style={{ marginBottom: '40px', textAlign: 'center' }}>
-        <h1 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3.0rem)',
-          color: 'var(--text-primary)',
-          fontWeight: 'bold',
-          marginBottom: '12px',
-        }}>
+        <h1 className="text-gradient-section"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.8rem, 4vw, 2.0rem)',
+            fontWeight: 600,
+            textShadow: '0 2px 6px var(--shadow)',
+            marginBottom: '12px',
+          }}>
           {t('schedule.title')}
         </h1>
       </div>
@@ -76,7 +77,8 @@ export default function Schedule() {
           padding: '16px 20px',
           borderRadius: '8px',
           fontFamily: 'var(--font-body)',
-          fontSize: '15px',
+          fontSize: '14px',
+          textShadow: '0 2px 4px var(--shadow)',
           backgroundColor: submitStatus === 'success'
             ? 'rgba(76, 175, 80, 0.1)'
             : 'rgba(229, 57, 53, 0.1)',
@@ -104,9 +106,10 @@ export default function Schedule() {
           <div>
             <h2 style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.3rem',
+              fontSize: '1.1rem',
               color: 'var(--text-primary)',
-              fontWeight: 'bold',
+              fontWeight: 500,
+              textShadow: '0 2px 4px var(--shadow)',
               marginBottom: '16px',
             }}>
               📅 {t('schedule.unavailable_dates')}
@@ -132,12 +135,13 @@ export default function Schedule() {
                   width: '12px',
                   height: '12px',
                   borderRadius: '50%',
-                  backgroundColor: 'var(--accent-primary)',
+                  background: 'var(--pink-gradient)',
                 }} />
                 <span style={{
                   color: 'var(--text-muted)',
                   fontSize: '12px',
                   fontFamily: 'var(--font-body)',
+                  textShadow: '0 2px 4px var(--shadow)',
                 }}>
                   {t('schedule.selected_date')}
                 </span>
@@ -154,6 +158,7 @@ export default function Schedule() {
                   color: 'var(--text-muted)',
                   fontSize: '12px',
                   fontFamily: 'var(--font-body)',
+                  textShadow: '0 2px 4px var(--shadow)',
                 }}>
                   {t('schedule.unavailable_date')}
                 </span>
@@ -165,9 +170,10 @@ export default function Schedule() {
           <div>
             <h2 style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.3rem',
+              fontSize: '1.1rem',
               color: 'var(--text-primary)',
-              fontWeight: 'bold',
+              fontWeight: 500,
+              textShadow: '0 2px 4px var(--shadow)',
               marginBottom: '16px',
             }}>
               📋 {t('schedule.subtitle')}
@@ -189,7 +195,7 @@ export default function Schedule() {
         }
       `}
       </style>
-      
+
     </main>
   )
 }

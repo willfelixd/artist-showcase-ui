@@ -13,6 +13,7 @@ interface SongRequest {
   artist: string
   genre: string
   youtubeUrl?: string
+  lyrics?: string
   mostRequested: boolean
 }
 
@@ -27,6 +28,11 @@ export const songService = {
     )
     const { data } = await api.get('/songs', { params })
     return data
+  },
+
+  findById: async (id: number): Promise<Song> => {
+    const response = await api.get(`/songs/${id}`)
+    return response.data
   },
 
   findMostRequested: async (): Promise<Page<Song>> => {

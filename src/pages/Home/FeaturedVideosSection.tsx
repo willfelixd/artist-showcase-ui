@@ -15,7 +15,7 @@ export function FeaturedVideosSection() {
   useEffect(() => {
     videoService.findFeatured()
       .then(page => setVideos(page.content))
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false))
   }, [])
 
@@ -30,14 +30,18 @@ export function FeaturedVideosSection() {
     }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
 
-        <h2 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
-          color: 'var(--text-primary)',
-          marginBottom: '40px',
-          textAlign: 'center',
-          fontWeight: 'bold',
-        }}>
+        {/* Título */}
+        <h2
+          className="text-gradient-section"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.8rem, 4vw, 2.0rem)',
+            marginBottom: '40px',
+            textAlign: 'center',
+            fontWeight: 600,
+            textShadow: '0 2px 6px var(--shadow)',
+          }}
+        >
           {t('home.sections.featured_videos')}
         </h2>
 
@@ -103,6 +107,7 @@ export function FeaturedVideosSection() {
             fontSize: 'clamp(0.5rem, 2vw, 0.5rem)',
             letterSpacing: '2px',
             textTransform: 'uppercase',
+            textShadow: '0 2px 4px var(--shadow)',
           }}>
             {t('home.sections.scroll_top')}
           </span>

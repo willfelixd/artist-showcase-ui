@@ -16,6 +16,7 @@ export function LanguageToggle() {
     border: isDark ? '1px solid var(--border)' : '0px solid var(--border)',
     cursor: 'pointer',
     padding: '2px',
+    transition: 'background 0.3s ease',
   }
 
   const contentStyle: React.CSSProperties = {
@@ -27,6 +28,7 @@ export function LanguageToggle() {
     padding: '0 6px',
     fontSize: '8px',
     fontWeight: 700,
+    textShadow: '0 2px 4px var(--shadow)',
     color: 'var(--text-secondary)',
     pointerEvents: 'none',
   }
@@ -44,7 +46,7 @@ export function LanguageToggle() {
     boxShadow: 'var(--shadow)',
     fontSize: '8px',
     fontWeight: 700,
-    color: isDark ? '#fff' : '#1a1919',
+    color: isDark ? '#fff' : '#3f2d3b',
     position: 'relative',
     zIndex: 2,
   }

@@ -1,33 +1,38 @@
+import { Music } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { ThemeToggle } from '../ui/ThemeToggle'
 import { LanguageToggle } from '../ui/LanguageToggle'
+import type { CSSProperties } from 'react'
+import type { NavLinkRenderProps } from 'react-router-dom'
 
 export function Header() {
   const { t } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
 
   const navItems = [
-    { path: '/',            label: t('nav.home') },
-    { path: '/repertorio',  label: t('nav.repertoire') },
-    { path: '/videos',      label: t('nav.videos') },
-    { path: '/agenda',      label: t('nav.schedule') },
-    { path: '/contato',     label: t('nav.contact') },
+    { path: '/', label: t('nav.home') },
+    { path: '/repertorio', label: t('nav.repertoire') },
+    { path: '/videos', label: t('nav.videos') },
+    { path: '/agenda', label: t('nav.schedule') },
+    { path: '/contato', label: t('nav.contact') },
   ]
 
-  const navLinkStyle = ({ isActive }: { isActive: boolean }) => ({
+  const navLinkStyle = ({ isActive }: NavLinkRenderProps): CSSProperties => ({
+    position: 'relative',
     color: isActive ? 'var(--accent-primary)' : 'var(--text-primary)',
     textDecoration: 'none',
     fontFamily: 'var(--font-body)',
     fontSize: '14px',
-    fontWeight: isActive ? 'bold' : 'bold',
-    padding: '4px 8px',
-    borderRadius: '8px',
-    borderBottom: isActive ? '2px solid var(--accent-primary)' : '2px solid transparent',
-    transition: 'all 0.2s ease',
-    backgroundColor: isActive ? 'var(--bg-secondary)' : 'transparent',
+    fontWeight: isActive ? 600 : 500,
+    padding: '8px 4px',
+    borderRadius: '6px',
+    textShadow: isActive
+      ? '0 2px 6px var(--shadow)'
+      : '0 1px 3px var(--shadow)',
+    transition: 'color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease',
   })
 
   return (
@@ -52,11 +57,18 @@ export function Header() {
 
         {/* Logo */}
         <NavLink to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <img
-            src={'/logo-isa-v1.svg'}
-            alt="Isa Tavares Cantora"
-            style={{ height: '48px', width: 'auto' }}
-          />
+          <Music size={24} color="var(--accent-primary)" />
+          <span className="text-gradient-section"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.0rem',
+              fontStyle: 'italic',
+              lineHeight: '1.2',
+              letterSpacing: '-0.7px',
+              textShadow: '0 2px 6px var(--shadow)',
+            }}>
+            Isa Tavares
+          </span>
         </NavLink>
 
         {/* Navegação desktop */}
@@ -73,7 +85,9 @@ export function Header() {
               to={item.path}
               end={item.path === '/'}
               style={navLinkStyle}
-              className="nav-link"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? 'active' : ''}`
+              }
             >
               {item.label}
             </NavLink>
@@ -122,7 +136,9 @@ export function Header() {
               end={item.path === '/'}
               style={navLinkStyle}
               onClick={() => setMenuOpen(false)}
-              className="mobile-nav-link"
+              className={({ isActive }) =>
+                `mobile-nav-link ${isActive ? 'active' : ''}`
+              }
             >
               {item.label}
             </NavLink>
@@ -138,7 +154,8 @@ export function Header() {
         }
         .nav-link:hover {
           color: var(--accent-primary) !important;
-          background-color: var(--bg-secondary) !important;
+          text-shadow: 0 2px 6px var(--shadow);
+          transform: translateY(-1px);
         }
         .mobile-nav-link:hover {
           color: var(--accent-primary) !important;

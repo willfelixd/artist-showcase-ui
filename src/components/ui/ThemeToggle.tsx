@@ -13,6 +13,7 @@ export function ThemeToggle() {
     border: isDark ? '1px solid var(--border)' : '0px solid var(--border)',
     cursor: 'pointer',
     padding: '2px',
+    transition: 'background 0.3s ease',
   }
 
   const contentStyle: React.CSSProperties = {
@@ -58,7 +59,7 @@ export function ThemeToggle() {
 
       {/* Thumb */}
       <div style={thumbStyle}>
-        {isDark ? <Sun size={12} color="#fff" /> : <Moon size={12} color="#1a1919" />}
+        {isDark ? <Sun size={12} color="#fff" /> : <Moon size={12} color="#3f2d3b" />}
       </div>
     </button>
   )

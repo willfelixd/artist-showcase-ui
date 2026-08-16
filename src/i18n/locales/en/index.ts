@@ -53,7 +53,7 @@ const en = {
 
   schedule: {
     title: 'Schedule',
-    subtitle: 'Request a show',
+    subtitle: 'Request a Show',
     selected_date: 'Selected date',
     unavailable_date: 'Unavailable date',
     select_date_hint: 'Select an available date on the calendar to continue',
@@ -165,6 +165,7 @@ const en = {
     close: 'Close',
     see_more: 'See more',
     required_field: 'Required field',
+    clear_button: 'Clear',
   },
 }
 

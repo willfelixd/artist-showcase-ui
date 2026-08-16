@@ -9,9 +9,9 @@ import isaPhoto from '../../assets/foto-isa.png'
 function InstagramIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      <circle cx="12" cy="12" r="4"/>
-      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
     </svg>
   )
 }
@@ -19,7 +19,7 @@ function InstagramIcon() {
 function YouTubeIcon() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
     </svg>
   )
 }
@@ -69,17 +69,17 @@ export function HeroSection({ artist }: HeroSectionProps) {
   return (
     <section
       style={{
-        position:'relative',
-        minHeight:'calc(100vh - 64px)',
-        display:'flex',
-        alignItems:'center',
-        padding:'48px 24px',
+        position: 'relative',
+        minHeight: 'calc(100vh - 64px)',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '48px 24px',
         // 👇 BACKGROUND
         backgroundImage: 'var(--hero-bg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        overflow:'hidden',
+        overflow: 'hidden',
       }}
     >
       {/* Overlay para melhorar leitura */}
@@ -96,42 +96,42 @@ export function HeroSection({ artist }: HeroSectionProps) {
       {/* CONTEÚDO */}
       <div
         style={{
-          position:'relative',
-          zIndex:1,
-          maxWidth:'1200px',
-          margin:'0 auto',
-          width:'100%',
-          display:'flex',
+          position: 'relative',
+          zIndex: 1,
+          maxWidth: '1200px',
+          margin: '0 auto',
+          width: '100%',
+          display: 'flex',
           flexDirection:
             isDesktop
-            ? 'row'
-            : 'column',
-          alignItems:'center',
-          justifyContent:'center',
+              ? 'row'
+              : 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
           gap:
             isDesktop
-            ? '90px'
-            : '32px',
+              ? '90px'
+              : '32px',
           textAlign:
             isDesktop
-            ? 'left'
-            : 'center',
+              ? 'left'
+              : 'center',
         }}
       >
         {/* FOTO */}
         {artist.profileImageUrl && (
           <div
             style={{
-              position:'relative',
+              position: 'relative',
               width:
                 isDesktop
-                ? '340px'
-                : '190px',
+                  ? '340px'
+                  : '190px',
               height:
                 isDesktop
-                ? '460px'
-                : '190px',
-              flexShrink:0,
+                  ? '460px'
+                  : '190px',
+              flexShrink: 0,
               animation:
                 'heroImageEnter 1.2s ease forwards',
             }}
@@ -139,115 +139,113 @@ export function HeroSection({ artist }: HeroSectionProps) {
             {/* LUZ DE PALCO */}
             <div
               style={{
-                position:'absolute',
-                inset:'-60px',
+                position: 'absolute',
+                inset: '-60px',
                 background:
                   'radial-gradient(circle, rgba(255,77,141,.35), transparent 70%)',
-                filter:'blur(35px)',
-                zIndex:-1,
+                filter: 'blur(35px)',
+                zIndex: -1,
               }}
             />
             {/* MOLDURA */}
             <div
               style={{
-                width:'100%',
-                height:'100%',
-                overflow:'hidden',
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
                 borderRadius:
                   isDesktop
-                  ? '35px 35px 90px 35px'
-                  : '50%',
+                    ? '35px 35px 90px 35px'
+                    : '50%',
                 border:
                   '3px solid var(--accent-primary)',
                 boxShadow:
                   '0 0 35px rgba(255,77,141,.45)',
                 transform:
                   isDesktop
-                  ? 'rotate(-3deg)'
-                  : 'none',
+                    ? 'rotate(-3deg)'
+                    : 'none',
                 transition:
                   'all .35s ease',
               }}
-              onMouseEnter={(e)=>{
+              onMouseEnter={(e) => {
                 e.currentTarget.style.transform =
                   isDesktop
-                  ? 'rotate(0deg) scale(1.03)'
-                  : 'scale(1.05)'
+                    ? 'rotate(0deg) scale(1.03)'
+                    : 'scale(1.05)'
               }}
-              onMouseLeave={(e)=>{
+              onMouseLeave={(e) => {
                 e.currentTarget.style.transform =
                   isDesktop
-                  ? 'rotate(-3deg)'
-                  : 'scale(1)'
+                    ? 'rotate(-3deg)'
+                    : 'scale(1)'
               }}
             >
               <img
                 src={isaPhoto}
                 alt={artist.name}
                 style={{
-                  width:'100%',
-                  height:'100%',
-                  objectFit:'cover',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
                 }}
               />
             </div>
           </div>
         )}
-                {/* CONTEÚDO DIREITO */}
+        {/* CONTEÚDO DIREITO */}
         <div
           style={{
-            display:'flex',
-            flexDirection:'column',
-            gap:'24px',
-            maxWidth:'600px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '24px',
+            maxWidth: '600px',
           }}
         >
           {/* TEXTO */}
           <div
             style={{
-              display:'flex',
-              flexDirection:'column',
-              gap:'16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '16px',
               animation:
                 'heroTextEnter 1s ease .4s forwards',
-              opacity:0,
+              opacity: 0,
             }}
           >
             <p
               style={{
-                color:'var(--accent-primary)',
-                fontFamily:'var(--font-body)',
-                fontSize:'14px',
-                fontWeight:'500',
-                letterSpacing:'2px',
-                textTransform:'uppercase',
+                color: 'var(--accent-primary)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '14px',
+                fontWeight: '500',
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
               }}
             >
               {t('home.hero.greeting')}
             </p>
             {/* NOME COM GLOW */}
             <h1
-              className="text-glow"
+              className="text-gradient-hero"
               style={{
-                fontFamily:'var(--font-body)',
-                fontStyle:'italic',
-                fontSize:
-                  'clamp(3.5rem,5vw,5rem)',
-                lineHeight:'1.2',
-                fontWeight:'400',
-                //textDecoration: 'var(--pink-gradient)',
+                fontFamily: 'var(--font-body)',
+                fontStyle: 'italic',
+                fontSize: 'clamp(3.5rem, 5vw, 5rem)',
+                lineHeight: '1.2',
+                fontWeight: '400',
               }}
             >
               {artist.name}
             </h1>
             <p
               style={{
-                color:'var(--accent-primary)',
-                fontFamily:'var(--font-body)',
-                fontStyle:'italic',
-                fontSize:'1rem',
-                maxWidth:'600px',
-                lineHeight:'1.5',
+                color: 'var(--accent-primary)',
+                fontFamily: 'var(--font-body)',
+                fontStyle: 'italic',
+                fontSize: '1rem',
+                maxWidth: '600px',
+                lineHeight: '1.5',
               }}
             >
               {artist.bio}
@@ -256,101 +254,101 @@ export function HeroSection({ artist }: HeroSectionProps) {
           {/* BOTÕES */}
           <div
             style={{
-              display:'flex',
-              flexWrap:'wrap',
+              display: 'flex',
+              flexWrap: 'wrap',
               marginTop: '15px',
-              gap:'16px',
+              gap: '16px',
               justifyContent:
                 isDesktop
-                ? 'flex-start'
-                : 'center',
+                  ? 'flex-start'
+                  : 'center',
               animation:
                 'heroButtonsEnter .8s ease 1s forwards',
-              opacity:0,
+              opacity: 0,
             }}
           >
             {/* AGENDA */}
             <button
-              onClick={()=>navigate('/agenda')}
+              onClick={() => navigate('/agenda')}
               className="btn-premium"
               style={{
-                display:'flex',
-                alignItems:'center',
-                gap:'8px',
-                cursor:'pointer',
-                fontFamily:'var(--font-body)',
-                fontSize:'15px',
-                fontWeight:'500',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                cursor: 'pointer',
+                fontFamily: 'var(--font-body)',
+                fontSize: '15px',
+                fontWeight: '500',
               }}
             >
-              <CalendarDays size={18}/>
+              <CalendarDays size={18} />
               {t('home.hero.cta_schedule')}
             </button>
             {/* REPERTÓRIO */}
             <button
-              onClick={()=>navigate('/repertorio')}
+              onClick={() => navigate('/repertorio')}
               style={{
-                display:'flex',
-                alignItems:'center',
-                gap:'8px',
-                backgroundColor:'transparent',
-                color:'var(--accent-primary)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: 'transparent',
+                color: 'var(--accent-primary)',
                 border:
                   '2px solid var(--accent-primary)',
-                borderRadius:'999px',
-                padding:'12px 24px',
-                cursor:'pointer',
-                fontFamily:'var(--font-body)',
-                fontSize:'15px',
-                transition:'all .3s ease',
+                borderRadius: '999px',
+                padding: '12px 24px',
+                cursor: 'pointer',
+                fontFamily: 'var(--font-body)',
+                fontSize: '15px',
+                transition: 'all .3s ease',
               }}
-              onMouseEnter={(e)=>{
+              onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor =
                   'var(--accent-primary)'
-                e.currentTarget.style.color='white'
+                e.currentTarget.style.color = 'white'
               }}
-              onMouseLeave={(e)=>{
+              onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor =
                   'transparent'
                 e.currentTarget.style.color =
                   'var(--accent-primary)'
               }}
             >
-              <Music size={18}/>
+              <Music size={18} />
               {t('home.hero.cta_repertoire')}
             </button>
             {/* CONTATO */}
             <button
-              onClick={()=>navigate('/contato')}
+              onClick={() => navigate('/contato')}
               style={{
-                display:'flex',
-                alignItems:'center',
-                gap:'8px',
-                backgroundColor:'transparent',
-                color:'var(--accent-hover)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: 'transparent',
+                color: 'var(--accent-hover)',
                 border:
                   '2px solid var(--border)',
-                borderRadius:'999px',
-                padding:'12px 24px',
-                cursor:'pointer',
-                fontFamily:'var(--font-body)',
-                fontSize:'15px',
-                transition:'all .3s ease',
+                borderRadius: '999px',
+                padding: '12px 24px',
+                cursor: 'pointer',
+                fontFamily: 'var(--font-body)',
+                fontSize: '15px',
+                transition: 'all .3s ease',
               }}
-              onMouseEnter={(e)=>{
+              onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor =
                   'var(--accent-primary)'
                 e.currentTarget.style.color =
                   'var(--accent-primary)'
               }}
-              onMouseLeave={(e)=>{
+              onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor =
                   'var(--border)'
                 e.currentTarget.style.color =
                   'var(--accent-hover)'
               }}
             >
-              <Mail size={18}/>
+              <Mail size={18} />
               {t('home.hero.cta_contact')}
             </button>
           </div>
@@ -358,12 +356,12 @@ export function HeroSection({ artist }: HeroSectionProps) {
           {/* REDES CENTRALIZAR */}
           <div
             style={{
-              display:'flex',
-              flexDirection:'column',
-              marginTop:'80px',
-              alignItems:'center',
-              }}
-          >      
+              display: 'flex',
+              flexDirection: 'column',
+              marginTop: '80px',
+              alignItems: 'center',
+            }}
+          >
             {/* Links sociais */}
             {artist && (
               <div
@@ -376,7 +374,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
                   animation: 'socialEnter 0.8s ease 1.3s forwards',
                 }}
               >
-                
+
                 {artist && (
                   <a
                     href={INSTAGRAM_URL}
@@ -453,73 +451,74 @@ export function HeroSection({ artist }: HeroSectionProps) {
                 )}
 
               </div>
-            )}    
+            )}
           </div>
 
           {/* LINHA VISUAL */}
-            <div
-              className="stage-line"
-              style={{
-                transform: 'scaleX(0)',
-                transformOrigin: 'left',
-                animation: 'lineGrow 1s ease 1.7s forwards',
-                marginTop:'-20px',
-              }}
-            />
+          <div
+            className="stage-line"
+            style={{
+              transform: 'scaleX(0)',
+              transformOrigin: 'left',
+              animation: 'lineGrow 1s ease 1.7s forwards',
+              marginTop: '-20px',
+            }}
+          />
         </div>
 
         {/* SCROLL INDICADOR */}
         <div
           style={{
-            position:'absolute',
-            bottom:'-48px',
-            left:'50%',
-            transform:'translateX(-50%)',
-            display:'flex',
-            flexDirection:'column',
-            alignItems:'center',
-            gap:'8px',
+            position: 'absolute',
+            bottom: '-48px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
             opacity: 0,
             animation: 'scrollEnter .8s ease 2s forwards, bounce 2s 2.8s infinite',
-            cursor:'pointer',
+            cursor: 'pointer',
           }}
-          onClick={()=>{
+          onClick={() => {
             window.scrollBy({
-              top:window.innerHeight * .8,
-              behavior:'smooth'
+              top: window.innerHeight * .8,
+              behavior: 'smooth'
             })
           }}
         >
           <span
             style={{
-              color:'var(--text-muted)',
-              fontFamily:'var(--font-body)',
-              fontSize:'0.5rem',
-              letterSpacing:'2px',
-              textTransform:'uppercase',
+              color: 'var(--text-muted)',
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.5rem',
+              letterSpacing: '2px',
+              textTransform: 'uppercase',
+              textShadow: '0 2px 4px var(--shadow)',
             }}
           >
             {t('home.sections.scroll_hint')}
           </span>
           <div
             style={{
-              width:'24px',
-              height:'38px',
-              border:'2px solid var(--border)',
-              borderRadius:'12px',
-              display:'flex',
-              justifyContent:'center',
-              paddingTop:'8px',
+              width: '24px',
+              height: '38px',
+              border: '2px solid var(--border)',
+              borderRadius: '12px',
+              display: 'flex',
+              justifyContent: 'center',
+              paddingTop: '8px',
             }}
           >
             <div
               style={{
-                width:'4px',
-                height:'8px',
+                width: '4px',
+                height: '8px',
                 backgroundColor:
                   'var(--accent-primary)',
-                borderRadius:'2px',
-                animation:'scrollDot 2s infinite',
+                borderRadius: '2px',
+                animation: 'scrollDot 2s infinite',
               }}
             />
           </div>

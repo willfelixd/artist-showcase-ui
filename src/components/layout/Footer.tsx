@@ -65,14 +65,16 @@ export function Footer() {
 
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Music size={20} color="var(--accent-primary)" />
-          <span style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.0rem',
-            fontWeight: 'bold',
-            fontStyle: 'italic',
-            color: 'var(--text-primary)',
-          }}>
+          <Music size={23} color="var(--accent-primary)" />
+          <span className="text-gradient-section"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '0.9rem',
+              fontStyle: 'italic',
+              lineHeight: '1.2',
+              letterSpacing: '-0.7px',
+              textShadow: '0 2px 6px var(--shadow)',
+            }}>
             Isa Tavares Cantora
           </span>
         </div>
@@ -148,6 +150,7 @@ export function Footer() {
           color: 'var(--text-primary)',
           fontSize: '12px',
           fontFamily: 'var(--font-body)',
+          textShadow: '0 2px 4px var(--shadow)',
         }}>
           © {new Date().getFullYear()} Isa Tavares. Todos os direitos reservados.
         </p>
