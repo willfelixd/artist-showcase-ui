@@ -82,7 +82,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
             position: 'absolute',
             top: '10px',
             left: '10px',
-            backgroundColor: 'var(--accent-primary)',
+            background: 'var(--pink-gradient)',
             color: 'var(--color-marfim)',
             fontSize: '11px',
             fontWeight: '600',

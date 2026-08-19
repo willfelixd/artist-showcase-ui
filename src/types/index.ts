@@ -16,6 +16,7 @@ export interface Song {
   genre: string
   youtubeUrl: string | null
   lyrics?: string
+  audioUrl?: string
   mostRequested: boolean
 }
 
@@ -25,6 +26,7 @@ export interface SongRequest {
   genre: string
   youtubeUrl?: string
   lyrics?: string
+  audioUrl?: string
   mostRequested: boolean
 }
 

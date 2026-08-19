@@ -1,12 +1,26 @@
-import { Music } from 'lucide-react'
+import {
+  Music,
+  MessageCircle,
+  ArrowUpRight,
+} from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { artistService } from '../../services/artistService'
 import type { Artist } from '../../types'
+import { Link } from 'react-router-dom'
 
-// SVGs das redes sociais inline
+// SVG do Instagram
 function InstagramIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
@@ -14,164 +28,462 @@ function InstagramIcon() {
   )
 }
 
+// SVG do YouTube
 function YouTubeIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-    </svg>
-  )
-}
-
-function WhatsAppIcon() {
-  return (
     <svg
-      width="18"
-      height="18"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill="currentColor"
     >
-      <path d="M20.52 3.48A11.78 11.78 0 0 0 12.06 0C5.43 0 .06 5.37.06 12c0 2.12.55 4.19 1.6 6.02L0 24l6.17-1.62A11.94 11.94 0 0 0 12.06 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.54-8.52zM12.06 21.8c-1.8 0-3.55-.48-5.1-1.4l-.36-.21-3.66.96.98-3.57-.23-.37a9.77 9.77 0 0 1-1.5-5.2c0-5.4 4.4-9.8 9.8-9.8 2.62 0 5.08 1.02 6.93 2.88a9.73 9.73 0 0 1 2.87 6.92c0 5.4-4.4 9.79-9.73 9.79zm5.37-7.34c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.91 1.13-.17.19-.34.21-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.64-1.54-.88-2.1-.23-.55-.47-.47-.64-.48-.17-.01-.36-.01-.55-.01s-.51.07-.78.36c-.26.29-1 1-.99 2.43.01 1.43 1.03 2.81 1.17 3 .15.19 2.03 3.1 4.93 4.34.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.7-.7 1.94-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34z" />
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
     </svg>
   )
 }
 
 export function Footer() {
   const [artist, setArtist] = useState<Artist | null>(null)
-  const WHATSAPP_URL = "https://wa.me/5583998184555?text=Olá%20quero%20saber%20sobre%20shows"
+
+  const WHATSAPP_URL =
+    'https://wa.me/5583998184555?text=Olá%20quero%20saber%20sobre%20shows'
 
   useEffect(() => {
-    artistService.getProfile()
+    artistService
+      .getProfile()
       .then(setArtist)
       .catch(() => { })
   }, [])
 
-  return (
-    <footer style={{
-      zIndex: 0,
-      background: 'var(--bg-background-footer)',
-      borderTop: '1px solid var(--border)',
-      padding: '40px 24px',
-      marginTop: 'auto',
-      transition: 'var(--transition-theme)',
-    }}>
-      <div style={{
-        maxWidth: '1200px',
-        margin: '0 auto',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '24px',
-      }}>
+  const socialButtonStyle: React.CSSProperties = {
+    width: '42px',
+    height: '42px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    color: 'var(--text-primary)',
+    background:
+      'color-mix(in srgb, var(--bg-background) 35%, transparent)',
+    border: '1px solid var(--border)',
+    textDecoration: 'none',
+    transition: 'all 0.3s ease',
+    backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)',
+  }
 
-        {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Music size={23} color="var(--accent-primary)" />
-          <span className="text-gradient-section"
+  return (
+    <footer
+      style={{
+        zIndex: 0,
+        background: 'var(--bg-background-footer)',
+        borderTop: '1px solid var(--border)',
+        marginTop: 'auto',
+        transition: 'var(--transition-theme)',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '100px 24px 60px',
+        }}
+      >
+        {/* Conteúdo principal */}
+        <div
+          className="footer-main-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr',
+            gap: '48px',
+            alignItems: 'start',
+          }}
+        >
+          {/* Identidade */}
+          <div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '9px',
+                marginBottom: '12px',
+              }}
+            >
+              <Music
+                size={24}
+                strokeWidth={1.8}
+                color="var(--accent-primary)"
+              />
+
+              <span
+                className="text-gradient-section"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1rem',
+                  fontStyle: 'italic',
+                  lineHeight: '1.2',
+                  letterSpacing: '-0.7px',
+                  textShadow: '0 2px 6px var(--shadow)',
+                }}
+              >
+                Isa Tavares Cantora
+              </span>
+            </div>
+
+            <p
+              style={{
+                maxWidth: '330px',
+                margin: 0,
+                color: 'var(--text-muted)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
+                lineHeight: '1.7',
+                textShadow: '0 2px 4px var(--shadow)',
+              }}
+            >
+              Voz, música e momentos inesquecíveis para tornar cada evento
+              ainda mais especial.
+            </p>
+          </div>
+
+          {/* Redes sociais */}
+          <div
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '0.9rem',
-              fontStyle: 'italic',
-              lineHeight: '1.2',
-              letterSpacing: '-0.7px',
-              textShadow: '0 2px 6px var(--shadow)',
-            }}>
-            Isa Tavares Cantora
-          </span>
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <h3
+              style={{
+                margin: '0 0 16px',
+                color: 'var(--text-primary)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.4px',
+                textAlign: 'center',
+              }}
+            >
+              Siga a Isa
+            </h3>
+
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '10px',
+              }}
+            >
+              {/* Instagram */}
+              {artist?.instagramUrl && (
+                <a
+                  href={artist.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  style={socialButtonStyle}
+                  onMouseEnter={e => {
+                    const element = e.currentTarget
+
+                    element.style.color = 'var(--accent-primary)'
+                    element.style.borderColor = 'var(--accent-primary)'
+                    element.style.transform = 'translateY(-3px)'
+                    element.style.boxShadow =
+                      '0 3px 8px color-mix(in srgb, var(--accent-primary) 12%, transparent)'
+                  }}
+                  onMouseLeave={e => {
+                    const element = e.currentTarget
+
+                    element.style.color = 'var(--text-primary)'
+                    element.style.borderColor = 'var(--border)'
+                    element.style.transform = 'translateY(0)'
+                    element.style.boxShadow = 'none'
+                  }}
+                >
+                  <InstagramIcon />
+                </a>
+              )}
+
+              {/* YouTube */}
+              {artist?.youtubeUrl && (
+                <a
+                  href={artist.youtubeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  style={socialButtonStyle}
+                  onMouseEnter={e => {
+                    const element = e.currentTarget
+
+                    element.style.color = 'var(--accent-primary)'
+                    element.style.borderColor = 'var(--accent-primary)'
+                    element.style.transform = 'translateY(-3px)'
+                    element.style.boxShadow =
+                      '0 3px 8px color-mix(in srgb, var(--accent-primary) 12%, transparent)'
+                  }}
+                  onMouseLeave={e => {
+                    const element = e.currentTarget
+
+                    element.style.color = 'var(--text-primary)'
+                    element.style.borderColor = 'var(--border)'
+                    element.style.transform = 'translateY(0)'
+                    element.style.boxShadow = 'none'
+                  }}
+                >
+                  <YouTubeIcon />
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div>
+            <h3
+              style={{
+                margin: '0 0 8px',
+                color: 'var(--text-primary)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
+                fontWeight: 600,
+                letterSpacing: '0.4px',
+              }}
+            >
+              Seu evento merece música
+            </h3>
+
+            <p
+              style={{
+                margin: '0 0 16px',
+                color: 'var(--text-muted)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '12px',
+                lineHeight: '1.6',
+              }}
+            >
+              Entre em contato e saiba mais sobre shows e apresentações.
+            </p>
+
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Falar com a Isa pelo WhatsApp"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '9px 15px',
+                borderRadius: '999px',
+                color: 'var(--color-marfim)',
+                background: 'var(--pink-gradient)',
+                textDecoration: 'none',
+                fontFamily: 'var(--font-body)',
+                fontSize: '12px',
+                fontWeight: 600,
+                boxShadow:
+                  '0 3px 10px color-mix(in srgb, var(--accent-primary) 14%, transparent)',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={e => {
+                const element = e.currentTarget
+
+                element.style.transform = 'translateY(-2px)'
+                element.style.boxShadow =
+                  '0 4px 12px color-mix(in srgb, var(--accent-primary) 16%, transparent)'
+              }}
+              onMouseLeave={e => {
+                const element = e.currentTarget
+
+                element.style.transform = 'translateY(0)'
+                element.style.boxShadow =
+                  '0 3px 10px color-mix(in srgb, var(--accent-primary) 14%, transparent)'
+              }}
+            >
+              <MessageCircle size={15} strokeWidth={2} />
+
+              Fale com a Isa
+
+              <ArrowUpRight size={14} strokeWidth={2} />
+            </a>
+          </div>
         </div>
 
-        {/* Links sociais */}
-        {artist && (
-          <div style={{ display: 'flex', gap: '16px' }}>
-            {artist.instagramUrl && (
-              <a
-                href={artist.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                style={{
-                  color: 'var(--accent-primary)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
-                }}
-              >
-                <InstagramIcon />
-              </a>
-            )}
-            {artist.youtubeUrl && (
-              <a
-                href={artist.youtubeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube"
-                style={{
-                  color: 'var(--accent-primary)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
-                }}
-              >
-                <YouTubeIcon />
-              </a>
-            )}
-            {artist && (
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                style={{
-                  color: 'var(--accent-primary)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
-                }}
-              >
-                <WhatsAppIcon />
-              </a>
-            )}
-          </div>
-        )}
-
-        {/* Copyright */}
-        <p style={{
-          color: 'var(--text-primary)',
-          fontSize: '12px',
-          fontFamily: 'var(--font-body)',
-          textShadow: '0 2px 4px var(--shadow)',
-        }}>
-          © {new Date().getFullYear()} Isa Tavares. Todos os direitos reservados.
-        </p>
-
-        {/* Admin */}
-
-        <a href="/admin/login"
+        {/* Divisor */}
+        <div
           style={{
-            color: 'var(--text-muted)',
-            fontSize: '11px',
-            fontFamily: 'var(--font-body)',
-            textDecoration: 'none',
-            opacity: 0.5,
-            transition: 'opacity 0.2s ease',
+            height: '1px',
+            background: 'var(--border)',
+            margin: '42px 0 20px',
+            opacity: 0.7,
           }}
-          onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.opacity = '1'}
-          onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.opacity = '0.5'}
+        />
+
+        {/* Rodapé inferior */}
+        <div
+          className="footer-bottom"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '20px',
+          }}
         >
-          Admin
-        </a>
+          {/* Copyright e links legais */}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '5px',
+            }}
+          >
+            <span
+              style={{
+                color: 'var(--text-primary)',
+                fontSize: '11px',
+                fontFamily: 'var(--font-body)',
+                textShadow: '0 2px 4px var(--shadow)',
+              }}
+            >
+              © {new Date().getFullYear()} Isa Tavares. Todos os direitos
+              reservados.
+            </span>
+
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                flexWrap: 'wrap',
+              }}
+            >
+              <a
+                href="/politica-de-privacidade"
+                style={{
+                  color: 'var(--text-muted)',
+                  fontSize: '10px',
+                  fontFamily: 'var(--font-body)',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'var(--accent-primary)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = 'var(--text-muted)'
+                }}
+              >
+                <Link
+                  to="/politica-de-privacidade"
+                  style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '10px',
+                    fontFamily: 'var(--font-body)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Política de Privacidade
+                </Link>
+              </a>
+
+              <span
+                style={{
+                  color: 'var(--text-muted)',
+                  opacity: 0.5,
+                  fontSize: '10px',
+                }}
+              >
+                •
+              </span>
+
+              <a
+                href="/termos-de-uso"
+                style={{
+                  color: 'var(--text-muted)',
+                  fontSize: '10px',
+                  fontFamily: 'var(--font-body)',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'var(--accent-primary)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = 'var(--text-muted)'
+                }}
+              >
+                <Link
+                  to="/termos-de-uso"
+                  style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '10px',
+                    fontFamily: 'var(--font-body)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Termos de Uso
+                </Link>
+              </a>
+            </div>
+          </div>
+
+          {/* Admin */}
+          <a
+            href="/admin/login"
+            style={{
+              color: 'var(--text-muted)',
+              fontSize: '10px',
+              fontFamily: 'var(--font-body)',
+              textDecoration: 'none',
+              opacity: 0.35,
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.opacity = '1'
+              e.currentTarget.style.color = 'var(--accent-primary)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.opacity = '0.35'
+              e.currentTarget.style.color = 'var(--text-muted)'
+            }}
+          >
+            Admin
+          </a>
+        </div>
       </div>
+
+      {/* Responsividade */}
+      <style>
+        {`
+          @media (max-width: 768px) {
+            .footer-main-grid {
+              grid-template-columns: 1fr !important;
+              gap: 32px !important;
+              text-align: center;
+            }
+
+            .footer-main-grid > div {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+
+            .footer-main-grid p {
+              max-width: 380px !important;
+            }
+
+            .footer-bottom {
+              flex-direction: column !important;
+              text-align: center;
+              gap: 14px !important;
+            }
+
+            .footer-bottom > div:first-child {
+              align-items: center;
+            }
+          }
+        `}
+      </style>
     </footer>
   )
 }

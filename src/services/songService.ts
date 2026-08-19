@@ -14,6 +14,7 @@ interface SongRequest {
   genre: string
   youtubeUrl?: string
   lyrics?: string
+  audioUrl?: string
   mostRequested: boolean
 }
 

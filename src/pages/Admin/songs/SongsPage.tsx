@@ -11,6 +11,7 @@ interface SongForm {
   genre: string
   youtubeUrl: string
   lyrics: string
+  audioUrl: string
   mostRequested: boolean
 }
 
@@ -20,6 +21,7 @@ const emptyForm: SongForm = {
   genre: '',
   youtubeUrl: '',
   lyrics: '',
+  audioUrl: '',
   mostRequested: false,
 }
 
@@ -68,6 +70,7 @@ export default function SongsPage() {
         genre: fullSong.genre,
         youtubeUrl: fullSong.youtubeUrl || '',
         lyrics: fullSong.lyrics || '',
+        audioUrl: fullSong.audioUrl || '',
         mostRequested: fullSong.mostRequested,
       })
       setShowForm(true)
@@ -203,11 +206,12 @@ export default function SongsPage() {
                 value={form.title}
                 onChange={e => setForm(p => ({ ...p, title: e.target.value }))}
                 style={inputStyle}
-                placeholder={t('placeholders.song_title')}
+                placeholder= {t('placeholders.song_title')}
                 onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
                 onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
+
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
                 {t('admin.add.artist')}
@@ -216,11 +220,51 @@ export default function SongsPage() {
                 value={form.artist}
                 onChange={e => setForm(p => ({ ...p, artist: e.target.value }))}
                 style={inputStyle}
-                placeholder={t('placeholders.song_artist')}
+                placeholder= {t('placeholders.song_artist')}
                 onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
                 onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
+                {t('admin.add.genre')}
+              </label>
+              <input
+                value={form.genre}
+                onChange={e => setForm(p => ({ ...p, genre: e.target.value }))}
+                style={inputStyle}
+                placeholder= {t('placeholders.song_genre')}
+                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
+                onBlur={e => e.target.style.borderColor = 'var(--border)'}
+              />
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <label style={{
+                color: 'var(--text-secondary)',
+                fontSize: '12px',
+                fontFamily: 'var(--font-body)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}>
+                {t('admin.add.url_cloudinary')}
+              </label>
+              <input
+                value={form.audioUrl}
+                onChange={e => setForm(p => ({ ...p, audioUrl: e.target.value }))}
+                style={{ ...inputStyle, gridColumn: '1 / -1' }}
+                placeholder= {t('placeholders.song_cloudinary')}
+                onFocus={e => {
+                  e.target.style.borderColor = 'var(--accent-primary)'
+                }}
+                onBlur={e => {
+                  e.target.style.borderColor = 'var(--border)'
+                }}
+              />
+            </div>
+
             <div style={{
               display: 'flex',
               flexDirection: 'column',
@@ -232,7 +276,7 @@ export default function SongsPage() {
                 fontFamily: 'var(--font-body)',
                 textShadow: '0 2px 4px var(--shadow)',
               }}>
-                Letra da música
+                {t('admin.add.lyrics')}
               </label>
 
               <textarea
@@ -249,26 +293,13 @@ export default function SongsPage() {
                   resize: 'vertical',
                   lineHeight: '1.6',
                 }}
-                placeholder="Digite a letra da música..."
+                placeholder= {t('placeholders.song_lyrics')}
                 onFocus={e => {
                   e.target.style.borderColor = 'var(--accent-primary)'
                 }}
                 onBlur={e => {
                   e.target.style.borderColor = 'var(--border)'
                 }}
-              />
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <label style={{ color: 'var(--text-secondary)', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
-                {t('admin.add.genre')}
-              </label>
-              <input
-                value={form.genre}
-                onChange={e => setForm(p => ({ ...p, genre: e.target.value }))}
-                style={inputStyle}
-                placeholder={t('placeholders.song_genre')}
-                onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
-                onBlur={e => e.target.style.borderColor = 'var(--border)'}
               />
             </div>
           </div>

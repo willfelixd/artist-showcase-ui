@@ -4,11 +4,12 @@ import { useTranslation } from 'react-i18next'
 import { CalendarDays, Music, Mail } from 'lucide-react'
 import type { Artist } from '../../types'
 import isaPhoto from '../../assets/foto-isa.png'
+import { ScrollIndicator } from '../../components/ui/ScrollIndicator'
 
 // SVGs das redes sociais inline
 function InstagramIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.0" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
@@ -18,7 +19,7 @@ function InstagramIcon() {
 
 function YouTubeIcon() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
     </svg>
   )
@@ -27,8 +28,8 @@ function YouTubeIcon() {
 function WhatsAppIcon() {
   return (
     <svg
-      width="18"
-      height="18"
+      width="17"
+      height="17"
       viewBox="0 0 24 24"
       fill="currentColor"
     >
@@ -68,9 +69,11 @@ export function HeroSection({ artist }: HeroSectionProps) {
   }, [])
   return (
     <section
+      id="hero"
       style={{
         position: 'relative',
         minHeight: 'calc(100vh - 64px)',
+        scrollMarginTop: '64px',
         display: 'flex',
         alignItems: 'center',
         padding: '48px 24px',
@@ -353,103 +356,146 @@ export function HeroSection({ artist }: HeroSectionProps) {
             </button>
           </div>
 
-          {/* REDES CENTRALIZAR */}
+          {/* REDES SOCIAIS */}
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
-              marginTop: '80px',
+              justifyContent: 'center',
               alignItems: 'center',
+              width: '100%',
+              marginTop: '60px',
             }}
           >
-            {/* Links sociais */}
             {artist && (
               <div
                 style={{
                   display: 'flex',
-                  gap: isDesktop ? '16px' : '14px',
-                  justifyContent: isDesktop ? 'flex-start' : 'center',
-                  width: isDesktop ? 'auto' : '100%',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '14px',
                   opacity: 0,
                   animation: 'socialEnter 0.8s ease 1.3s forwards',
                 }}
               >
+                {/* Instagram */}
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-secondary)',
+                    opacity: 0.8,
+                    transition: 'all 0.25s ease',
+                    lineHeight: 0,
+                  }}
+                  onMouseEnter={e => {
+                    const icon = e.currentTarget as HTMLAnchorElement
+                    icon.style.background = 'color-mix(in srgb, var(--accent-primary) 12%, transparent)'
+                    icon.style.color = 'var(--accent-primary)'
+                    icon.style.border = '1px solid var(--accent-primary)'
+                    icon.style.transform = 'translateY(-2px)'
+                    icon.style.opacity = '1'
+                  }}
+                  onMouseLeave={e => {
+                    const icon = e.currentTarget as HTMLAnchorElement
+                    icon.style.background = 'rgba(255, 255, 255, 0.06)'
+                    icon.style.color = 'var(--text-secondary)'
+                    icon.style.border = '1px solid var(--border)'
+                    icon.style.transform = 'translateY(0)'
+                    icon.style.opacity = '0.8'
+                  }}
+                >
+                  <InstagramIcon />
+                </a>
 
-                {artist && (
-                  <a
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                    style={{
-                      color: 'var(--accent-primary)',
-                      transition: 'all 0.3s ease',
-                      opacity: 0,
-                      transform: 'translateY(10px)',
-                      animation: 'socialIconEnter .6s ease forwards',
-                      animationDelay: '1.4s',
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
-                    }}
-                  >
-                    <InstagramIcon />
-                  </a>
-                )}
+                {/* YouTube */}
+                <a
+                  href={YOUTUBE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-secondary)',
+                    opacity: 0.8,
+                    transition: 'all 0.25s ease',
+                    lineHeight: 0,
+                  }}
+                  onMouseEnter={e => {
+                    const icon = e.currentTarget as HTMLAnchorElement
+                    icon.style.background = 'color-mix(in srgb, var(--accent-primary) 12%, transparent)'
+                    icon.style.color = 'var(--accent-primary)'
+                    icon.style.border = '1px solid var(--accent-primary)'
+                    icon.style.transform = 'translateY(-2px)'
+                    icon.style.opacity = '1'
+                  }}
+                  onMouseLeave={e => {
+                    const icon = e.currentTarget as HTMLAnchorElement
+                    icon.style.background = 'rgba(255, 255, 255, 0.06)'
+                    icon.style.color = 'var(--text-secondary)'
+                    icon.style.border = '1px solid var(--border)'
+                    icon.style.transform = 'translateY(0)'
+                    icon.style.opacity = '0.8'
+                  }}
+                >
+                  <YouTubeIcon />
+                </a>
 
-                {artist && (
-                  <a
-                    href={YOUTUBE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="YouTube"
-                    style={{
-                      color: 'var(--accent-primary)',
-                      transition: 'all 0.3s ease',
-                      opacity: 0,
-                      transform: 'translateY(10px)',
-                      animation: 'socialIconEnter .6s ease forwards',
-                      animationDelay: '1.5s',
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
-                    }}
-                  >
-                    <YouTubeIcon />
-                  </a>
-                )}
-
-                {artist && (
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="WhatsApp"
-                    style={{
-                      color: 'var(--accent-primary)',
-                      transition: 'all 0.3s ease',
-                      opacity: 0,
-                      transform: 'translateY(10px)',
-                      animation: 'socialIconEnter .6s ease forwards',
-                      animationDelay: '1.6s',
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-hover)'
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent-primary)'
-                    }}
-                  >
-                    <WhatsAppIcon />
-                  </a>
-                )}
-
+                {/* WhatsApp */}
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '34px',
+                    height: '34px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-secondary)',
+                    opacity: 0.8,
+                    transition: 'all 0.25s ease',
+                    lineHeight: 0,
+                  }}
+                  onMouseEnter={e => {
+                    const icon = e.currentTarget as HTMLAnchorElement
+                    icon.style.background = 'color-mix(in srgb, var(--accent-primary) 12%, transparent)'
+                    icon.style.color = 'var(--accent-primary)'
+                    icon.style.border = '1px solid var(--accent-primary)'
+                    icon.style.transform = 'translateY(-2px)'
+                    icon.style.opacity = '1'
+                  }}
+                  onMouseLeave={e => {
+                    const icon = e.currentTarget as HTMLAnchorElement
+                    icon.style.background = 'rgba(255, 255, 255, 0.06)'
+                    icon.style.color = 'var(--text-secondary)'
+                    icon.style.border = '1px solid var(--border)'
+                    icon.style.transform = 'translateY(0)'
+                    icon.style.opacity = '0.8'
+                  }}
+                >
+                  <WhatsAppIcon />
+                </a>
               </div>
             )}
           </div>
@@ -461,68 +507,13 @@ export function HeroSection({ artist }: HeroSectionProps) {
               transform: 'scaleX(0)',
               transformOrigin: 'left',
               animation: 'lineGrow 1s ease 1.7s forwards',
-              marginTop: '-20px',
+              marginTop: '1px',
             }}
           />
         </div>
 
-        {/* SCROLL INDICADOR */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-48px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '8px',
-            opacity: 0,
-            animation: 'scrollEnter .8s ease 2s forwards, bounce 2s 2.8s infinite',
-            cursor: 'pointer',
-          }}
-          onClick={() => {
-            window.scrollBy({
-              top: window.innerHeight * .8,
-              behavior: 'smooth'
-            })
-          }}
-        >
-          <span
-            style={{
-              color: 'var(--text-muted)',
-              fontFamily: 'var(--font-body)',
-              fontSize: '0.5rem',
-              letterSpacing: '2px',
-              textTransform: 'uppercase',
-              textShadow: '0 2px 4px var(--shadow)',
-            }}
-          >
-            {t('home.sections.scroll_hint')}
-          </span>
-          <div
-            style={{
-              width: '24px',
-              height: '38px',
-              border: '2px solid var(--border)',
-              borderRadius: '12px',
-              display: 'flex',
-              justifyContent: 'center',
-              paddingTop: '8px',
-            }}
-          >
-            <div
-              style={{
-                width: '4px',
-                height: '8px',
-                backgroundColor:
-                  'var(--accent-primary)',
-                borderRadius: '2px',
-                animation: 'scrollDot 2s infinite',
-              }}
-            />
-          </div>
-        </div>
+        <ScrollIndicator targetId="about" direction="down" verticalOffset={65} />
+
         {/* ANIMAÇÕES */}
         <style>{`
           @keyframes heroImageEnter {
@@ -587,6 +578,17 @@ export function HeroSection({ artist }: HeroSectionProps) {
               transform:
                 translateY(10px);
               opacity:0;
+            }
+          }
+          @keyframes socialEnter {
+            0% {
+              opacity: 0;
+              transform: translateY(8px);
+            }
+
+            100% {
+              opacity: 1;
+              transform: translateY(0);
             }
           }
         `}</style>
