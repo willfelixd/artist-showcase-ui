@@ -16,13 +16,14 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
         overflow: 'hidden',
         border: '1px solid var(--border)',
         boxShadow: 'var(--shadow)',
-        backgroundColor: 'var(--bg-primary)',
-        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        backgroundColor: 'var(--bg-secondary)',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
       }}
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLDivElement
         el.style.transform = 'translateY(-4px)'
         el.style.boxShadow = '0 8px 24px rgba(0,0,0,0.15)'
+        el.style.borderColor = 'var(--accent-primary)'
         const overlay = el.querySelector('.play-overlay') as HTMLDivElement
         if (overlay) overlay.style.opacity = '1'
       }}
@@ -30,6 +31,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
         const el = e.currentTarget as HTMLDivElement
         el.style.transform = 'translateY(0)'
         el.style.boxShadow = 'var(--shadow)'
+        el.style.borderColor = 'var(--border)'
         const overlay = el.querySelector('.play-overlay') as HTMLDivElement
         if (overlay) overlay.style.opacity = '0'
       }}
@@ -80,7 +82,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
             position: 'absolute',
             top: '10px',
             left: '10px',
-            backgroundColor: 'var(--accent-primary)',
+            background: 'var(--pink-gradient)',
             color: 'var(--color-marfim)',
             fontSize: '11px',
             fontWeight: '600',
@@ -89,6 +91,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
             fontFamily: 'var(--font-body)',
             letterSpacing: '0.5px',
             textTransform: 'uppercase',
+            textShadow: '0 2px 4px var(--shadow)',
           }}>
             ★ Destaque
           </div>
@@ -107,6 +110,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
           WebkitLineClamp: 2,
           WebkitBoxOrient: 'vertical',
           overflow: 'hidden',
+          textShadow: '0 2px 4px var(--shadow)',
         }}>
           {video.title}
         </p>
@@ -120,6 +124,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
+            textShadow: '0 2px 4px var(--shadow)',
           }}>
             {video.description}
           </p>

@@ -3,7 +3,7 @@
    =========================== */
 
 :root {
-  /* 🎤 NOVA IDENTIDADE */
+  /* NOVA IDENTIDADE */
   --color-pink:        #FF4D8D;
   --color-pink-soft:   #FF8FB8;
   --color-pink-glow:   #FF2D75;
@@ -30,11 +30,32 @@
   --bg-secondary: #ffccdf;
   --bg-card: #ffccdf;
 
-  --text-primary: #2A1A22;
+  --bg-background-header: linear-gradient(
+  90deg,
+  #ffccdf,
+  #FF8FB8
+  );
+  --bg-background-about: linear-gradient(
+  360deg,
+  #ffccdf,
+  #FF8FB8
+  );
+  --bg-background-footer: linear-gradient(
+  180deg,
+  #ffccdf,
+  #FF8FB8
+  );
+  --hero-bg: url('/src/assets/background-light.png');
+  
+  --pink-gradient: linear-gradient(
+    135deg, 
+    color-mix(in srgb, var(--accent-primary) 85%, white) 0%, var(--accent-primary) 100%);
+
+  --text-primary: #4b293a;
   --text-secondary: #6B4A57;
   --text-muted: #A07C8C;
 
-  --border: rgba(255, 77, 141, 0.2);
+  --border: rgba(255, 0, 93, 0.2);
 
   --accent-primary: var(--color-pink);
   --accent-hover: var(--color-pink-glow);
@@ -55,6 +76,26 @@
   --bg-primary: #121212;
   --bg-secondary: #1a1919;
   --bg-card: #1a1919;
+
+  --bg-background-header: linear-gradient(
+  90deg,
+  #1a1919 0%,
+  rgb(18, 18, 18) 100%
+  );
+  --bg-background-about: linear-gradient(
+  360deg,
+  #1a1919 0%, 
+  rgb(18, 18, 18) 100%
+  );
+  --bg-background-footer: linear-gradient(
+  180deg,
+  #1a1919 0%, 
+  rgb(18, 18, 18) 100%
+  );
+  --hero-bg: url('/src/assets/background-dark.png');
+
+  --pink-gradient: linear-gradient(
+    135deg, color-mix(in srgb, #FF2D75 85%, white) 0%, #FF2D75 100%);
 
   --text-primary: #FFFFFF;
   --text-secondary: #FF8FB8;
@@ -85,7 +126,7 @@
 
 body {
   font-family: var(--font-body);
-  background-color: var(--bg-primary);
+  background-color: linear-gradient(180deg, #FFD6E6 0%, rgba(207, 130, 203, 0.8) 100%);
   color: var(--text-primary);
   transition: var(--transition-theme);
   line-height: 1.6;
@@ -134,4 +175,196 @@ h1, h2, h3, h4, h5, h6 {
     transparent
   );
   opacity: 0.6;
+  margin: 40px 0;
+}
+
+@keyframes socialEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes socialIconEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scrollEnter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.hero-section {
+  transition: background-image 0.6s ease-in-out;
+}
+
+.booking-confirm-button:hover:not(:disabled) {
+  background-color: #059669 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+}
+
+.booking-cancel-button:hover:not(:disabled) {
+  background-color: #ef4444 !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+}
+
+.booking-confirm-button:active:not(:disabled),
+.booking-cancel-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.booking-confirm-button:disabled,
+.booking-cancel-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.text-gradient-hero {
+  background: linear-gradient(
+    90deg,
+    var(--color-pink-soft),
+    var(--color-pink),
+    var(--color-pink-glow)
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-size: 200% auto;
+  animation: gradientText 5s ease-in-out infinite;
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
+}
+
+.text-gradient-section {
+  background: linear-gradient(
+    90deg,
+    var(--text-primary),
+    var(--accent-primary),
+    var(--text-primary)
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-size: 200% auto;
+  animation: gradientSection 6s ease-in-out infinite;
+}
+
+@keyframes gradientSection {
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
+}
+
+.text-gradient-number {
+  background: linear-gradient(
+    180deg,
+    var(--accent-primary),
+    var(--accent-hover)
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(
+    0 0 8px rgba(255, 77, 141, 0.25)
+  );
+}
+
+.about-grid > div:last-child {
+  opacity: 0;
+  transform: translateX(140px);
+  filter: blur(10px);
+
+  transition:
+    opacity 1.7s ease,
+    transform 1.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+    filter 1.7s ease;
+}
+
+.about-grid.about-visible > div:last-child {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent-primary);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 70%;
+}
+
+.nav-link:hover {
+  color: var(--accent-primary) !important;
+  text-shadow: 0 2px 6px var(--shadow);
+  transform: translateY(-1px);
 }

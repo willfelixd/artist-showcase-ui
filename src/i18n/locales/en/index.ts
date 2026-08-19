@@ -16,7 +16,15 @@ const en = {
       cta_contact: 'Get in Touch',
     },
     sections: {
-      mostRequested: 'Most Requested',
+      about: {
+        label: 'About me',
+        bio: `"I was born to transform feelings into melodies. With a voice that moves between the softness of acoustic and the soul of sertanejo, I craft songs that arrive gently and stay forever.
+      Passionate about music from an early age, I find in guitar and voice the most authentic way to express myself. Every performance is an invitation to emotion and a meeting between artist and listener.
+      My music doesn't follow formulas. It follows the heart."`,
+      },
+      scroll_hint: 'Click here or scroll to see more',
+      scroll_top: 'Click here to return to the top',
+      mostRequested: 'Featured Songs',
       featured_videos: 'Featured Videos',
     },
   },
@@ -27,7 +35,7 @@ const en = {
     search_placeholder: 'Search song...',
     filter_genre: 'Filter by genre',
     all_genres: 'All genres',
-    most_requested: 'Most Requested',
+    most_requested: 'Top 10 Most Requested Songs',
     full_repertoire: 'Full Repertoire',
     no_results: 'No songs found.',
     load_more: 'Load more',
@@ -36,7 +44,7 @@ const en = {
   videos: {
     title: 'Videos',
     available_count: '{{count}} videos available',
-    featured: 'Featured',
+    featured: 'Top 6 Featured Videos',
     all_videos: 'All Videos',
     no_videos: 'No videos available.',
     load_more: 'Load more',
@@ -45,7 +53,7 @@ const en = {
 
   schedule: {
     title: 'Schedule',
-    subtitle: 'Request a show',
+    subtitle: 'Request a Show',
     selected_date: 'Selected date',
     unavailable_date: 'Unavailable date',
     select_date_hint: 'Select an available date on the calendar to continue',
@@ -94,10 +102,12 @@ const en = {
     },
     dashboard: {
       title: 'Admin Panel',
+      view_portfolio: 'View portfolio',
       songs: 'Songs',
       videos: 'Videos',
       bookings: 'Bookings',
       messages: 'Messages',
+      return_portfolio: 'Return to portfolio',
       logout: 'Sign Out',
     },
     actions: {
@@ -114,6 +124,41 @@ const en = {
       CONFIRMED: 'Confirmed',
       CANCELLED: 'Cancelled',
     },
+    add: {
+      title: 'Title *',
+      artist: 'Artist *',
+      genre: 'Gender *',
+      lyrics: 'Song lyrics',
+      mark: 'Mark as most requested',
+      mark_featured: 'Mark as featured',
+      url: 'YouTube URL *',
+      url_cloudinary: 'Audio URL (Cloudinary)',
+      description: 'Description (optional)',
+    },
+  },
+
+  placeholders: {
+    name: 'Enter your name (min. 2 characters)',
+    full_name: 'Enter your full name (min. 2 characters)',
+    email: 'Enter your best email',
+    email_reply: 'Enter your best email for reply',
+    phone: 'Enter your phone with area code: (11) 99999-9999',
+    phone_opt: 'E.g: (11) 99999-9999',
+    event_name: 'Enter the event name — e.g: Sweet 15 party, etc.',
+    location: 'Venue name and city — e.g: Festive Hall, Brasília',
+    notes: 'Additional info — theme, guests, special needs...',
+    subject: 'Message subject (min. 3 characters)',
+    message: 'Type your message (min. 10 and max. 2000 characters)...',
+    song_title: 'Enter the song title',
+    song_artist: 'Original artist name',
+    song_genre: 'E.g: MPB, Sertanejo, etc.',
+    song_lyrics: 'Enter the song lyrics...',
+    song_cloudinary: 'Paste the audio link here',
+    youtube_url: 'Paste the YouTube link — e.g: https://youtube.com/watch?v=...',
+    video_title: 'Enter the video title',
+    video_desc: 'Video description — venue, date, event...',
+    username: 'Enter your username',
+    password: 'Enter your password',
   },
 
   common: {
@@ -124,6 +169,7 @@ const en = {
     close: 'Close',
     see_more: 'See more',
     required_field: 'Required field',
+    clear_button: 'Clear',
   },
 }
 

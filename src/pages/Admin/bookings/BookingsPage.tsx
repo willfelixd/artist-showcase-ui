@@ -20,7 +20,7 @@ export default function BookingsPage() {
     setLoading(true)
     bookingService.findAll()
       .then(data => setBookings(data.content))
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => setLoading(false))
   }
 
@@ -49,13 +49,14 @@ export default function BookingsPage() {
         fontSize: '2rem',
         color: 'var(--text-primary)',
         fontWeight: '400',
+        textShadow: '0 2px 4px var(--shadow)',
         marginBottom: '32px',
       }}>
         {t('admin.dashboard.bookings')}
       </h1>
 
       {bookings.length === 0 ? (
-        <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-body)' }}>
+        <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-body)', textShadow: '0 2px 4px var(--shadow)' }}>
           Nenhum agendamento encontrado.
         </p>
       ) : (
@@ -69,6 +70,19 @@ export default function BookingsPage() {
                 borderRadius: '12px',
                 padding: '20px',
                 boxShadow: 'var(--shadow)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'translateY(-2px)'
+                el.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)'
+                el.style.borderColor = 'var(--accent-primary)'
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLDivElement
+                el.style.transform = 'translateY(0)'
+                el.style.boxShadow = 'var(--shadow)'
+                el.style.borderColor = 'var(--border)'
               }}
             >
               {/* Header do card */}
@@ -86,6 +100,7 @@ export default function BookingsPage() {
                     fontFamily: 'var(--font-body)',
                     fontSize: '16px',
                     fontWeight: '600',
+                    textShadow: '0 2px 6px var(--shadow)',
                     marginBottom: '4px',
                   }}>
                     {booking.eventName}
@@ -94,6 +109,7 @@ export default function BookingsPage() {
                     color: 'var(--text-secondary)',
                     fontFamily: 'var(--font-body)',
                     fontSize: '14px',
+                    textShadow: '0 2px 4px var(--shadow)',
                   }}>
                     {booking.eventDate} • {booking.startTime} - {booking.endTime}
                   </p>
@@ -105,6 +121,7 @@ export default function BookingsPage() {
                   borderRadius: '20px',
                   fontSize: '12px',
                   fontWeight: '600',
+                  textShadow: '0 2px 4px var(--shadow)',
                   fontFamily: 'var(--font-body)',
                   backgroundColor: `${statusColors[booking.status]}20`,
                   color: statusColors[booking.status],
@@ -131,6 +148,7 @@ export default function BookingsPage() {
                     <p style={{
                       color: 'var(--text-muted)',
                       fontSize: '11px',
+                      textShadow: '0 2px 4px var(--shadow)',
                       fontFamily: 'var(--font-body)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.5px',
@@ -141,7 +159,10 @@ export default function BookingsPage() {
                     <p style={{
                       color: 'var(--text-primary)',
                       fontSize: '14px',
+                      textShadow: '0 2px 4px var(--shadow)',
                       fontFamily: 'var(--font-body)',
+                      wordBreak: 'break-word',   // ← quebra palavras longas
+                      overflowWrap: 'anywhere',  // ← fallback para emails longos
                     }}>
                       {item.value}
                     </p>
@@ -156,6 +177,7 @@ export default function BookingsPage() {
                   fontSize: '13px',
                   fontFamily: 'var(--font-body)',
                   fontStyle: 'italic',
+                  textShadow: '0 2px 4px var(--shadow)',
                   marginBottom: '16px',
                   padding: '8px 12px',
                   backgroundColor: 'var(--bg-secondary)',
@@ -172,6 +194,7 @@ export default function BookingsPage() {
                   <button
                     onClick={() => handleStatusChange(booking.id, 'CONFIRMED')}
                     disabled={updatingId === booking.id}
+                    className="booking-confirm-button"
                     style={{
                       padding: '8px 16px',
                       backgroundColor: '#10b981',
@@ -182,13 +205,17 @@ export default function BookingsPage() {
                       fontFamily: 'var(--font-body)',
                       fontSize: '13px',
                       fontWeight: '500',
+                      textShadow: '0 2px 4px var(--shadow)',
+                      transition: 'all 0.60s ease',
                     }}
                   >
                     ✓ {t('admin.actions.confirm')}
                   </button>
+
                   <button
                     onClick={() => handleStatusChange(booking.id, 'CANCELLED')}
                     disabled={updatingId === booking.id}
+                    className="booking-cancel-button"
                     style={{
                       padding: '8px 16px',
                       backgroundColor: 'transparent',
@@ -198,6 +225,8 @@ export default function BookingsPage() {
                       cursor: 'pointer',
                       fontFamily: 'var(--font-body)',
                       fontSize: '13px',
+                      textShadow: '0 2px 4px var(--shadow)',
+                      transition: 'all 0.60s ease',
                     }}
                   >
                     ✗ {t('admin.actions.cancel')}
@@ -218,6 +247,7 @@ export default function BookingsPage() {
                     cursor: 'pointer',
                     fontFamily: 'var(--font-body)',
                     fontSize: '13px',
+                    textShadow: '0 2px 4px var(--shadow)',
                   }}
                 >
                   ✗ Cancelar show

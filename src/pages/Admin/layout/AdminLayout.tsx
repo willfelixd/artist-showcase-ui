@@ -9,6 +9,7 @@ import {
   Music,
   Menu,
   ExternalLink,
+  Telescope,
 } from 'lucide-react'
 import { useAuth } from '../../../contexts/AuthContext'
 import { ThemeToggle } from '../../../components/ui/ThemeToggle'
@@ -36,7 +37,7 @@ export default function AdminLayout() {
   const navLinkStyle = ({ isActive }: { isActive: boolean }) => ({
     display: 'flex',
     alignItems: 'center',
-    gap: '10px',
+    gap: '8px',
     padding: '10px 16px',
     borderRadius: '8px',
     border: '1px solid var(--border)',
@@ -44,6 +45,7 @@ export default function AdminLayout() {
     fontFamily: 'var(--font-body)',
     fontSize: '14px',
     fontWeight: isActive ? '600' : '400',
+    textShadow: '0 2px 4px var(--shadow)',
     color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
     backgroundColor: isActive ? 'var(--bg-primary)' : 'transparent',
     transition: 'all 0.2s ease',
@@ -52,6 +54,7 @@ export default function AdminLayout() {
   const Sidebar = () => (
     <aside style={{
       width: '220px',
+      height: '100%',
       minHeight: '100vh',
       backgroundColor: 'var(--bg-card)',
       borderRight: '1px solid var(--border)',
@@ -60,6 +63,8 @@ export default function AdminLayout() {
       padding: '24px 16px',
       gap: '8px',
       transition: 'var(--transition-theme)',
+      position: 'sticky',    // ← adicione para sidebar ficar visível ao rolar
+      top: 0,
     }}>
       {/* Logo */}
       <div style={{
@@ -68,13 +73,16 @@ export default function AdminLayout() {
         gap: '8px',
         padding: '0 8px',
         marginBottom: '24px',
+        fontWeight: 600,
+        textShadow: '0 2px 6px var(--shadow)',
+        fontStyle: 'italic',
       }}>
         <Music size={20} color="var(--accent-primary)" />
-        <span style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: '1.1rem',
-          color: 'var(--text-primary)',
-        }}>
+        <span className="text-gradient-section"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: '1.1rem',
+          }}>
           Admin
         </span>
       </div>
@@ -86,6 +94,7 @@ export default function AdminLayout() {
             key={item.path}
             to={item.path}
             style={navLinkStyle}
+            className="admin-nav-link"
             onClick={() => setSidebarOpen(false)}
           >
             {item.icon}
@@ -99,12 +108,13 @@ export default function AdminLayout() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
+          gap: '8px',
           padding: '10px 16px',
           borderRadius: '8px',
           textDecoration: 'none',
           fontFamily: 'var(--font-body)',
           fontSize: '14px',
+          textShadow: '0 2px 4px var(--shadow)',
           color: 'var(--text-muted)',
           transition: 'all 0.2s ease',
           marginTop: '8px',
@@ -121,7 +131,7 @@ export default function AdminLayout() {
         }}
       >
         <ExternalLink size={16} />
-        Voltar ao portfólio
+        {t('admin.dashboard.return_portfolio')}
       </a>
 
       {/* Footer da sidebar */}
@@ -137,6 +147,7 @@ export default function AdminLayout() {
           fontSize: '12px',
           fontFamily: 'var(--font-body)',
           padding: '0 8px',
+          textShadow: '0 2px 4px var(--shadow)',
         }}>
           {username}
         </p>
@@ -154,7 +165,20 @@ export default function AdminLayout() {
             color: 'var(--text-secondary)',
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
-            transition: 'all 0.2s ease',
+            textShadow: '0 2px 4px var(--shadow)',
+            transition: 'all 0.60s ease',
+          }}
+          onMouseEnter={e => {
+            const el = e.currentTarget as HTMLButtonElement
+            el.style.borderColor = 'var(--accent-primary)'
+            el.style.color = 'var(--accent-primary)'
+            el.style.backgroundColor = 'rgba(239,68,68,0.08)'
+          }}
+          onMouseLeave={e => {
+            const el = e.currentTarget as HTMLButtonElement
+            el.style.borderColor = 'var(--border)'
+            el.style.color = 'var(--text-secondary)'
+            el.style.backgroundColor = 'transparent'
           }}
         >
           <LogOut size={16} />
@@ -168,12 +192,16 @@ export default function AdminLayout() {
     <div style={{
       display: 'flex',
       minHeight: '100vh',
+      height: '100%',
+      fontWeight: 'bold',
       backgroundColor: 'var(--bg-primary)',
       transition: 'var(--transition-theme)',
     }}>
 
       {/* Sidebar desktop */}
-      <div className="admin-sidebar-desktop">
+      <div className="admin-sidebar-desktop"
+        style={{ alignSelf: 'stretch' }} // ← estica até o fim do container pai
+      >
         <Sidebar />
       </div>
 
@@ -189,9 +217,9 @@ export default function AdminLayout() {
             display: 'flex',
           }}
         >
-          <div 
+          <div
             onClick={e => e.stopPropagation()}
-            style={{ width: '220px' }}  
+            style={{ width: '220px' }}
           >
             <Sidebar />
           </div>
@@ -231,11 +259,13 @@ export default function AdminLayout() {
             <Menu size={20} />
           </button>
 
-          <span style={{
-            color: 'var(--text-primary)',
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.1rem',
-          }}>
+          <span className="text-gradient-section"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1.1rem',
+              fontWeight: 600,
+              textShadow: '0 2px 6px var(--shadow)',
+            }}>
             {t('admin.dashboard.title')}
           </span>
 
@@ -251,24 +281,27 @@ export default function AdminLayout() {
                 textDecoration: 'none',
                 fontFamily: 'var(--font-body)',
                 fontSize: '13px',
+                textShadow: '0 2px 4px var(--shadow)',
                 padding: '6px 10px',
                 borderRadius: '8px',
                 border: '1px solid var(--border)',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.60s ease',
               }}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLAnchorElement
-                el.style.color = 'var(--accent-primary)'
                 el.style.borderColor = 'var(--accent-primary)'
+                el.style.color = 'var(--accent-primary)'
+                el.style.backgroundColor = 'rgba(239,68,68,0.08)'
               }}
               onMouseLeave={e => {
                 const el = e.currentTarget as HTMLAnchorElement
-                el.style.color = 'var(--text-secondary)'
                 el.style.borderColor = 'var(--border)'
+                el.style.color = 'var(--text-secondary)'
+                el.style.backgroundColor = 'transparent'
               }}
             >
-              <ExternalLink size={13} />
-              Ver portfólio
+              <Telescope size={13} />
+              {t('admin.dashboard.view_portfolio')}
             </a>
             <ThemeToggle />
             <LanguageToggle />
@@ -282,6 +315,13 @@ export default function AdminLayout() {
       </div>
 
       <style>{`
+        .admin-nav-link:hover {
+        color: var(--accent-primary) !important;
+        background-color: var(--bg-secondary) !important;
+        }
+        .admin-nav-link:hover svg {
+          color: var(--accent-primary) !important;
+        }
         @media (max-width: 768px) {
           .admin-sidebar-desktop { display: none !important; }
           .admin-menu-btn { display: flex !important; }

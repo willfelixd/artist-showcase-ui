@@ -36,7 +36,8 @@ function Field({
         color: 'var(--text-secondary)',
         fontSize: '13px',
         fontFamily: 'var(--font-body)',
-        fontWeight: '500',
+        fontWeight: 500,
+        textShadow: '0 2px 4px var(--shadow)',
         display: 'flex',
         alignItems: 'center',
         gap: '6px',
@@ -66,6 +67,7 @@ const inputStyle = {
   color: 'var(--text-primary)',
   fontFamily: 'var(--font-body)',
   fontSize: '14px',
+  textShadow: '0 2px 4px var(--shadow)',
   outline: 'none',
   width: '100%',
   boxSizing: 'border-box' as const,
@@ -109,19 +111,23 @@ export default function Contact() {
 
       {/* Título */}
       <div style={{ marginBottom: '40px', textAlign: 'center' }}>
-        <h1 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-          color: 'var(--text-primary)',
-          fontWeight: '400',
-          marginBottom: '12px',
-        }}>
+        <h1 className="text-gradient-section"
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.8rem, 4vw, 2.0rem)',
+            fontWeight: 600,
+            textShadow: '0 2px 6px var(--shadow)',
+            marginBottom: '12px',
+          }}>
           {t('contact.title')}
         </h1>
         <p style={{
           color: 'var(--text-secondary)',
           fontFamily: 'var(--font-body)',
-          fontSize: '16px',
+          fontSize: '14px',
+          fontWeight: 500,
+          textShadow: '0 2px 4px var(--shadow)',
+          fontStyle: 'italic',
         }}>
           {t('contact.subtitle')}
         </p>
@@ -135,6 +141,7 @@ export default function Contact() {
           borderRadius: '8px',
           fontFamily: 'var(--font-body)',
           fontSize: '15px',
+          textShadow: '0 2px 4px var(--shadow)',
           backgroundColor: submitStatus === 'success'
             ? 'rgba(76, 175, 80, 0.1)'
             : 'rgba(229, 57, 53, 0.1)',
@@ -177,7 +184,7 @@ export default function Contact() {
             <input
               {...register('senderName')}
               style={inputStyle}
-              placeholder="João Silva"
+              placeholder={t('placeholders.name')}
               onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
@@ -192,7 +199,7 @@ export default function Contact() {
               {...register('senderEmail')}
               type="email"
               style={inputStyle}
-              placeholder="joao@email.com"
+              placeholder={t('placeholders.email_reply')}
               onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
@@ -207,7 +214,7 @@ export default function Contact() {
           <input
             {...register('senderPhone')}
             style={inputStyle}
-            placeholder="(11) 99999-9999"
+            placeholder={t('placeholders.phone_opt')}
             onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
             onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
@@ -221,7 +228,7 @@ export default function Contact() {
           <input
             {...register('subject')}
             style={inputStyle}
-            placeholder="Orçamento para evento"
+            placeholder={t('placeholders.subject')}
             onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
             onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
@@ -239,7 +246,7 @@ export default function Contact() {
               resize: 'vertical',
               lineHeight: '1.6',
             }}
-            placeholder="Olá! Gostaria de saber sobre..."
+            placeholder={t('placeholders.message')}
             onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
             onBlur={e => e.target.style.borderColor = 'var(--border)'}
           />
@@ -249,11 +256,7 @@ export default function Contact() {
           type="submit"
           disabled={isSubmitting}
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            backgroundColor: isSubmitting ? 'var(--text-muted)' : 'var(--accent-primary)',
+            background: isSubmitting ? 'var(--text-muted)' : 'var(--pink-gradient)',
             color: 'var(--color-marfim)',
             border: 'none',
             borderRadius: '8px',
@@ -262,15 +265,35 @@ export default function Contact() {
             fontFamily: 'var(--font-body)',
             fontSize: '15px',
             fontWeight: '500',
-            transition: 'background-color 0.2s ease',
+            textShadow: '0 2px 4px var(--shadow)',
+            transition: 'all 0.3s ease',
+            boxShadow: '0 3px 8px var(--shadow)',
+            // Espaçamento entre ícone e texto
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
           }}
           onMouseEnter={e => {
-            if (!isSubmitting)
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-hover)'
+            if (!isSubmitting) {
+              const button = e.currentTarget as HTMLButtonElement
+
+              button.style.background =
+                'linear-gradient(135deg, color-mix(in srgb, var(--accent-hover) 85%, white) 0%, var(--accent-hover) 100%)'
+
+              button.style.transform = 'translateY(-1px)'
+              button.style.boxShadow = '0 5px 14px var(--shadow)'
+            }
           }}
           onMouseLeave={e => {
-            if (!isSubmitting)
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--accent-primary)'
+            if (!isSubmitting) {
+              const button = e.currentTarget as HTMLButtonElement
+
+              button.style.background = 'var(--pink-gradient)'
+
+              button.style.transform = 'translateY(0)'
+              button.style.boxShadow = '0 3px 8px var(--shadow)'
+            }
           }}
         >
           <Send size={16} />

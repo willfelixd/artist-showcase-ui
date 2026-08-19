@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { artistService } from '../../services/artistService'
 import { HeroSection } from './HeroSection'
+import { AboutSection } from './AboutSection'
 import { MostRequestedSection } from './MostRequestedSection'
 import { FeaturedVideosSection } from './FeaturedVideosSection'
 import { LoadingSpinner } from '../../components/ui/LoadingSpinner'
@@ -41,6 +42,7 @@ export default function Home() {
   return (
     <main>
       <HeroSection artist={artist} />
+      <AboutSection artist={artist} />
       <MostRequestedSection />
       <FeaturedVideosSection />
     </main>

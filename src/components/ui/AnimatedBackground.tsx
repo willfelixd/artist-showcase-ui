@@ -21,7 +21,7 @@ function getDeviceConfig() {
   const isMobile = window.innerWidth < 768
 
   return {
-    noteCount: isMobile ? 18 : 36,
+    noteCount: isMobile ? 22 : 40,
     speedMultiplier: isMobile ? 0.7 : 0.9,
     blurMultiplier: isMobile ? 0.3 : 0.6,
     driftMultiplier: isMobile ? 0.5 : 0.8,
@@ -61,7 +61,7 @@ function generateNotes(count: number): Note[] {
         )
         ],
       opacity:
-        0.12 + depth * 0.32,
+        0.25 + depth * 0.45,
       depth,
     }})
 }
@@ -282,6 +282,7 @@ export function AnimatedBackground() {
                   "none",
                 willChange:
                   "transform, opacity",
+                textShadow: `0 0 6px ${color}55`,
               }}
             >
               {note.symbol}

@@ -18,7 +18,15 @@ const ptBR = {
       cta_contact: 'Entre em Contato',
     },
     sections: {
-      mostRequested: 'Mais Pedidas',
+      about: {
+        label: 'Sobre mim',
+        bio: `"Nasci para transformar sentimentos em melodias. Com uma voz que transita entre a suavidade do acústico e a alma do sertanejo, construo canções que chegam devagar e ficam para sempre.  
+        Apaixonada pela música desde cedo, encontro no violão e na voz a forma mais verdadeira de me expressar. Cada apresentação é um convite à emoção e ao encontro entre artista e quem ouve.
+        Minha música não segue fórmulas. Segue o coração."`,
+      },
+      scroll_hint: 'Clique aqui ou role para ver mais',
+      scroll_top: 'Clique aqui para voltar ao topo',
+      mostRequested: 'Músicas em Destaque',
       featured_videos: 'Vídeos em Destaque',
     },
   },
@@ -30,7 +38,7 @@ const ptBR = {
     search_placeholder: 'Buscar música...',
     filter_genre: 'Filtrar por gênero',
     all_genres: 'Todos os gêneros',
-    most_requested: 'Mais Pedidas',
+    most_requested: 'Top 10 Músicas Mais Pedidas',
     full_repertoire: 'Repertório Completo',
     no_results: 'Nenhuma música encontrada.',
     load_more: 'Carregar mais',
@@ -40,7 +48,7 @@ const ptBR = {
   videos: {
     title: 'Vídeos',
     available_count: '{{count}} vídeos disponíveis',
-    featured: 'Em Destaque',
+    featured: 'Top 6 Vídeos Em Destaque',
     all_videos: 'Todos os Vídeos',
     no_videos: 'Nenhum vídeo disponível.',
     load_more: 'Carregar mais',
@@ -50,7 +58,7 @@ const ptBR = {
   // Página Agenda
   schedule: {
     title: 'Agenda',
-    subtitle: 'Solicite um show',
+    subtitle: 'Solicite um Show',
     selected_date: 'Data selecionada',
     unavailable_date: 'Data indisponível',
     select_date_hint: 'Selecione uma data disponível no calendário para continuar',
@@ -101,10 +109,12 @@ const ptBR = {
     },
     dashboard: {
       title: 'Painel Admin',
+      view_portfolio: 'Ver portfólio',
       songs: 'Músicas',
       videos: 'Vídeos',
       bookings: 'Agendamentos',
       messages: 'Mensagens',
+      return_portfolio: 'Voltar ao portfólio',
       logout: 'Sair',
     },
     actions: {
@@ -121,6 +131,41 @@ const ptBR = {
       CONFIRMED: 'Confirmado',
       CANCELLED: 'Cancelado',
     },
+    add: {
+      title: 'Título *',
+      artist: 'Artista *',
+      genre: 'Gênero *',
+      lyrics: 'Letra da música',
+      mark: 'Marcar como mais pedida',
+      mark_featured: 'Marcar como destaque',
+      url: 'URL do YouTube *',
+      url_cloudinary: 'URL do Áudio (Cloudinary)',
+      description: 'Descrição (opcional)',
+    },
+  },
+
+  placeholders: {
+    name: 'Digite seu nome (mín. 2 caracteres)',
+    full_name: 'Digite seu nome completo (mín. 2 caracteres)',
+    email: 'Digite seu melhor e-mail',
+    email_reply: 'Digite seu melhor e-mail para resposta',
+    phone: 'Digite seu telefone com DDD: (11) 99999-9999',
+    phone_opt: 'Ex: (11) 99999-9999',
+    event_name: 'Digite o nome do evento — ex: Festa de 15 anos, etc.',
+    location: 'Nome e cidade do local — ex: Salão Festivo, Brasília',
+    notes: 'Informações adicionais — tema, convidados, necessidades especiais...',
+    subject: 'Assunto da mensagem (mín. 3 caracteres)',
+    message: 'Digite sua mensagem (mín. 10 e máx. 2000 caracteres)...',
+    song_title: 'Digite o título da música',
+    song_artist: 'Nome do artista original',
+    song_genre: 'Ex: MPB, Sertanejo, etc.',
+    song_lyrics: 'Digite a letra da música...',
+    song_cloudinary: 'Cole aqui o link do Áudio',
+    youtube_url: 'Cole aqui o link do YouTube — ex: https://youtube.com/watch?v=...',
+    video_title: 'Digite o título do vídeo',
+    video_desc: 'Descrição do vídeo — local, data, evento...',
+    username: 'Digite seu usuário',
+    password: 'Digite sua senha',
   },
 
   // Estados comuns
@@ -132,6 +177,7 @@ const ptBR = {
     close: 'Fechar',
     see_more: 'Ver mais',
     required_field: 'Campo obrigatório',
+    clear_button: 'Limpar',
   },
 }
 

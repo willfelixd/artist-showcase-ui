@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useTranslation } from 'react-i18next'
-import { Lock, User, Music } from 'lucide-react'
+import { Lock, User, Music, Eye, EyeClosed } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 
 const loginSchema = z.object({
@@ -19,6 +19,7 @@ export default function LoginPage() {
   const { login } = useAuth()
   const navigate = useNavigate()
   const [error, setError] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   const {
     register,
@@ -41,7 +42,7 @@ export default function LoginPage() {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: 'var(--bg-primary)',
+      background: 'var(transparent)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -66,18 +67,25 @@ export default function LoginPage() {
             marginBottom: '8px',
           }}>
             <Music size={28} color="var(--accent-primary)" />
-            <span style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: '1.8rem',
-              color: 'var(--text-primary)',
-            }}>
-              Isa Tavres Cantora
+            <span className="text-gradient-section"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.4rem',
+                fontStyle: 'italic',
+                lineHeight: '1.2',
+                letterSpacing: '-0.7px',
+                textShadow: '0 2px 6px var(--shadow)',
+              }}>
+              Isa Tavares Cantora
             </span>
           </div>
           <p style={{
-            color: 'var(--text-muted)',
+            color: 'var(--text-secondary)',
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
+            fontWeight: 500,
+            textShadow: '0 2px 4px var(--shadow)',
+            fontStyle: 'italic',
           }}>
             {t('admin.login.title')}
           </p>
@@ -107,6 +115,7 @@ export default function LoginPage() {
               color: '#c62828',
               fontFamily: 'var(--font-body)',
               fontSize: '14px',
+              textShadow: '0 2px 4px var(--shadow)',
             }}>
               {error}
             </div>
@@ -119,6 +128,7 @@ export default function LoginPage() {
               fontSize: '13px',
               fontFamily: 'var(--font-body)',
               fontWeight: '500',
+              textShadow: '0 2px 4px var(--shadow)',
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
@@ -136,8 +146,10 @@ export default function LoginPage() {
                 color: 'var(--text-primary)',
                 fontFamily: 'var(--font-body)',
                 fontSize: '14px',
+                textShadow: '0 2px 4px var(--shadow)',
                 outline: 'none',
               }}
+              placeholder={t('placeholders.username')}
               onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
               onBlur={e => e.target.style.borderColor = 'var(--border)'}
             />
@@ -150,36 +162,80 @@ export default function LoginPage() {
 
           {/* Senha */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <label style={{
-              color: 'var(--text-secondary)',
-              fontSize: '13px',
-              fontFamily: 'var(--font-body)',
-              fontWeight: '500',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-            }}>
+            <label
+              style={{
+                color: 'var(--text-secondary)',
+                fontSize: '13px',
+                fontFamily: 'var(--font-body)',
+                fontWeight: '500',
+                textShadow: '0 2px 4px var(--shadow)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
               <Lock size={13} />
               {t('admin.login.password')}
             </label>
-            <input
-              {...register('password')}
-              type="password"
-              style={{
-                padding: '10px 14px',
-                backgroundColor: 'var(--bg-secondary)',
-                border: '1px solid var(--border)',
-                borderRadius: '8px',
-                color: 'var(--text-primary)',
-                fontFamily: 'var(--font-body)',
-                fontSize: '14px',
-                outline: 'none',
-              }}
-              onFocus={e => e.target.style.borderColor = 'var(--accent-primary)'}
-              onBlur={e => e.target.style.borderColor = 'var(--border)'}
-            />
+
+            <div style={{ position: 'relative' }}>
+              <input
+                {...register('password')}
+                type={showPassword ? 'text' : 'password'}
+                style={{
+                  width: '100%',
+                  padding: '10px 42px 10px 14px',
+                  backgroundColor: 'var(--bg-secondary)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '8px',
+                  color: 'var(--text-primary)',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '14px',
+                  textShadow: '0 2px 4px var(--shadow)',
+                  outline: 'none',
+                  boxSizing: 'border-box',
+                }}
+                placeholder={t('placeholders.password')}
+                onFocus={e => (e.target.style.borderColor = 'var(--accent-primary)')}
+                onBlur={e => (e.target.style.borderColor = 'var(--border)')}
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '12px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'transparent',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: 'var(--text-muted)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: '0',
+                  transition: 'color 0.3s ease',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'var(--accent-primary)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = 'var(--text-muted)'
+                }}
+              >
+                {showPassword ? <EyeClosed size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+
             {errors.password && (
-              <span style={{ color: '#e53935', fontSize: '12px', fontFamily: 'var(--font-body)' }}>
+              <span
+                style={{
+                  color: '#e53935',
+                  fontSize: '12px',
+                  fontFamily: 'var(--font-body)',
+                }}
+              >
                 {errors.password.message}
               </span>
             )}
@@ -189,16 +245,39 @@ export default function LoginPage() {
             type="submit"
             disabled={isSubmitting}
             style={{
-              backgroundColor: isSubmitting ? 'var(--text-muted)' : 'var(--accent-primary)',
+              background: isSubmitting ? 'var(--text-muted)' : 'var(--pink-gradient)',
               color: 'var(--color-marfim)',
               border: 'none',
               borderRadius: '8px',
-              padding: '12px',
+              padding: '14px 24px',
               cursor: isSubmitting ? 'not-allowed' : 'pointer',
               fontFamily: 'var(--font-body)',
               fontSize: '15px',
               fontWeight: '500',
-              transition: 'background-color 0.2s ease',
+              textShadow: '0 2px 4px var(--shadow)',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 3px 8px var(--shadow)',
+            }}
+            onMouseEnter={e => {
+              if (!isSubmitting) {
+                const button = e.currentTarget as HTMLButtonElement
+
+                button.style.background =
+                  'linear-gradient(135deg, color-mix(in srgb, var(--accent-hover) 85%, white) 0%, var(--accent-hover) 100%)'
+
+                button.style.transform = 'translateY(-1px)'
+                button.style.boxShadow = '0 5px 14px var(--shadow)'
+              }
+            }}
+            onMouseLeave={e => {
+              if (!isSubmitting) {
+                const button = e.currentTarget as HTMLButtonElement
+
+                button.style.background = 'var(--pink-gradient)'
+
+                button.style.transform = 'translateY(0)'
+                button.style.boxShadow = '0 3px 8px var(--shadow)'
+              }
             }}
           >
             {isSubmitting ? '...' : t('admin.login.submit')}

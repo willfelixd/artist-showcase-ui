@@ -15,11 +15,34 @@ export interface Song {
   artist: string
   genre: string
   youtubeUrl: string | null
+  lyrics?: string
+  audioUrl?: string
+  mostRequested: boolean
+}
+
+export interface SongRequest {
+  title: string
+  artist: string
+  genre: string
+  youtubeUrl?: string
+  lyrics?: string
+  audioUrl?: string
   mostRequested: boolean
 }
 
 export interface Video {
   id: number
+  title: string
+  description: string
+  youtubeUrl: string
+  youtubeVideoId: string
+  thumbnailUrl: string
+  embedUrl: string
+  featured: boolean
+  createdAt: string
+}
+
+export interface VideoRequest {
   title: string
   description: string
   youtubeUrl: string
