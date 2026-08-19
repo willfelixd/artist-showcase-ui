@@ -159,7 +159,7 @@ export function VideoCarousel({
     <div
       style={{
         position: 'relative',
-        maxWidth: 'clamp(320px, 80vw, 700px)',
+        maxWidth: 'clamp(320px, 80vw, 540px)',
         margin: '0 auto',
       }}
       onMouseEnter={() => {

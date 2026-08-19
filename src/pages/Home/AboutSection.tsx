@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { Artist } from '../../types'
+import { ScrollIndicator } from '../../components/ui/ScrollIndicator'
 
 interface AboutSectionProps {
   artist: Artist
@@ -38,12 +39,15 @@ export function AboutSection({ artist }: AboutSectionProps) {
   }, [])
 
   return (
-    <section style={{
-      minHeight: 'calc(100vh - 64px)',
-      padding: '80px 24px',
-      background: 'var(--bg-background-about)',
-      transition: 'var(--transition-theme)',
-    }}>
+    <section
+      id="about"
+      style={{
+        position: 'relative',
+        minHeight: 'calc(100vh - 64px)',
+        padding: '80px 24px',
+        background: 'var(--bg-background-about)',
+        transition: 'var(--transition-theme)',
+      }}>
       {/* LINHA VISUAL */}
       <div className="stage-line" />
 
@@ -122,50 +126,7 @@ export function AboutSection({ artist }: AboutSectionProps) {
       {/* LINHA VISUAL */}
       <div className="stage-line" />
 
-      {/* Indicador de scroll */}
-      <div style={{
-        position: 'absolute',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '8px',
-        animation: 'bounce 2s infinite',
-        cursor: 'pointer',
-      }}
-        onClick={() => {
-          window.scrollBy({ top: window.innerHeight * 0.8, behavior: 'smooth' })
-        }}
-      >
-        <span style={{
-          color: 'var(--text-muted)',
-          fontFamily: 'var(--font-body)',
-          fontSize: 'clamp(0.5rem, 2vw, 0.5rem)',
-          letterSpacing: '2px',
-          textTransform: 'uppercase',
-          textShadow: '0 2px 4px var(--shadow)',
-        }}>
-          {t('home.sections.scroll_hint')}
-        </span>
-        <div style={{
-          width: '24px',
-          height: '38px',
-          border: '2px solid var(--border)',
-          borderRadius: '12px',
-          display: 'flex',
-          justifyContent: 'center',
-          paddingTop: '8px',
-        }}>
-          <div style={{
-            width: '4px',
-            height: '8px',
-            backgroundColor: 'var(--accent-primary)',
-            borderRadius: '2px',
-            animation: 'scrollDot 2s infinite',
-          }} />
-        </div>
-      </div>
+      <ScrollIndicator targetId="most-requested" direction="down" />
 
       <style>{`
           @keyframes bounce {

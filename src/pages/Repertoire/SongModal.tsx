@@ -82,7 +82,7 @@ export function SongModal({ title, lyrics, onClose }: SongModalProps) {
           color: 'var(--text-primary)',
           textShadow: '0 1px 3px var(--shadow)',
         }}>
-          {title}
+          ♫ {title}
         </h3>
 
         {/* Letra */}
@@ -93,7 +93,7 @@ export function SongModal({ title, lyrics, onClose }: SongModalProps) {
           fontFamily: 'var(--font-body)',
           textShadow: '0 2px 4px var(--shadow)',
         }}>
-          ♫ {lyrics} ♪
+         {lyrics} 
         </p>
       </div>
 

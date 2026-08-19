@@ -10,6 +10,8 @@ import Schedule from './pages/Schedule'
 import Repertoire from './pages/Repertoire'
 import Contact from './pages/Contact'
 import Admin from './pages/Admin'
+import PrivacyPolicy from './pages/Terms/PrivacyPolicy'
+import TermsOfUse from './pages/Terms/TermsOfUse'
 import { useLocation } from 'react-router-dom'
 import { AnimatedBackground } from './components/ui/AnimatedBackground'
 
@@ -36,6 +38,8 @@ function AppLayout() {
           <Route path="/agenda" element={<Schedule />} />
           <Route path="/repertorio" element={<Repertoire />} />
           <Route path="/contato" element={<Contact />} />
+          <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+          <Route path="/termos-de-uso" element={<TermsOfUse />} />
           <Route path="/admin/*" element={<Admin />} />
         </Routes>
       </div>

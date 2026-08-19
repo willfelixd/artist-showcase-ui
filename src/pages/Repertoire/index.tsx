@@ -7,6 +7,7 @@ import { SongFilters } from './SongFilters'
 import { LoadingSpinner } from '../../components/ui/LoadingSpinner'
 import { ErrorMessage } from '../../components/ui/ErrorMessage'
 import type { Song } from '../../types'
+import { AudioModal } from './AudioModal'
 
 const GENRES = [
   'MPB', 'Sertanejo', 'Pop', 'Bossa Nova', 'Samba',
@@ -32,6 +33,8 @@ export default function Repertoire() {
 
   // Ref para a seção do repertório completo
   const repertoireRef = useRef<HTMLDivElement>(null)
+
+  const [selectedSong, setSelectedSong] = useState<Song | null>(null)
 
   // Busca músicas mais pedidas (só uma vez)
   useEffect(() => {
@@ -141,6 +144,7 @@ export default function Repertoire() {
                 song={song}
                 index={index}
                 showIndex
+                onAudioClick={setSelectedSong}
               />
             ))}
           </div>
@@ -222,7 +226,7 @@ export default function Repertoire() {
             marginBottom: '40px',
           }}>
             {songs.map(song => (
-              <SongCard key={song.id} song={song} />
+              <SongCard key={song.id} song={song} onAudioClick={setSelectedSong} />
             ))}
           </div>
 
@@ -332,6 +336,13 @@ export default function Repertoire() {
         </>
       )
       }
+      {/* Modal de áudio */}
+      {selectedSong && (
+        <AudioModal
+          song={selectedSong}
+          onClose={() => setSelectedSong(null)}
+        />
+      )}
     </main >
   )
 }
