@@ -1,6 +1,10 @@
 import { ShieldCheck, Mail, Database, UserCheck } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export default function PrivacyPolicy() {
+
+  const { t } = useTranslation()
+
   return (
     <main
       style={{
@@ -40,7 +44,7 @@ export default function PrivacyPolicy() {
             marginBottom: '12px',
           }}
         >
-          Política de Privacidade
+          {t('privacy_policy.title')}
         </h1>
 
         <p
@@ -53,7 +57,7 @@ export default function PrivacyPolicy() {
             fontStyle: 'italic',
           }}
         >
-          Última atualização: 17 de agosto de 2026
+          {t('privacy_policy.subtitle')}
         </p>
       </div>
 
@@ -67,160 +71,147 @@ export default function PrivacyPolicy() {
           boxShadow: 'var(--shadow)',
         }}
       >
+        {/* 1. Compromisso com a sua privacidade */}
         <Section
           icon={<UserCheck size={17} />}
-          title="1. Compromisso com a sua privacidade"
+          title={t('privacy_policy.sub_one.title')}
         >
           <p>
-            A privacidade dos visitantes deste site é importante para nós.
-            Esta Política de Privacidade explica de forma transparente quais
-            informações podem ser coletadas por meio do site de Isa Tavares,
-            como essas informações são utilizadas e quais são os direitos dos
-            usuários.
+            {t('privacy_policy.sub_one.paragraph_one')}
           </p>
 
           <p>
-            Ao utilizar os recursos disponibilizados neste site, o usuário
-            declara estar ciente das práticas descritas nesta política.
+            {t('privacy_policy.sub_one.paragraph_two')}
           </p>
         </Section>
 
+        {/* 2. Informações coletadas */}
         <Section
           icon={<Database size={17} />}
-          title="2. Informações coletadas"
+          title={t('privacy_policy.sub_two.title')}
         >
           <p>
-            Quando você utiliza o formulário de contato disponível no site,
-            podemos receber as seguintes informações fornecidas diretamente
-            por você:
+            {t('privacy_policy.sub_two.paragraph_one')}
           </p>
 
           <ul>
-            <li>Nome;</li>
-            <li>Endereço de e-mail;</li>
-            <li>Número de telefone, quando informado;</li>
-            <li>Assunto da mensagem;</li>
-            <li>Conteúdo da mensagem enviada.</li>
+            <li>{t('privacy_policy.sub_two.paragraph_one_form.name')}</li>
+            <li>{t('privacy_policy.sub_two.paragraph_one_form.email')}</li>
+            <li>{t('privacy_policy.sub_two.paragraph_one_form.phone')}</li>
+            <li>{t('privacy_policy.sub_two.paragraph_one_form.subject')}</li>
+            <li>{t('privacy_policy.sub_two.paragraph_one_form.message')}</li>
           </ul>
 
           <p>
-            O fornecimento dessas informações ocorre de forma voluntária e é
-            necessário para que possamos responder adequadamente às mensagens
-            enviadas pelo formulário.
+            {t('privacy_policy.sub_two.paragraph_two')}
           </p>
         </Section>
 
+        {/* 3. Como utilizamos suas informações */}
         <Section
           icon={<Mail size={17} />}
-          title="3. Como utilizamos suas informações"
+          title={t('privacy_policy.sub_three.title')}
         >
           <p>
-            As informações fornecidas por meio do formulário de contato podem
-            ser utilizadas para:
+            {t('privacy_policy.sub_three.paragraph_one')}
           </p>
 
           <ul>
-            <li>Responder às mensagens enviadas pelo usuário;</li>
-            <li>
-              Entrar em contato a respeito de apresentações, shows ou eventos;
-            </li>
-            <li>
-              Esclarecer dúvidas e fornecer informações solicitadas;
-            </li>
-            <li>
-              Manter o funcionamento e a segurança dos recursos do site.
-            </li>
+            <li>{t('privacy_policy.sub_three.paragraph_one_form.form_one')}</li>
+            <li>{t('privacy_policy.sub_three.paragraph_one_form.form_two')}</li>
+            <li>{t('privacy_policy.sub_three.paragraph_one_form.form_three')}</li>
+            <li>{t('privacy_policy.sub_three.paragraph_one_form.form_four')}</li>
           </ul>
 
           <p>
-            Os dados não serão utilizados para finalidades incompatíveis com
-            aquelas informadas nesta política.
+            {t('privacy_policy.sub_three.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="4. Compartilhamento de informações">
+        {/* 4. Compartilhamento de informações */}
+        <Section
+          title={t('privacy_policy.sub_four.title')}
+        >
           <p>
-            As informações enviadas pelo usuário são tratadas para possibilitar
-            o atendimento da solicitação realizada por meio do site.
+            {t('privacy_policy.sub_four.paragraph_one')}
           </p>
 
           <p>
-            Não comercializamos ou vendemos os dados pessoais fornecidos pelos
-            usuários.
+            {t('privacy_policy.sub_four.paragraph_two')}
           </p>
 
           <p>
-            Quando necessário para o funcionamento técnico do serviço,
-            determinados dados poderão ser processados por fornecedores de
-            infraestrutura ou serviços utilizados pelo site, sempre de acordo
-            com suas respectivas finalidades e políticas aplicáveis.
+            {t('privacy_policy.sub_four.paragraph_three')}
           </p>
         </Section>
 
-        <Section title="5. Armazenamento e segurança">
+        {/* 5. Armazenamento e segurança */}
+        <Section
+          title={t('privacy_policy.sub_five.title')}
+        >
           <p>
-            Adotamos medidas técnicas e organizacionais razoáveis para proteger
-            as informações recebidas por meio do site contra acesso não
-            autorizado, alteração, divulgação ou destruição indevida.
+            {t('privacy_policy.sub_five.paragraph_one')}
           </p>
 
           <p>
-            Apesar dos esforços empregados, nenhum sistema eletrônico pode ser
-            considerado completamente imune a riscos de segurança.
-          </p>
-        </Section>
-
-        <Section title="6. Retenção dos dados">
-          <p>
-            As informações poderão ser mantidas pelo período necessário para
-            atender à finalidade para a qual foram fornecidas, cumprir
-            obrigações legais ou preservar registros necessários à segurança e
-            ao funcionamento do serviço.
+            {t('privacy_policy.sub_five.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="7. Direitos do usuário">
+        {/* 6. Retenção dos dados */}
+        <Section
+          title={t('privacy_policy.sub_six.title')}
+        >
           <p>
-            O usuário pode solicitar informações sobre o tratamento de seus
-            dados pessoais e, quando aplicável, solicitar correção, atualização
-            ou exclusão de informações pessoais.
-          </p>
-
-          <p>
-            Para realizar uma solicitação relacionada à privacidade, entre em
-            contato utilizando os canais disponibilizados neste site.
+            {t('privacy_policy.sub_six.paragraph_one')}
           </p>
         </Section>
 
-        <Section title="8. Links externos">
+        {/* 7. Direitos do usuário */}
+        <Section
+          title={t('privacy_policy.sub_seven.title')}
+        >
           <p>
-            Este site pode disponibilizar links para serviços e plataformas
-            externas, como redes sociais e serviços de comunicação.
+            {t('privacy_policy.sub_seven.paragraph_one')}
           </p>
 
           <p>
-            Ao acessar esses serviços, o usuário estará sujeito às políticas de
-            privacidade e aos termos de uso das respectivas plataformas.
-          </p>
-        </Section>
-
-        <Section title="9. Alterações nesta política">
-          <p>
-            Esta Política de Privacidade poderá ser atualizada periodicamente
-            para refletir alterações no funcionamento do site, nos serviços
-            utilizados ou nas exigências legais aplicáveis.
-          </p>
-
-          <p>
-            A versão mais recente estará sempre disponível nesta página.
+            {t('privacy_policy.sub_seven.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="10. Contato">
+        {/* 8. Links externos */}
+        <Section
+          title={t('privacy_policy.sub_eight.title')}
+        >
           <p>
-            Caso tenha dúvidas sobre esta Política de Privacidade ou sobre o
-            tratamento de informações pessoais realizado por meio deste site,
-            utilize a página de contato para enviar sua solicitação.
+            {t('privacy_policy.sub_eight.paragraph_one')}
+          </p>
+
+          <p>
+            {t('privacy_policy.sub_eight.paragraph_two')}
+          </p>
+        </Section>
+
+        {/* 9. Alterações nesta política */}
+        <Section
+          title={t('privacy_policy.sub_nine.title')}
+        >
+          <p>
+            {t('privacy_policy.sub_nine.paragraph_one')}
+          </p>
+
+          <p>
+            {t('privacy_policy.sub_nine.paragraph_two')}
+          </p>
+        </Section>
+
+        {/* 10. Contato */}
+        <Section
+          title={t('privacy_policy.sub_ten.title')}
+        >
+          <p>
+            {t('privacy_policy.sub_ten.paragraph_one')}
           </p>
         </Section>
       </div>

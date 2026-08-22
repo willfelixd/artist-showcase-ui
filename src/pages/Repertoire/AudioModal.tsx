@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom'
 import { useState, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   X,
   Play,
@@ -16,14 +17,29 @@ interface AudioModalProps {
 }
 
 export function AudioModal({ song, onClose }: AudioModalProps) {
-  const audioRef = useRef<HTMLAudioElement>(null)
 
+  const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [isMuted, setIsMuted] = useState(false)
   const [volume, setVolume] = useState(1)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)')
+    const handleResize = () => {
+      setIsDesktop(media.matches)
+    }
+    handleResize()
+    media.addEventListener('change', handleResize)
+    return () => {
+      media.removeEventListener('change', handleResize)
+    }
+  }, [])
 
   // Fecha com ESC e controla play/pause com ESPAÇO
   useEffect(() => {
@@ -31,15 +47,12 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
       if (e.key === 'Escape') {
         onClose()
       }
-
       if (e.code === 'Space') {
         e.preventDefault()
         togglePlay()
       }
     }
-
     window.addEventListener('keydown', handleKey)
-
     return () => {
       window.removeEventListener('keydown', handleKey)
     }
@@ -48,9 +61,7 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
   // Bloqueia scroll enquanto o modal estiver aberto
   useEffect(() => {
     const previousOverflow = document.body.style.overflow
-
     document.body.style.overflow = 'hidden'
-
     return () => {
       document.body.style.overflow = previousOverflow
     }
@@ -70,7 +81,6 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
 
   const togglePlay = () => {
     if (!audioRef.current) return
-
     if (isPlaying) {
       audioRef.current.pause()
       setIsPlaying(false)
@@ -84,12 +94,9 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
 
   const handleTimeUpdate = () => {
     if (!audioRef.current) return
-
     const current = audioRef.current.currentTime
     const total = audioRef.current.duration
-
     setCurrentTime(current)
-
     if (total && Number.isFinite(total)) {
       setProgress((current / total) * 100)
     }
@@ -105,19 +112,15 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
     e: React.MouseEvent<HTMLDivElement>
   ) => {
     if (!audioRef.current || !duration) return
-
     const rect = e.currentTarget.getBoundingClientRect()
     const x = e.clientX - rect.left
     const percentage = Math.max(0, Math.min(1, x / rect.width))
-
     audioRef.current.currentTime = percentage * duration
   }
 
   const toggleMute = () => {
     if (!audioRef.current) return
-
     const nextMuted = !isMuted
-
     audioRef.current.muted = nextMuted
     setIsMuted(nextMuted)
   }
@@ -126,22 +129,18 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = parseFloat(e.target.value)
-
     if (audioRef.current) {
       audioRef.current.volume = value
       audioRef.current.muted = value === 0
     }
-
     setVolume(value)
     setIsMuted(value === 0)
   }
 
   const formatTime = (time: number) => {
     if (!Number.isFinite(time)) return '0:00'
-
     const minutes = Math.floor(time / 60)
     const seconds = Math.floor(time % 60)
-
     return `${minutes}:${seconds
       .toString()
       .padStart(2, '0')}`
@@ -153,19 +152,15 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
       style={{
         position: 'fixed',
         inset: 0,
-
         // Fundo mais leve e integrado ao site
         background: 'rgba(20, 15, 18, 0.58)',
         backdropFilter: 'blur(8px)',
         WebkitBackdropFilter: 'blur(8px)',
-
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-
         zIndex: 9999,
         padding: '20px',
-
         animation: 'audioModalFadeIn 0.25s ease',
       }}
     >
@@ -176,26 +171,18 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
         style={{
           width: '100%',
           maxWidth: '420px',
-
           padding: '28px 24px',
-
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-
           gap: '22px',
-
           borderRadius: '20px',
-
           boxShadow:
             '0 24px 60px rgba(0, 0, 0, 0.35)',
-
           border:
             '1px solid color-mix(in srgb, var(--accent-primary) 25%, var(--border))',
-
           animation:
             'audioModalScaleIn 0.25s ease',
-
           position: 'relative',
         }}
       >
@@ -208,62 +195,47 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             position: 'absolute',
             top: '12px',
             right: '12px',
-
             width: '34px',
             height: '34px',
-
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-
             background: 'var(--bg-secondary)',
             border: '1px solid var(--border)',
             borderRadius: '50%',
-
             color: 'var(--text-muted)',
             cursor: 'pointer',
-
             transition:
               'color 0.2s ease, border-color 0.2s ease, transform 0.2s ease',
           }}
           onMouseEnter={e => {
             const button = e.currentTarget
-
             button.style.color =
               'var(--accent-primary)'
-
             button.style.borderColor =
               'var(--accent-primary)'
-
             button.style.transform =
               'scale(1.05)'
           }}
           onMouseLeave={e => {
             const button = e.currentTarget
-
             button.style.color =
               'var(--text-muted)'
-
             button.style.borderColor =
               'var(--border)'
-
             button.style.transform =
               'scale(1)'
           }}
         >
           <X size={18} />
         </button>
-
         {/* Disco */}
         <div
           style={{
             width: '120px',
             height: '120px',
-
             flexShrink: 0,
-
             borderRadius: '50%',
-
             background: `
               conic-gradient(
                 var(--accent-primary) 0deg,
@@ -275,19 +247,15 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
                 var(--accent-primary) 360deg
               )
             `,
-
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-
             animation: isPlaying
               ? 'audioDiscSpin 4s linear infinite'
               : 'none',
-
             boxShadow: isPlaying
               ? '0 0 28px color-mix(in srgb, var(--accent-primary) 35%, transparent)'
               : '0 6px 20px rgba(0, 0, 0, 0.2)',
-
             transition: 'box-shadow 0.3s ease',
           }}
         >
@@ -296,15 +264,11 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             style={{
               width: '48px',
               height: '48px',
-
               borderRadius: '50%',
-
               background:
                 'var(--bg-primary)',
-
               border:
                 '1px solid var(--border)',
-
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -316,7 +280,6 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             />
           </div>
         </div>
-
         {/* Informações da música */}
         <div
           style={{
@@ -329,40 +292,29 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             style={{
               fontFamily:
                 'var(--font-display)',
-
               fontSize:
                 'clamp(1.25rem, 4vw, 1.5rem)',
-
               color:
                 'var(--text-primary)',
-
               fontWeight: '500',
-
               margin: '0 0 6px',
-
               whiteSpace: 'nowrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-
               textShadow:
                 '0 2px 4px var(--shadow)',
             }}
           >
             {song.title}
           </h2>
-
           <p
             style={{
               color:
                 'var(--text-secondary)',
-
               fontFamily:
                 'var(--font-body)',
-
               fontSize: '13px',
-
               margin: 0,
-
               whiteSpace: 'nowrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
@@ -371,7 +323,6 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             {song.artist} • {song.genre}
           </p>
         </div>
-
         {/* Progresso */}
         <div
           style={{
@@ -388,16 +339,12 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             style={{
               width: '100%',
               height: '5px',
-
               backgroundColor:
                 'var(--border)',
-
               borderRadius: '999px',
-
               cursor: duration
                 ? 'pointer'
                 : 'default',
-
               position: 'relative',
             }}
           >
@@ -405,74 +352,57 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
               style={{
                 height: '100%',
                 width: `${progress}%`,
-
                 background:
                   'var(--pink-gradient)',
-
                 borderRadius: '999px',
-
                 transition:
                   'width 0.1s linear',
-
                 position: 'relative',
               }}
             >
               <div
                 style={{
                   position: 'absolute',
-
                   right: '-5px',
                   top: '-3px',
-
                   width: '11px',
                   height: '11px',
-
                   borderRadius: '50%',
-
                   background:
                     'var(--accent-primary)',
-
                   boxShadow:
                     '0 0 7px color-mix(in srgb, var(--accent-primary) 50%, transparent)',
                 }}
               />
             </div>
           </div>
-
           {/* Tempo */}
           <div
             style={{
               display: 'flex',
               justifyContent: 'space-between',
-
               color:
                 'var(--text-muted)',
-
               fontFamily:
                 'var(--font-body)',
-
               fontSize: '11px',
             }}
           >
             <span>
               {formatTime(currentTime)}
             </span>
-
             <span>
               {formatTime(duration)}
             </span>
           </div>
         </div>
-
         {/* Controles */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-
             gap: '20px',
-
             width: '100%',
           }}
         >
@@ -488,30 +418,23 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             style={{
               background: 'none',
               border: 'none',
-
               cursor: 'pointer',
-
               color:
                 'var(--text-muted)',
-
               display: 'flex',
-
               padding: '6px',
-
               transition:
                 'color 0.2s ease, transform 0.2s ease',
             }}
             onMouseEnter={e => {
               e.currentTarget.style.color =
                 'var(--accent-primary)'
-
               e.currentTarget.style.transform =
                 'scale(1.08)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.color =
                 'var(--text-muted)'
-
               e.currentTarget.style.transform =
                 'scale(1)'
             }}
@@ -521,7 +444,6 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
               : <Volume2 size={19} />
             }
           </button>
-
           {/* Play / Pause */}
           <button
             type="button"
@@ -534,43 +456,31 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             style={{
               width: '56px',
               height: '56px',
-
               flexShrink: 0,
-
               borderRadius: '50%',
-
               background:
                 'var(--pink-gradient)',
-
               border: 'none',
-
               cursor: 'pointer',
-
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-
               boxShadow:
                 '0 5px 20px color-mix(in srgb, var(--accent-primary) 35%, transparent)',
-
               transition:
                 'transform 0.2s ease, box-shadow 0.2s ease',
             }}
             onMouseEnter={e => {
               const button = e.currentTarget
-
               button.style.transform =
                 'scale(1.07)'
-
               button.style.boxShadow =
                 '0 8px 26px color-mix(in srgb, var(--accent-primary) 50%, transparent)'
             }}
             onMouseLeave={e => {
               const button = e.currentTarget
-
               button.style.transform =
                 'scale(1)'
-
               button.style.boxShadow =
                 '0 5px 20px color-mix(in srgb, var(--accent-primary) 35%, transparent)'
             }}
@@ -592,7 +502,6 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
               />
             )}
           </button>
-
           {/* Slider de volume */}
           <input
             type="range"
@@ -604,37 +513,28 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
             aria-label="Volume"
             style={{
               width: '72px',
-
               accentColor:
                 'var(--accent-primary)',
-
               cursor: 'pointer',
             }}
           />
         </div>
-
         {/* Dica */}
-        <p
-          style={{
-            color:
-              'var(--text-muted)',
-
-            fontFamily:
-              'var(--font-body)',
-
-            fontSize: '10px',
-
-            letterSpacing: '0.8px',
-
-            margin: 0,
-
-            opacity: 0.8,
-          }}
-        >
-          ESPAÇO para pausar • ESC para fechar
-        </p>
+        {isDesktop && (
+          <p
+            style={{
+              color: 'var(--text-muted)',
+              fontFamily: 'var(--font-body)',
+              fontSize: '10px',
+              letterSpacing: '0.8px',
+              margin: 0,
+              opacity: 0.8,
+            }}
+          >
+            {t('common.audio_tip')}
+          </p>
+        )}
       </div>
-
       {/* Áudio */}
       <audio
         ref={audioRef}
@@ -643,35 +543,29 @@ export function AudioModal({ song, onClose }: AudioModalProps) {
         onLoadedMetadata={handleLoadedMetadata}
         onEnded={() => setIsPlaying(false)}
       />
-
       <style>{`
         @keyframes audioModalFadeIn {
           from {
             opacity: 0;
           }
-
           to {
             opacity: 1;
           }
         }
-
         @keyframes audioModalScaleIn {
           from {
             opacity: 0;
             transform: scale(0.94) translateY(8px);
           }
-
           to {
             opacity: 1;
             transform: scale(1) translateY(0);
           }
         }
-
         @keyframes audioDiscSpin {
           from {
             transform: rotate(0deg);
           }
-
           to {
             transform: rotate(360deg);
           }

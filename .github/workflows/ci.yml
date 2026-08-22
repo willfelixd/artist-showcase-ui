@@ -23,5 +23,7 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Verificar tipos TypeScript
+      - name: Verificar tipos TypeScript e Build
         run: npm run build
+        env:
+          VITE_API_URL: https://artist-showcase-api.onrender.com/api

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import type { Video } from '../../types'
+import { useTranslation } from 'react-i18next'
 
 interface VideoCarouselProps {
   videos: Video[]
@@ -13,6 +14,9 @@ export function VideoCarousel({
 }: VideoCarouselProps) {
   const [current, setCurrent] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+
+  const { t } = useTranslation()
 
   const touchStartX = useRef<number | null>(null)
   const resumeTimeoutRef = useRef<number | null>(null)
@@ -151,6 +155,20 @@ export function VideoCarousel({
     scheduleResume()
   }
 
+  /*
+   * Mouse sobre o carousel
+   */
+  const handleMouseEnter = () => {
+    clearResumeTimeout()
+    setIsPaused(true)
+    setIsHovered(true)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setIsPaused(false)
+  }
+
   if (videos.length === 0) return null
 
   const video = videos[current]
@@ -162,15 +180,9 @@ export function VideoCarousel({
         maxWidth: 'clamp(320px, 80vw, 540px)',
         margin: '0 auto',
       }}
-      onMouseEnter={() => {
-        clearResumeTimeout()
-        setIsPaused(true)
-      }}
-      onMouseLeave={() => {
-        setIsPaused(false)
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-
       {/* Card principal */}
       <div
         onTouchStart={handleTouchStart}
@@ -180,31 +192,43 @@ export function VideoCarousel({
           position: 'relative',
           borderRadius: '16px',
           overflow: 'hidden',
-          aspectRatio: '16/9',
+          aspectRatio: '16 / 9',
           cursor: 'pointer',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
-        }}
-        onMouseEnter={e => {
-          const overlay = e.currentTarget.querySelector(
-            '.carousel-overlay'
-          ) as HTMLDivElement
-
-          if (overlay) {
-            overlay.style.opacity = '1'
-          }
-        }}
-        onMouseLeave={e => {
-          const overlay = e.currentTarget.querySelector(
-            '.carousel-overlay'
-          ) as HTMLDivElement
-
-          if (overlay) {
-            overlay.style.opacity = '0'
-          }
+          border: `1px solid ${isHovered
+              ? 'var(--accent-primary)'
+              : 'var(--border)'
+            }`,
+          boxShadow: isHovered
+            ? '0 20px 60px var(--shadow)'
+            : '0 20px 60px rgba(0,0,0,0.3)',
+          transform: isHovered
+            ? 'translateY(-4px)'
+            : 'translateY(0)',
+          transition:
+            'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
         }}
       >
+        {/* Iluminação premium */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: '-80px',
+            right: '-80px',
+            width: '190px',
+            height: '190px',
+            borderRadius: '50%',
+            background:
+              'radial-gradient(circle, var(--accent-primary), transparent 70%)',
+            opacity: isHovered ? 0.08 : 0.045,
+            filter: 'blur(28px)',
+            pointerEvents: 'none',
+            zIndex: 2,
+            transition: 'opacity 0.4s ease',
+          }}
+        />
 
-        {/* Thumbnail com transição suave */}
+        {/* Thumbnail */}
         <img
           key={video.id}
           src={video.thumbnailUrl}
@@ -213,38 +237,63 @@ export function VideoCarousel({
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            display: 'block',
+            transform: isHovered
+              ? 'scale(1.045)'
+              : 'scale(1)',
+            transition:
+              'transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)',
             animation:
               'carouselFade 0.8s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         />
 
-        {/* Overlay com play */}
+        {/* Overlay */}
         <div
-          className="carousel-overlay"
+          aria-hidden="true"
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)',
+              'linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.14) 52%, transparent 100%)',
+            opacity: isHovered ? 1 : 0,
+            transition: 'opacity 0.35s ease',
+            pointerEvents: 'none',
+          }}
+        />
+
+        {/* Play premium */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            opacity: 0,
-            transition: 'opacity 0.3s ease',
+            pointerEvents: 'none',
+            zIndex: 4,
           }}
         >
           <div
             style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '50%',
-              backgroundColor: 'var(--accent-primary)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow:
-                '0 4px 20px rgba(0,0,0,0.4)',
+              width: '64px',
+              height: '64px',
+              borderRadius: '50%',
+              background: 'var(--accent-primary)',
+              border: '1px solid rgba(255,255,255,0.35)',
+              boxShadow: isHovered
+                ? '0 0 0 8px rgba(255,255,255,0.08), 0 8px 30px rgba(0,0,0,0.35)'
+                : '0 4px 20px rgba(0,0,0,0.3)',
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered
+                ? 'scale(1)'
+                : 'scale(0.82)',
+              transition:
+                'opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease',
             }}
           >
             <Play
@@ -252,11 +301,42 @@ export function VideoCarousel({
               color="white"
               fill="white"
               style={{
+                display: 'block',
                 marginLeft: '3px',
               }}
             />
           </div>
         </div>
+
+        {/* Badge em destaque */}
+        {video.featured && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '12px',
+              left: '12px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              padding: '4px 9px',
+              borderRadius: '999px',
+              background: 'var(--pink-gradient)',
+              border: '1px solid rgba(255,255,255,0.18)',
+              color: 'var(--color-marfim)',
+              fontSize: '10px',
+              fontWeight: 600,
+              fontFamily: 'var(--font-body)',
+              letterSpacing: '0.6px',
+              textTransform: 'uppercase',
+              textShadow: '0 2px 4px var(--shadow)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              backdropFilter: 'blur(8px)',
+              zIndex: 5,
+            }}
+          >
+            ★ {t('common.emphasis')}
+          </div>
+        )}
 
         {/* Título */}
         <div
@@ -267,17 +347,26 @@ export function VideoCarousel({
             right: 0,
             padding: '24px',
             background:
-              'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%)',
+              'linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%)',
+            zIndex: 3,
           }}
         >
           <p
+            title={video.title}
             style={{
               color: 'white',
               fontFamily: 'var(--font-display)',
               fontSize:
                 'clamp(1rem, 2vw, 1.4rem)',
-              fontWeight: '400',
+              fontWeight: 400,
+              lineHeight: 1.35,
               margin: 0,
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              textShadow: '0 2px 6px rgba(0,0,0,0.45)',
             }}
           >
             {video.title}
@@ -288,6 +377,7 @@ export function VideoCarousel({
       {/* Seta esquerda */}
       {videos.length > 1 && (
         <button
+          type="button"
           onClick={e => {
             e.stopPropagation()
 
@@ -312,12 +402,12 @@ export function VideoCarousel({
             cursor: 'pointer',
             color: 'var(--text-primary)',
             boxShadow: 'var(--shadow)',
-            transition: 'all 0.2s ease',
+            transition:
+              'background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease',
             zIndex: 10,
           }}
           onMouseEnter={e => {
-            const el =
-              e.currentTarget as HTMLButtonElement
+            const el = e.currentTarget
 
             el.style.backgroundColor =
               'var(--accent-primary)'
@@ -326,8 +416,7 @@ export function VideoCarousel({
               'var(--accent-primary)'
           }}
           onMouseLeave={e => {
-            const el =
-              e.currentTarget as HTMLButtonElement
+            const el = e.currentTarget
 
             el.style.backgroundColor =
               'var(--bg-card)'
@@ -345,6 +434,7 @@ export function VideoCarousel({
       {/* Seta direita */}
       {videos.length > 1 && (
         <button
+          type="button"
           onClick={e => {
             e.stopPropagation()
 
@@ -369,12 +459,12 @@ export function VideoCarousel({
             cursor: 'pointer',
             color: 'var(--text-primary)',
             boxShadow: 'var(--shadow)',
-            transition: 'all 0.2s ease',
+            transition:
+              'background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease',
             zIndex: 10,
           }}
           onMouseEnter={e => {
-            const el =
-              e.currentTarget as HTMLButtonElement
+            const el = e.currentTarget
 
             el.style.backgroundColor =
               'var(--accent-primary)'
@@ -383,8 +473,7 @@ export function VideoCarousel({
               'var(--accent-primary)'
           }}
           onMouseLeave={e => {
-            const el =
-              e.currentTarget as HTMLButtonElement
+            const el = e.currentTarget
 
             el.style.backgroundColor =
               'var(--bg-card)'
@@ -411,6 +500,7 @@ export function VideoCarousel({
         >
           {videos.map((_, i) => (
             <button
+              type="button"
               key={i}
               onClick={e => {
                 e.stopPropagation()
@@ -437,17 +527,17 @@ export function VideoCarousel({
         </div>
       )}
 
-      {/* Animação de troca */}
+      {/* Animações */}
       <style>{`
-        @keyframes carouselSlideIn {
+        @keyframes carouselFade {
           0% {
             opacity: 0;
-            transform: translateX(35px);
+            transform: scale(1.02);
           }
 
           100% {
             opacity: 1;
-            transform: translateX(0);
+            transform: scale(1);
           }
         }
       `}</style>

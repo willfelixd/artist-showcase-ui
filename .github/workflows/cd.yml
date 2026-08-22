@@ -1,0 +1,38 @@
+name: CD — Deploy na Vercel
+
+on:
+  workflow_run:
+    workflows: [ "CI — Frontend" ]
+    types: [ completed ]
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Deploy na Vercel
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Deploy na Vercel via CLI
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+
+      - name: Verificar saúde do frontend
+        run: |
+          sleep 15
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://artist-showcase-ui.vercel.app")
+          if [ "$RESPONSE" -eq 200 ]; then
+            echo "✅ Frontend respondendo (HTTP $RESPONSE)"
+          else
+            echo "❌ Frontend não responde (HTTP $RESPONSE)"
+            exit 1
+          fi
