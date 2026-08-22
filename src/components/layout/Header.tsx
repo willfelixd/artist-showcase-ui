@@ -1,4 +1,3 @@
-import { Music } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
@@ -56,17 +55,28 @@ export function Header() {
       }}>
 
         {/* Logo */}
-        <NavLink to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Music size={24} color="var(--accent-primary)" />
-          <span className="text-gradient-section"
+        <NavLink
+          to="/"
+          style={{
+            textDecoration: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '7px',
+          }}
+        >
+
+          <span
+            className="text-gradient-section"
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.0rem',
+              fontSize: '1.05rem',
               fontStyle: 'italic',
-              lineHeight: '1.2',
-              letterSpacing: '-0.7px',
+              fontWeight: 600,
+              lineHeight: '1',
+              letterSpacing: '-0.6px',
               textShadow: '0 2px 6px var(--shadow)',
-            }}>
+            }}
+          >
             Isa Tavares
           </span>
         </NavLink>

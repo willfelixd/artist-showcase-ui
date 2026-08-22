@@ -1,7 +1,5 @@
 import { useMemo } from "react"
 import { useTheme } from "../../contexts/ThemeContext"
-
-
 interface Note {
   id: number
   x: number
@@ -13,32 +11,24 @@ interface Note {
   opacity: number
   depth: number
 }
-
-
 // 🔥 Configuração por dispositivo
 function getDeviceConfig() {
-
   const isMobile = window.innerWidth < 768
-
   return {
     noteCount: isMobile ? 22 : 40,
     speedMultiplier: isMobile ? 0.7 : 0.9,
     blurMultiplier: isMobile ? 0.3 : 0.6,
     driftMultiplier: isMobile ? 0.5 : 0.8,
-
   }
 }
-
 // 🎵 Gerador de notas
 function generateNotes(count: number): Note[] {
-
   const symbols = [
     "♩",
     "♪",
     "♫",
     "♬",
   ]
-
   return Array.from({ length: count }).map((_, i) => {
     const depth = Math.random()
     return {
@@ -65,19 +55,15 @@ function generateNotes(count: number): Note[] {
       depth,
     }})
 }
-
 export function AnimatedBackground() {
-
   const { isDark } = useTheme()
   const color = isDark
     ? "#FF8FB8"
     : "#FF2D75"
-
   const config = useMemo(
     () => getDeviceConfig(),
     []
   )
-
   const notes = useMemo(
     () =>
       generateNotes(
@@ -86,9 +72,7 @@ export function AnimatedBackground() {
     [
       config.noteCount
     ]
-
   )
-
   return (
     <div
       aria-hidden="true"
@@ -101,157 +85,77 @@ export function AnimatedBackground() {
       }}
     >
       <style>{`
-
         @keyframes floatAmbient {
-
-
           0% {
-
             transform:
-
               translate(
-
                 var(--driftX),
-
                 40px
-
               )
-
               rotate(0deg);
-
-
             opacity: 0;
-
           }
-
-
-
           15% {
-
             opacity: var(--opacity);
-
           }
-
-
-
           35% {
-
-
             transform:
-
               translate(
-
                 calc(var(--driftX) + 10px),
-
                 -40px
-
               )
-
               rotate(5deg);
-
-
           }
-
-
-
           60% {
-
-
             transform:
-
               translate(
-
                 calc(var(--driftX) - 8px),
-
                 -100px
-
               )
-
               rotate(-5deg);
-
-
           }
-
-
-
           85% {
-
-
             opacity:
-
               calc(var(--opacity) * 0.5);
-
-
-
             transform:
-
               translate(
-
                 calc(var(--driftX) + 6px),
-
                 -160px
-
               )
-
               rotate(3deg);
-
-
           }
-
-
-
           100% {
-
-
             transform:
-
               translate(
-
                 var(--driftX),
-
                 -220px
-
               )
-
               rotate(0deg);
-
-
-
             opacity: 0;
-
-
           }
-
-
         }
-
       `}</style>
-
       {
         notes.map((note) => {
           const speed =
             (1.1 + note.depth * 0.9)
             *
             config.speedMultiplier
-
           const scale =
             0.6 +
             note.depth * 0.9
-
           const blur =
             (1 - note.depth)
             *
             0.8
             *
             config.blurMultiplier
-
           const driftX =
             Math.sin(note.id * 7)
             *
             (6 + note.depth * 8)
             *
             config.driftMultiplier
-
           return (
             <span
               key={note.id}

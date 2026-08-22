@@ -6,6 +6,7 @@ import { VideoCarousel } from '../../components/ui/VideoCarousel'
 import { VideoModal } from '../../pages/Videos/VideoModal'
 import type { Video } from '../../types'
 import { ScrollIndicator } from '../../components/ui/ScrollIndicator'
+import { BackToTopButton } from '../../components/ui/BackToTopButton'
 
 export function FeaturedVideosSection() {
   const { t } = useTranslation()
@@ -89,6 +90,19 @@ export function FeaturedVideosSection() {
           videos={videos}
           onVideoClick={setSelectedVideo}
         />
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            marginTop: '16px',
+            position: 'absolute',
+            right: 0,
+          }}
+        >
+          <BackToTopButton />
+        </div>
       </div>
 
       {/* Modal reutilizando VideoModal — X, título e dica já incluídos */}

@@ -1,7 +1,8 @@
 import { X } from 'lucide-react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import type { Video } from '../../types'
+import { useTranslation } from 'react-i18next'
 
 interface VideoModalProps {
   video: Video
@@ -9,6 +10,25 @@ interface VideoModalProps {
 }
 
 export function VideoModal({ video, onClose }: VideoModalProps) {
+
+  const [isDesktop, setIsDesktop] = useState(false)
+  const { t } = useTranslation()
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)')
+
+    const handleResize = () => {
+      setIsDesktop(media.matches)
+    }
+
+    handleResize()
+
+    media.addEventListener('change', handleResize)
+
+    return () => {
+      media.removeEventListener('change', handleResize)
+    }
+  }, [])
 
   // Fecha com ESC
   useEffect(() => {
@@ -132,15 +152,19 @@ export function VideoModal({ video, onClose }: VideoModalProps) {
         )}
 
         {/* Dica */}
-        <p style={{
-          color: 'rgba(255,255,255,0.4)',
-          fontFamily: 'var(--font-body)',
-          fontSize: '12px',
-          textAlign: 'center',
-          textShadow: '0 2px 4px var(--shadow)',
-        }}>
-          Pressione ESC ou clique fora para fechar
-        </p>
+        {isDesktop && (
+          <p
+            style={{
+              color: 'rgba(255,255,255,0.4)',
+              fontFamily: 'var(--font-body)',
+              fontSize: '12px',
+              textAlign: 'center',
+              textShadow: '0 2px 4px var(--shadow)',
+            }}
+          >
+            {t('common.video_tip')}
+          </p>
+        )}
       </div>
 
       <style>{`

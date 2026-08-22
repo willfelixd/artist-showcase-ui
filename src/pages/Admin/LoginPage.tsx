@@ -76,7 +76,7 @@ export default function LoginPage() {
                 letterSpacing: '-0.7px',
                 textShadow: '0 2px 6px var(--shadow)',
               }}>
-              Isa Tavares Cantora
+              {t('common.singer')}
             </span>
           </div>
           <p style={{

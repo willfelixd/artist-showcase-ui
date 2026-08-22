@@ -8,6 +8,18 @@ const en = {
     admin: 'Admin',
   },
 
+  footer: {
+    message: 'Vocals, music, and unforgettable moments to make every event even more special.',
+    follow: 'Follow Isa',
+    event: 'Your event deserves music',
+    contact: 'Get in touch to learn more about shows and performances.',
+    button: 'Talk to the Isa',
+    rights_reserved: 'All rights reserved.',
+    developed_by: 'Developed by',
+    privacy_policy: 'Privacy Policy',
+    terms_use: 'Terms of Use',
+  },
+
   home: {
     hero: {
       greeting: 'Welcome to the portfolio of',
@@ -92,6 +104,135 @@ const en = {
     error: 'Error sending message. Please try again.',
   },
 
+  privacy_policy: {
+    title: 'Privacy Policy',
+    subtitle: 'Last updated: August 17, 2026',
+    sub_one: {
+      title: '"1. Commitment to Your Privacy"',
+      paragraph_one: 'The privacy of visitors to this website is important to us. This Privacy Policy transparently explains what information may be collected through the Isa Tavares portfolio website, how this information is used, and what rights users have.',
+      paragraph_two: 'By using the features provided on this website, the user acknowledges and agrees to the practices described in this policy.',
+    },
+    sub_two: {
+      title: '"2. Information Collected"',
+      paragraph_one: 'When you use the contact form available on the website, we may receive the following information provided directly by you: ',
+      paragraph_one_form: {
+        name: 'Name;',
+        email: 'Email address;',
+        phone: 'Phone number, when provided;',
+        subject: 'Message subject;',
+        message: 'Content of the message sent.',
+      },
+      paragraph_two: 'Providing this information is voluntary and is necessary for us to properly respond to messages submitted through the contact form.',
+    },
+    sub_three: {
+      title: '"3. How We Use Your Information"',
+      paragraph_one: 'The information provided through the contact form may be used to: ',
+      paragraph_one_form: {
+        form_one: 'Respond to messages sent by the user;',
+        form_two: 'Contact the user regarding performances, shows, or events;',
+        form_three: 'Answer questions and provide requested information;',
+        form_four: 'Maintain the operation and security of the website features.',
+      },
+      paragraph_two: 'The data will not be used for purposes incompatible with those described in this policy.',
+    },
+    sub_four: {
+      title: '"4. Sharing of Information"',
+      paragraph_one: 'The information submitted by the user is processed to enable us to respond to the request made through the website.',
+      paragraph_two: 'We do not commercialize or sell personal data provided by users.',
+      paragraph_three: 'When necessary for the technical operation of the service, certain data may be processed by infrastructure providers or services used by the website, always in accordance with their respective purposes and applicable policies.',
+    },
+    sub_five: {
+      title: '"5. Data Storage and Security"',
+      paragraph_one: 'We adopt reasonable technical and organizational measures to protect the information received through the website against unauthorized access, alteration, disclosure, or improper destruction.',
+      paragraph_two: 'Despite the efforts employed, no electronic system can be considered completely immune to security risks.',
+    },
+    sub_six: {
+      title: '"6. Data Retention"',
+      paragraph_one: 'Information may be retained for as long as necessary to fulfill the purpose for which it was provided, comply with legal obligations, or preserve records necessary for the security and operation of the service.',
+    },
+    sub_seven: {
+      title: '"7. User Rights"',
+      paragraph_one: 'Users may request information about the processing of their personal data and, where applicable, request the correction, updating, or deletion of personal information.',
+      paragraph_two: 'To make a privacy-related request, please contact us using the channels provided on this website.',
+    },
+    sub_eight: {
+      title: '"8. External Links"',
+      paragraph_one: 'This website may provide links to external services and platforms, such as social networks and communication services.',
+      paragraph_two: 'When accessing these services, users will be subject to the privacy policies and terms of use of the respective platforms.',
+    },
+    sub_nine: {
+      title: '"9. Changes to This Policy"',
+      paragraph_one: 'This Privacy Policy may be updated periodically to reflect changes in the operation of the website, the services used, or applicable legal requirements.',
+      paragraph_two: 'The most recent version will always be available on this page.',
+    },
+    sub_ten: {
+      title: '"10. Contact"',
+      paragraph_one: 'If you have any questions about this Privacy Policy or about the processing of personal information carried out through this website, please use the contact page to submit your request.',
+    },
+  },
+
+  terms_of_use: {
+    title: 'Terms of Use',
+    subtitle: 'Last updated: August 17, 2026',
+    sub_one: {
+      title: '"1. Acceptance of the Terms"',
+      paragraph_one: 'By accessing and using this website, you agree to these Terms of Use and undertake to use it in accordance with the conditions set forth herein.',
+      paragraph_two: 'If you do not agree with any of the terms presented, we recommend that you do not use the resources provided by the website.',
+    },
+    sub_two: {
+      title: '"2. About the Website"',
+      paragraph_one: 'This website is intended to showcase the artistic work of Isa Tavares, including information about her career, repertoire, videos, performances, schedule, and contact options.',
+      paragraph_two: 'The information provided may be updated or modified without prior notice in order to keep the website content up to date.',
+    },
+    sub_three: {
+      title: '"3. Appropriate Use"',
+      paragraph_one: 'The user agrees to use the website in a lawful, responsible manner and in accordance with its intended purpose.',
+      paragraph_two: 'The website may not be used to:',
+      paragraph_two_form: {
+        form_one: 'Engage in activities that violate applicable laws or regulations;',
+        form_two: 'Attempt to gain unauthorized access to systems or information;',
+        form_three: 'Interfere with the normal operation of the website;',
+        form_four: 'Use the website content for unlawful purposes;',
+        form_five: 'Reproduce or distribute protected content without authorization.',
+      },
+    },
+    sub_four: {
+      title: '"4. Intellectual Property"',
+      paragraph_one: 'The texts, images, videos, visual elements, graphic identity, logo, and other content provided on this website may be protected by applicable intellectual property laws.',
+      paragraph_two: 'The use of any content beyond what is permitted by applicable law requires authorization from the respective rights holder.',
+    },
+    sub_five: {
+      title: '"5. External Links and Services"',
+      paragraph_one: 'The website may provide links to external platforms, including social networks, video services, and communication applications.',
+      paragraph_two: 'These services are operated by third parties and have their own terms of use and privacy policies.',
+      paragraph_three: 'Access to and use of these platforms are subject to the rules established by their respective operators.',
+    },
+    sub_six: {
+      title: '"6. Website Availability"',
+      paragraph_one: 'Although reasonable efforts are made to keep the website available and functioning properly, it is not possible to guarantee that the service will be permanently free from interruptions, technical failures, or periods of unavailability.',
+      paragraph_two: 'Features, pages, and functionalities may be modified, suspended, or removed whenever necessary.',
+    },
+    sub_seven: {
+      title: '"7. Performance and Event Information"',
+      paragraph_one: 'Information related to shows, performances, availability, prices, dates, and booking conditions may be subject to change and prior confirmation.',
+      paragraph_two: 'Submitting a message or request through the website does not, by itself, constitute confirmation of a booking or reservation of a date.',
+    },
+    sub_eight: {
+      title: '"8. Limitation of Liability"',
+      paragraph_one: 'The website content is provided for the purpose of presenting information about the artistic work and facilitating contact with Isa Tavares.',
+      paragraph_two: 'We are not responsible for the unavailability, changes, or information presented on external platforms linked to the website.',
+    },
+    sub_nine: {
+      title: '"9. Changes to the Terms"',
+      paragraph_one: 'These Terms of Use may be updated whenever necessary to reflect changes to the website, the services provided, or applicable legal requirements.',
+      paragraph_two: 'The updated version will be available on this page.',
+    },
+    sub_ten: {
+      title: '"10. Contact"',
+      paragraph_one: 'If you have any questions about these Terms of Use, you can contact us using the form available on the contact page.',
+    },
+  },
+
   admin: {
     login: {
       title: 'Admin Access',
@@ -170,6 +311,15 @@ const en = {
     see_more: 'See more',
     required_field: 'Required field',
     clear_button: 'Clear',
+    lyrics_button: 'View lyrics',
+    hear_button: 'Listen to music',
+    most_requested: 'Most requested',
+    video_tip: 'Press Esc or click outside to close',
+    audio_tip: 'SPACE to pause • ESC to close',
+    singer: 'Isa Tavares Singer',
+    previous_button: 'Previous',
+    next_button: 'Next',
+    emphasis: 'Emphasis',
   },
 }
 
