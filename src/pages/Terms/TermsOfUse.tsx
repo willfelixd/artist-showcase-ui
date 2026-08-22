@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import {
   FileText,
   ShieldCheck,
@@ -6,6 +7,9 @@ import {
 } from 'lucide-react'
 
 export default function TermsOfUse() {
+
+  const { t } = useTranslation()
+
   return (
     <main
       style={{
@@ -45,7 +49,7 @@ export default function TermsOfUse() {
             marginBottom: '12px',
           }}
         >
-          Termos de Uso
+          {t('terms_of_use.title')}
         </h1>
 
         <p
@@ -58,7 +62,7 @@ export default function TermsOfUse() {
             fontStyle: 'italic',
           }}
         >
-          Última atualização: 17 de agosto de 2026
+          {t('terms_of_use.subtitle')}
         </p>
       </div>
 
@@ -72,159 +76,155 @@ export default function TermsOfUse() {
           boxShadow: 'var(--shadow)',
         }}
       >
+        {/* 1. Aceitação dos termos */}
         <Section
           icon={<ShieldCheck size={17} />}
-          title="1. Aceitação dos termos"
+          title={t('terms_of_use.sub_one.title')}
         >
           <p>
-            Ao acessar e utilizar este site, você concorda com estes Termos de
-            Uso e se compromete a utilizá-lo de acordo com as condições aqui
-            estabelecidas.
+            {t('terms_of_use.sub_one.paragraph_one')}
           </p>
 
           <p>
-            Caso não concorde com algum dos termos apresentados, recomendamos
-            que não utilize os recursos disponibilizados pelo site.
+            {t('terms_of_use.sub_one.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="2. Sobre o site">
+        {/* 2. Sobre o site */}
+        <Section
+          title={t('terms_of_use.sub_two.title')}
+        >
           <p>
-            Este site tem como finalidade apresentar o trabalho artístico de
-            Isa Tavares, incluindo informações sobre sua carreira, repertório,
-            vídeos, apresentações, agenda e formas de contato.
+            {t('terms_of_use.sub_two.paragraph_one')}
           </p>
 
           <p>
-            As informações disponibilizadas podem ser atualizadas ou
-            modificadas sem aviso prévio para manter o conteúdo do site
-            atualizado.
+            {t('terms_of_use.sub_two.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="3. Uso adequado">
+        {/* 3. Uso adequado */}
+        <Section
+          title={t('terms_of_use.sub_three.title')}
+        >
           <p>
-            O usuário concorda em utilizar o site de maneira legal, responsável
-            e compatível com sua finalidade.
+            {t('terms_of_use.sub_three.paragraph_one')}
           </p>
 
-          <p>Não é permitido utilizar o site para:</p>
+          <p>
+            {t('terms_of_use.sub_three.paragraph_two')}
+          </p>
 
           <ul>
             <li>
-              Praticar atividades que violem leis ou regulamentos aplicáveis;
+              {t('terms_of_use.sub_three.paragraph_two_form.form_one')}
             </li>
             <li>
-              Tentar obter acesso não autorizado a sistemas ou informações;
+              {t('terms_of_use.sub_three.paragraph_two_form.form_two')}
             </li>
             <li>
-              Interferir no funcionamento normal do site;
+              {t('terms_of_use.sub_three.paragraph_two_form.form_three')}
             </li>
             <li>
-              Utilizar o conteúdo do site para finalidades ilícitas;
+              {t('terms_of_use.sub_three.paragraph_two_form.form_four')}
             </li>
             <li>
-              Reproduzir ou distribuir conteúdo protegido sem autorização.
+              {t('terms_of_use.sub_three.paragraph_two_form.form_five')}
             </li>
           </ul>
         </Section>
 
+        {/* 4. Propriedade intelectual */}
         <Section
           icon={<FileText size={17} />}
-          title="4. Propriedade intelectual"
+          title={t('terms_of_use.sub_four.title')}
         >
           <p>
-            Os textos, imagens, vídeos, elementos visuais, identidade gráfica,
-            logotipo e demais conteúdos disponibilizados neste site podem estar
-            protegidos pela legislação aplicável de propriedade intelectual.
+            {t('terms_of_use.sub_four.paragraph_one')}
           </p>
 
           <p>
-            A utilização de qualquer conteúdo além do permitido pela legislação
-            aplicável depende de autorização do respectivo titular dos direitos.
+            {t('terms_of_use.sub_four.paragraph_two')}
           </p>
         </Section>
 
+        {/* 5. Links e serviços externos */}
         <Section
           icon={<ExternalLink size={17} />}
-          title="5. Links e serviços externos"
+          title={t('terms_of_use.sub_five.title')}
         >
           <p>
-            O site pode apresentar links para plataformas externas, incluindo
-            redes sociais, serviços de vídeo e aplicativos de comunicação.
+            {t('terms_of_use.sub_five.paragraph_one')}
           </p>
 
           <p>
-            Esses serviços são operados por terceiros e possuem seus próprios
-            termos de uso e políticas de privacidade.
+            {t('terms_of_use.sub_five.paragraph_two')}
           </p>
 
           <p>
-            O acesso e a utilização dessas plataformas estão sujeitos às regras
-            estabelecidas por seus respectivos operadores.
+            {t('terms_of_use.sub_five.paragraph_three')}
           </p>
         </Section>
 
+        {/* 6. Disponibilidade do site */}
         <Section
           icon={<AlertCircle size={17} />}
-          title="6. Disponibilidade do site"
+          title={t('terms_of_use.sub_six.title')}
         >
           <p>
-            Embora sejam adotados esforços para manter o site disponível e
-            funcionando corretamente, não é possível garantir que o serviço
-            estará permanentemente livre de interrupções, falhas técnicas ou
-            indisponibilidades.
+            {t('terms_of_use.sub_six.paragraph_one')}
           </p>
 
           <p>
-            Recursos, páginas e funcionalidades podem ser modificados,
-            suspensos ou removidos quando necessário.
+            {t('terms_of_use.sub_six.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="7. Informações de apresentações e eventos">
+        {/* 7. Informações de apresentações e eventos */}
+        <Section
+          title={t('terms_of_use.sub_seven.title')}
+        >
           <p>
-            Informações relacionadas a shows, apresentações, disponibilidade,
-            valores, datas e condições de contratação podem estar sujeitas a
-            alterações e confirmação prévia.
+            {t('terms_of_use.sub_seven.paragraph_one')}
           </p>
 
           <p>
-            O envio de uma mensagem ou solicitação pelo site não representa,
-            por si só, a confirmação de uma contratação ou reserva de data.
-          </p>
-        </Section>
-
-        <Section title="8. Limitação de responsabilidade">
-          <p>
-            O conteúdo do site é disponibilizado com o objetivo de apresentar
-            informações sobre o trabalho artístico e facilitar o contato com
-            Isa Tavares.
-          </p>
-
-          <p>
-            Não nos responsabilizamos por indisponibilidades, alterações ou
-            informações apresentadas em plataformas externas vinculadas ao
-            site.
+            {t('terms_of_use.sub_seven.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="9. Alterações dos termos">
+        {/* 8. Limitação de responsabilidade */}
+        <Section
+          title={t('terms_of_use.sub_eight.title')}
+        >
           <p>
-            Estes Termos de Uso poderão ser atualizados sempre que necessário
-            para refletir mudanças no site, nos serviços disponibilizados ou nas
-            obrigações legais aplicáveis.
+            {t('terms_of_use.sub_eight.paragraph_one')}
           </p>
 
           <p>
-            A versão atualizada estará disponível nesta página.
+            {t('terms_of_use.sub_eight.paragraph_two')}
           </p>
         </Section>
 
-        <Section title="10. Contato">
+        {/* 9. Alterações dos termos */}
+        <Section
+          title={t('terms_of_use.sub_nine.title')}
+        >
           <p>
-            Caso tenha dúvidas sobre estes Termos de Uso, você pode entrar em
-            contato utilizando o formulário disponível na página de contato.
+            {t('terms_of_use.sub_nine.paragraph_one')}
+          </p>
+
+          <p>
+            {t('terms_of_use.sub_nine.paragraph_two')}
+          </p>
+        </Section>
+
+        {/* 10. Contato */}
+        <Section
+          title={t('terms_of_use.sub_ten.title')}
+        >
+          <p>
+            {t('terms_of_use.sub_ten.paragraph_one')}
           </p>
         </Section>
       </div>

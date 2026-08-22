@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { artistService } from '../../services/artistService'
 import type { Artist } from '../../types'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // SVG do Instagram
 function InstagramIcon() {
@@ -44,6 +45,8 @@ function YouTubeIcon() {
 
 export function Footer() {
   const [artist, setArtist] = useState<Artist | null>(null)
+
+  const { t } = useTranslation()
 
   const WHATSAPP_URL =
     'https://wa.me/5583998184555?text=Olá%20quero%20saber%20sobre%20shows'
@@ -86,7 +89,7 @@ export function Footer() {
         style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '100px 24px 60px',
+          padding: '72px 24px 48px',
         }}
       >
         {/* Conteúdo principal */}
@@ -126,7 +129,7 @@ export function Footer() {
                   textShadow: '0 2px 6px var(--shadow)',
                 }}
               >
-                Isa Tavares Cantora
+                {t('common.singer')}
               </span>
             </div>
 
@@ -141,8 +144,7 @@ export function Footer() {
                 textShadow: '0 2px 4px var(--shadow)',
               }}
             >
-              Voz, música e momentos inesquecíveis para tornar cada evento
-              ainda mais especial.
+              {t('footer.message')}
             </p>
           </div>
 
@@ -165,7 +167,7 @@ export function Footer() {
                 textAlign: 'center',
               }}
             >
-              Siga a Isa
+              {t('footer.follow')}
             </h3>
 
             <div
@@ -249,7 +251,7 @@ export function Footer() {
                 letterSpacing: '0.4px',
               }}
             >
-              Seu evento merece música
+              {t('footer.event')}
             </h3>
 
             <p
@@ -261,7 +263,7 @@ export function Footer() {
                 lineHeight: '1.6',
               }}
             >
-              Entre em contato e saiba mais sobre shows e apresentações.
+              {t('footer.contact')}
             </p>
 
             <a
@@ -302,7 +304,7 @@ export function Footer() {
             >
               <MessageCircle size={15} strokeWidth={2} />
 
-              Fale com a Isa
+              {t('footer.button')}
 
               <ArrowUpRight size={14} strokeWidth={2} />
             </a>
@@ -345,8 +347,14 @@ export function Footer() {
                 textShadow: '0 2px 4px var(--shadow)',
               }}
             >
-              © {new Date().getFullYear()} Isa Tavares. Todos os direitos
-              reservados.
+              <p>
+                © {new Date().getFullYear()} Isa Tavares. {t('footer.rights_reserved')}
+                <br />
+                · {t('footer.developed_by')}{' '}
+                <strong style={{ fontWeight: 700 }}>
+                  William Felix
+                </strong>
+              </p>
             </span>
 
             <div
@@ -382,7 +390,7 @@ export function Footer() {
                     textDecoration: 'none',
                   }}
                 >
-                  Política de Privacidade
+                  {t('footer.privacy_policy')}
                 </Link>
               </a>
 
@@ -421,7 +429,7 @@ export function Footer() {
                     textDecoration: 'none',
                   }}
                 >
-                  Termos de Uso
+                  {t('footer.terms_use')}
                 </Link>
               </a>
             </div>

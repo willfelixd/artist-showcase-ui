@@ -54,25 +54,57 @@ export function SongModal({ title, lyrics, onClose }: SongModalProps) {
       >
         {/* Botão fechar */}
         <button
+          type="button"
           onClick={onClose}
+          aria-label="Fechar player"
           style={{
             position: 'absolute',
             top: '12px',
             right: '12px',
-            background: 'transparent',
-            color: 'var(--text-primary)',
-            border: 'none',
+
+            width: '34px',
+            height: '34px',
+
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border)',
+            borderRadius: '50%',
+
+            color: 'var(--text-muted)',
             cursor: 'pointer',
+
+            transition:
+              'color 0.2s ease, border-color 0.2s ease, transform 0.2s ease',
           }}
           onMouseEnter={e => {
-            (e.currentTarget as HTMLButtonElement).style.color = 'var(--accent-hover)'
+            const button = e.currentTarget
+
+            button.style.color =
+              'var(--accent-primary)'
+
+            button.style.borderColor =
+              'var(--accent-primary)'
+
+            button.style.transform =
+              'scale(1.05)'
           }}
           onMouseLeave={e => {
-            (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-primary)'
+            const button = e.currentTarget
+
+            button.style.color =
+              'var(--text-muted)'
+
+            button.style.borderColor =
+              'var(--border)'
+
+            button.style.transform =
+              'scale(1)'
           }}
-          aria-label="Fechar"
         >
-          <X />
+          <X size={18} />
         </button>
 
         {/* Título */}
@@ -82,7 +114,14 @@ export function SongModal({ title, lyrics, onClose }: SongModalProps) {
           color: 'var(--text-primary)',
           textShadow: '0 1px 3px var(--shadow)',
         }}>
-          ♫ {title}
+          ♫ {title} <span
+            style={{
+              display: 'inline-block',
+              transform: 'scaleX(-1)',
+            }}
+          >
+          ♫ 
+          </span>
         </h3>
 
         {/* Letra */}
@@ -93,7 +132,7 @@ export function SongModal({ title, lyrics, onClose }: SongModalProps) {
           fontFamily: 'var(--font-body)',
           textShadow: '0 2px 4px var(--shadow)',
         }}>
-         {lyrics} 
+          {lyrics}
         </p>
       </div>
 

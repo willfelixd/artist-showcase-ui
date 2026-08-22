@@ -8,6 +8,8 @@ import { LoadingSpinner } from '../../components/ui/LoadingSpinner'
 import { ErrorMessage } from '../../components/ui/ErrorMessage'
 import type { Song } from '../../types'
 import { AudioModal } from './AudioModal'
+import Pagination from '../../components/ui/Pagination'
+import { BackToTopButton } from '../../components/ui/BackToTopButton'
 
 const GENRES = [
   'MPB', 'Sertanejo', 'Pop', 'Bossa Nova', 'Samba',
@@ -231,108 +233,31 @@ export default function Repertoire() {
           </div>
 
           {/* Paginação */}
-          {totalPages > 1 && (
-            <div style={{
+          <div
+            style={{
+              position: 'relative',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              gap: '8px',
-              flexWrap: 'wrap',
-            }}>
-              <button
-                onClick={() => handlePageChange(page - 1)}
-                disabled={page === 0}
-                style={{
-                  padding: '8px 16px',
-                  background: 'var(--bg-primary)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '8px',
-                  cursor: page === 0 ? 'not-allowed' : 'pointer',
-                  color: page === 0 ? 'var(--text-muted)' : 'var(--text-primary)',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '14px',
-                  transition: 'all 0.3s ease',
-                  textShadow: '0 2px 4px var(--shadow)',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.color = 'var(--accent-primary)',
-                    (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-secondary)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)',
-                    (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-primary)'
-                }}
-              >
-                ← Anterior
-              </button>
+              marginTop: '16px',
+            }}
+          >
+            <Pagination
+              page={page}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
 
-              {Array.from({ length: totalPages }, (_, i) => (
-                <button
-                  key={i}
-                  onClick={() => handlePageChange(i)}
-                  style={{
-                    padding: '8px 14px',
-                    background: i === page ? 'var(--pink-gradient)' : 'var(--bg-primary)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                    color: i === page ? 'var(--color-marfim)' : 'var(--text-primary)',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '14px',
-                    fontWeight: i === page ? '600' : '400',
-                    transition: 'all 0.3s ease',
-                    textShadow: '0 2px 4px var(--shadow)',
-                  }}
-
-                  // Página atual
-                  onMouseEnter={i === page ? (e) => {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, color-mix(in srgb, var(--accent-hover) 85%, white) 0%, var(--accent-hover) 100%)'
-                  } : (e) => {
-                    e.currentTarget.style.color = 'var(--accent-primary)'
-                    e.currentTarget.style.background = 'var(--bg-secondary)'
-                  }
-                  }
-                  onMouseLeave={i === page ? (e) => {
-                    e.currentTarget.style.color = 'var(--color-marfim)'
-                    e.currentTarget.style.background = 'var(--pink-gradient)'
-                  } : (e) => {
-                    e.currentTarget.style.color = 'var(--text-primary)'
-                    e.currentTarget.style.background = 'var(--bg-primary)'
-                  }
-                  }
-                >
-                  {i + 1}
-                </button>
-              ))}
-
-              <button
-                onClick={() => handlePageChange(page + 1)}
-                disabled={page === totalPages - 1}
-                style={{
-                  padding: '8px 16px',
-                  background: 'var(--bg-primary)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '8px',
-                  cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer',
-                  color: page === totalPages - 1 ? 'var(--text-muted)' : 'var(--text-primary)',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '14px',
-                  transition: 'all 0.3s ease',
-                  textShadow: '0 2px 4px var(--shadow)',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.color = 'var(--accent-primary)',
-                    (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-secondary)'
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-secondary)',
-                    (e.currentTarget as HTMLButtonElement).style.background = 'var(--bg-primary)'
-                }}
-              >
-                Próxima →
-              </button>
+            <div
+              style={{
+                position: 'absolute',
+                right: 0,
+              }}
+            >
+              <BackToTopButton />
             </div>
-          )}
+          </div>
+
         </>
       )
       }
