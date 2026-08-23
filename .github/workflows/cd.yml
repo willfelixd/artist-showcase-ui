@@ -39,7 +39,8 @@ jobs:
         run: |
           sleep 20
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://artist-showcase-ui.vercel.app")
+            -L \
+            "https://isatavarescantora.vercel.app")
           if [ "$RESPONSE" -eq 200 ]; then
             echo "✅ Frontend respondendo (HTTP $RESPONSE)"
           else
