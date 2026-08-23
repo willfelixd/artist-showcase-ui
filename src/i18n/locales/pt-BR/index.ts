@@ -25,7 +25,8 @@ const ptBR = {
   // Página Home
   home: {
     hero: {
-      greeting: 'Bem-vindo ao portfólio de',
+      greeting: 'Bem-vindo ao meu portfólio musical',
+      bio: 'Cantora e Compositora',
       cta_schedule: 'Agendar Show',
       cta_repertoire: 'Ver Repertório',
       cta_contact: 'Entre em Contato',
