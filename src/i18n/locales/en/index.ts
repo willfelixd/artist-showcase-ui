@@ -22,7 +22,8 @@ const en = {
 
   home: {
     hero: {
-      greeting: 'Welcome to the portfolio of',
+      greeting: 'Welcome to my music portfolio',
+      bio: 'Singer and Songwriter',
       cta_schedule: 'Book a Show',
       cta_repertoire: 'View Repertoire',
       cta_contact: 'Get in Touch',
