@@ -251,7 +251,7 @@ export function HeroSection({ artist }: HeroSectionProps) {
                 lineHeight: '1.5',
               }}
             >
-              {artist.bio}
+              {t('home.hero.bio')}
             </p>
           </div>
           {/* BOTÕES */}

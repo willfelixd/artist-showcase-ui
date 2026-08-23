@@ -23,7 +23,7 @@
 
 | | Link |
 |---|---|
-| 🎤 **Site** | [artist-showcase-ui.vercel.app](https://artist-showcase-ui.vercel.app) |
+| 🎤 **Site** | [isatavarescantora.vercel.app](https://isatavarescantora.vercel.app) |
 | ⚙️ **API** | [artist-showcase-api.onrender.com](https://artist-showcase-api.onrender.com/api/health) |
 
 ---
@@ -402,14 +402,14 @@ Vídeos:
   <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/modal-video.gif" alt="Modal de vídeo" width="700"/>
 </p>
 
-Painel Admin:
-<p>
-  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/painel-admin.png" alt="Painel Admin" width="700"/>
-</p>
-
 Acesso administrativo:
 <p>
   <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/acesso-administrativo.png" alt="Tela de login administrativo" width="700"/>
+</p>
+
+Painel Admin:
+<p>
+  <img src="https://raw.githubusercontent.com/willfelixd/artist-showcase-ui/main/.github/assets/painel-admin.png" alt="Painel Admin" width="700"/>
 </p>
 
 </details>
