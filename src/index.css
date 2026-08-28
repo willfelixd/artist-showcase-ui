@@ -3,59 +3,72 @@
    =========================== */
 
 :root {
-  /* NOVA IDENTIDADE */
-  --color-pink:        #FF4D8D;
-  --color-pink-soft:   #FF8FB8;
-  --color-pink-glow:   #FF2D75;
+  /* Identidade */
+  --color-pink: #FF4D8D;
+  --color-pink-soft: #FF8FB8;
+  --color-pink-glow: #FF2D75;
 
-  --color-black-deep:  #0A0A0A;
-  --color-black-soft:  #121212;
+  --color-black-deep: #0A0A0A;
+  --color-black-soft: #121212;
 
-  --color-metal:       #D6D6D6;
-  --color-metal-dark:  #8A8A8A;
+  --color-metal: #D6D6D6;
+  --color-metal-dark: #8A8A8A;
 
   /* Tipografia */
   --font-signature: "Sacramento", cursive;
   --font-display: "Poppins", sans-serif;
-  --font-body:    "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
 
-  --transition-theme: background 0.4s ease, color 0.3s ease;
+  --transition-theme:
+    background-color 0.4s ease,
+    background 0.4s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  /* Layout */
+  --content-width: 1200px;
+  --page-padding: 24px;
 }
 
 /* ===========================
-   TEMA CLARO (padrão)
+   TEMA CLARO
    =========================== */
+
 [data-theme='light'] {
+  color-scheme: light;
+
   --bg-primary: #FFD6E6;
-  --bg-secondary: #ffccdf;
-  --bg-card: #ffccdf;
+  --bg-secondary: #FFCCDF;
+  --bg-card: #FFCCDF;
 
-  --bg-background-header: linear-gradient(
-  90deg,
-  #ffccdf,
-  #FF8FB8
-  );
-  --bg-background-about: linear-gradient(
-  360deg,
-  #ffccdf,
-  #FF8FB8
-  );
-  --bg-background-footer: linear-gradient(
-  180deg,
-  #ffccdf,
-  #FF8FB8
-  );
+  --bg-background-header:
+    linear-gradient(90deg,
+      #FFCCDF 0%,
+      #FF8FB8 100%);
+
+  --bg-background-about:
+    linear-gradient(360deg,
+      #FFCCDF 0%,
+      #FF8FB8 100%);
+
+  --bg-background-footer:
+    linear-gradient(180deg,
+      #FFCCDF 0%,
+      #FF8FB8 100%);
+
   --hero-bg: url('/src/assets/background-light.png');
-  
-  --pink-gradient: linear-gradient(
-    135deg, 
-    color-mix(in srgb, var(--accent-primary) 85%, white) 0%, var(--accent-primary) 100%);
 
-  --text-primary: #4b293a;
+  --pink-gradient:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent-primary) 85%, white) 0%,
+      var(--accent-primary) 100%);
+
+  --text-primary: #4B293A;
   --text-secondary: #6B4A57;
-  --text-muted: #A07C8C;
+  --text-muted: #8F6D7C;
 
-  --border: rgba(255, 0, 93, 0.2);
+  --border: rgba(255, 0, 93, 0.18);
 
   --accent-primary: var(--color-pink);
   --accent-hover: var(--color-pink-glow);
@@ -64,44 +77,48 @@
   --shadow:
     0 10px 30px rgba(255, 77, 141, 0.12);
 
-  /* ✨ brilho sutil */
   --glow:
-    0 0 20px rgba(255, 77, 141, 0.25);
+    0 0 20px rgba(255, 77, 141, 0.22);
 }
 
 /* ===========================
    TEMA ESCURO
    =========================== */
-[data-theme='dark'] {
-  --bg-primary: #121212;
-  --bg-secondary: #1a1919;
-  --bg-card: #1a1919;
 
-  --bg-background-header: linear-gradient(
-  90deg,
-  #1a1919 0%,
-  rgb(18, 18, 18) 100%
-  );
-  --bg-background-about: linear-gradient(
-  360deg,
-  #1a1919 0%, 
-  rgb(18, 18, 18) 100%
-  );
-  --bg-background-footer: linear-gradient(
-  180deg,
-  #1a1919 0%, 
-  rgb(18, 18, 18) 100%
-  );
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg-primary: #121212;
+  --bg-secondary: #1A1919;
+  --bg-card: #1A1919;
+
+  --bg-background-header:
+    linear-gradient(90deg,
+      #1A1919 0%,
+      #121212 100%);
+
+  --bg-background-about:
+    linear-gradient(360deg,
+      #1A1919 0%,
+      #121212 100%);
+
+  --bg-background-footer:
+    linear-gradient(180deg,
+      #1A1919 0%,
+      #121212 100%);
+
   --hero-bg: url('/src/assets/background-dark.png');
 
-  --pink-gradient: linear-gradient(
-    135deg, color-mix(in srgb, #FF2D75 85%, white) 0%, #FF2D75 100%);
+  --pink-gradient:
+    linear-gradient(135deg,
+      color-mix(in srgb, #FF2D75 85%, white) 0%,
+      #FF2D75 100%);
 
   --text-primary: #FFFFFF;
   --text-secondary: #FF8FB8;
   --text-muted: #B08A9A;
 
-  --border: rgba(255, 77, 141, 0.2);
+  --border: rgba(255, 77, 141, 0.18);
 
   --accent-primary: var(--color-pink);
   --accent-hover: var(--color-pink-soft);
@@ -110,72 +127,205 @@
   --shadow:
     0 3px 10px rgba(20, 20, 20, 0.6);
 
-  /* 💡 glow de palco */
   --glow:
-    0 0 30px rgba(255, 45, 117, 0.35);
+    0 0 30px rgba(255, 45, 117, 0.30);
 }
 
 /* ===========================
    RESET E BASE
    =========================== */
-* {
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--font-body);
-  background-color: linear-gradient(180deg, #FFD6E6 0%, rgba(207, 130, 203, 0.8) 100%);
-  color: var(--text-primary);
-  transition: var(--transition-theme);
-  line-height: 1.6;
+html {
+  min-height: 100%;
+  background: var(--bg-primary);
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  font-family: var(--font-body);
+  line-height: 1.6;
+
+  background: var(--bg-primary);
+  color: var(--text-primary);
+
+  overflow-x: hidden;
+
+  transition: var(--transition-theme);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-primary);
+}
+
+/* Evita imagens maiores que a viewport */
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+/* Imagens */
+
+img {
+  display: block;
+}
+
+/* Links */
+
+a {
+  color: inherit;
+}
+
+/* Botões e inputs */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ===========================
+   TIPOGRAFIA
+   =========================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
 }
 
+/* ===========================
+   BOTÃO PREMIUM
+   =========================== */
+
 .btn-premium {
-  background: linear-gradient(135deg, #FF4D8D, #FF2D75);
+  background:
+    linear-gradient(135deg,
+      #FF4D8D,
+      #FF2D75);
+
   color: white;
+
   border: none;
   border-radius: 999px;
+
   padding: 12px 24px;
 
   box-shadow: var(--glow);
-  transition: all 0.3s ease;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+
+  cursor: pointer;
 }
 
 .btn-premium:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 40px rgba(255, 45, 117, 0.5);
+
+  box-shadow:
+    0 0 32px rgba(255, 45, 117, 0.40);
 }
+
+.btn-premium:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn-premium:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   CARDS
+   =========================== */
 
 .card-glass {
   background: var(--bg-card);
+
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
   border: 1px solid var(--border);
   border-radius: 16px;
 
   box-shadow: var(--shadow);
 }
 
+/* ===========================
+   TEXTO COM BRILHO
+   =========================== */
+
 .text-glow {
   color: var(--accent-primary);
   text-shadow: var(--glow);
 }
 
+/* ===========================
+   LINHA DE PALCO
+   =========================== */
+
 .stage-line {
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #FF4D8D,
-    transparent
-  );
+
+  background:
+    linear-gradient(90deg,
+      transparent,
+      #FF4D8D,
+      transparent);
+
   opacity: 0.6;
+
   margin: 40px 0;
+}
+
+@keyframes lineGrow {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+/* ===========================
+   HERO
+   =========================== */
+
+.hero-section {
+  transition: background-image 0.6s ease-in-out;
 }
 
 @keyframes socialEnter {
@@ -184,6 +334,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(20px);
     filter: blur(6px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -196,20 +347,10 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     transform: translateY(12px) scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes lineGrow {
-  from {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-  to {
-    transform: scaleX(1);
-    opacity: 1;
   }
 }
 
@@ -218,60 +359,33 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     transform: translate(-50%, 20px);
   }
+
   to {
     opacity: 1;
     transform: translate(-50%, 0);
   }
 }
 
-@media (max-width: 600px) {
-  .pagination-label {
-    display: none;
-  }
-}
-
-.hero-section {
-  transition: background-image 0.6s ease-in-out;
-}
-
-.booking-confirm-button:hover:not(:disabled) {
-  background-color: #059669 !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
-}
-
-.booking-cancel-button:hover:not(:disabled) {
-  background-color: #ef4444 !important;
-  color: white !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
-}
-
-.booking-confirm-button:active:not(:disabled),
-.booking-cancel-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.booking-confirm-button:disabled,
-.booking-cancel-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+/* ===========================
+   GRADIENTE — HERO
+   =========================== */
 
 .text-gradient-hero {
-  background: linear-gradient(
-    90deg,
-    var(--color-pink-soft),
-    var(--color-pink),
-    var(--color-pink-glow)
-  );
+  background:
+    linear-gradient(90deg,
+      var(--color-pink-soft),
+      var(--color-pink),
+      var(--color-pink-glow));
 
   -webkit-background-clip: text;
   background-clip: text;
+
   -webkit-text-fill-color: transparent;
 
   background-size: 200% auto;
-  animation: gradientText 5s ease-in-out infinite;
+
+  animation:
+    gradientText 5s ease-in-out infinite;
 }
 
 @keyframes gradientText {
@@ -288,20 +402,26 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ===========================
+   GRADIENTE — SEÇÕES
+   =========================== */
+
 .text-gradient-section {
-  background: linear-gradient(
-    90deg,
-    var(--text-primary),
-    var(--accent-primary),
-    var(--text-primary)
-  );
+  background:
+    linear-gradient(90deg,
+      var(--text-primary),
+      var(--accent-primary),
+      var(--text-primary));
 
   -webkit-background-clip: text;
   background-clip: text;
+
   -webkit-text-fill-color: transparent;
 
   background-size: 200% auto;
-  animation: gradientSection 6s ease-in-out infinite;
+
+  animation:
+    gradientSection 6s ease-in-out infinite;
 }
 
 @keyframes gradientSection {
@@ -318,25 +438,34 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ===========================
+   NÚMEROS
+   =========================== */
+
 .text-gradient-number {
-  background: linear-gradient(
-    180deg,
-    var(--accent-primary),
-    var(--accent-hover)
-  );
+  background:
+    linear-gradient(180deg,
+      var(--accent-primary),
+      var(--accent-hover));
 
   -webkit-background-clip: text;
   background-clip: text;
+
   -webkit-text-fill-color: transparent;
 
-  filter: drop-shadow(
-    0 0 8px rgba(255, 77, 141, 0.25)
-  );
+  filter:
+    drop-shadow(0 0 8px rgba(255, 77, 141, 0.20));
 }
 
-.about-grid > div:last-child {
+/* ===========================
+   ABOUT — ANIMAÇÃO
+   =========================== */
+
+.about-grid>div:last-child {
   opacity: 0;
+
   transform: translateX(140px);
+
   filter: blur(10px);
 
   transition:
@@ -345,22 +474,35 @@ h1, h2, h3, h4, h5, h6 {
     filter 1.7s ease;
 }
 
-.about-grid.about-visible > div:last-child {
+.about-grid.about-visible>div:last-child {
   opacity: 1;
+
   transform: translateX(0);
+
   filter: blur(0);
 }
 
+/* ===========================
+   NAVEGAÇÃO
+   =========================== */
+
 .nav-link::after {
   content: '';
+
   position: absolute;
+
   left: 50%;
   bottom: 2px;
+
   width: 0;
   height: 2px;
+
   border-radius: 999px;
+
   background: var(--accent-primary);
+
   transform: translateX(-50%);
+
   transition: width 0.3s ease;
 }
 
@@ -371,6 +513,130 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link:hover {
   color: var(--accent-primary) !important;
-  text-shadow: 0 2px 6px var(--shadow);
+
+  text-shadow:
+    0 2px 6px var(--shadow);
+
   transform: translateY(-1px);
+}
+
+/* ===========================
+   BOOKING
+   =========================== */
+
+.booking-confirm-button:hover:not(:disabled) {
+  background-color: #059669 !important;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(16, 185, 129, 0.25);
+}
+
+.booking-cancel-button:hover:not(:disabled) {
+  background-color: #EF4444 !important;
+
+  color: white !important;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 4px 10px rgba(239, 68, 68, 0.20);
+}
+
+.booking-confirm-button:active:not(:disabled),
+.booking-cancel-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.booking-confirm-button:disabled,
+.booking-cancel-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   PAGINAÇÃO
+   =========================== */
+
+@media (max-width: 600px) {
+  .pagination-label {
+    display: none;
+  }
+}
+
+/* ===========================
+   MOBILE
+   =========================== */
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding: 16px;
+  }
+
+  body {
+    /* Evita aparência excessivamente brilhante */
+    background: var(--bg-primary);
+  }
+
+  .btn-premium {
+    padding: 11px 20px;
+  }
+
+  .card-glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .stage-line {
+    margin: 28px 0;
+  }
+
+  .about-grid>div:last-child {
+    transform: translateX(40px);
+    filter: blur(6px);
+  }
+
+  .text-glow {
+    text-shadow:
+      0 0 12px rgba(255, 77, 141, 0.20);
+  }
+}
+
+/* ===========================
+   MOBILE PEQUENO
+   =========================== */
+
+@media (max-width: 480px) {
+  :root {
+    --page-padding: 14px;
+  }
+
+  .btn-premium {
+    padding: 10px 18px;
+  }
+
+  .stage-line {
+    margin: 24px 0;
+  }
+
+  .text-gradient-hero {
+    background-size: 160% auto;
+  }
+}
+
+/* ===========================
+   REDUZIR ANIMAÇÕES
+   =========================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
