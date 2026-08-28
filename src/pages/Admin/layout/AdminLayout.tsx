@@ -113,7 +113,8 @@ export default function AdminLayout() {
           borderRadius: '8px',
           textDecoration: 'none',
           fontFamily: 'var(--font-body)',
-          fontSize: '14px',
+          fontSize: '13px',
+          fontWeight: '500',
           textShadow: '0 2px 4px var(--shadow)',
           color: 'var(--text-muted)',
           transition: 'all 0.2s ease',
@@ -130,7 +131,7 @@ export default function AdminLayout() {
           el.style.backgroundColor = 'transparent'
         }}
       >
-        <ExternalLink size={16} />
+        <ExternalLink size={15} />
         {t('admin.dashboard.return_portfolio')}
       </a>
 
@@ -142,13 +143,17 @@ export default function AdminLayout() {
         flexDirection: 'column',
         gap: '12px',
       }}>
-        <p style={{
-          color: 'var(--text-muted)',
-          fontSize: '12px',
-          fontFamily: 'var(--font-body)',
-          padding: '0 8px',
-          textShadow: '0 2px 4px var(--shadow)',
-        }}>
+        <p
+          style={{
+            color: 'var(--text-muted)',
+            fontSize: '14px',
+            fontWeight: '500',
+            fontFamily: 'var(--font-body)',
+            padding: '0 8px',
+            textShadow: '0 2px 4px var(--shadow)',
+            textAlign: 'center',
+          }}
+        >
           {username}
         </p>
         <button
@@ -165,6 +170,7 @@ export default function AdminLayout() {
             color: 'var(--text-secondary)',
             fontFamily: 'var(--font-body)',
             fontSize: '14px',
+            fontWeight: '500',
             textShadow: '0 2px 4px var(--shadow)',
             transition: 'all 0.60s ease',
           }}
@@ -281,6 +287,7 @@ export default function AdminLayout() {
                 textDecoration: 'none',
                 fontFamily: 'var(--font-body)',
                 fontSize: '13px',
+                fontWeight: '500',
                 textShadow: '0 2px 4px var(--shadow)',
                 padding: '6px 10px',
                 borderRadius: '8px',

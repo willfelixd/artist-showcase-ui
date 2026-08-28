@@ -30,7 +30,7 @@ export default function Videos() {
 
     Promise.all([
       pageNum === 0 ? videoService.findFeatured() : Promise.resolve(null),
-      videoService.findAll(pageNum, 12)
+      videoService.findAll(pageNum, 9)
     ])
       .then(([featuredData, allData]) => {
         if (featuredData) setFeatured(featuredData.content)
