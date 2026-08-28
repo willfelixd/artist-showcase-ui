@@ -51,7 +51,7 @@ export default function Repertoire() {
     setError(false)
     setPage(0)
 
-    songService.findAll({ title: debouncedTitle, genre, page: 0, size: 12 })
+    songService.findAll({ title: debouncedTitle, genre, page: 0, size: 9 })
       .then(data => {
         setSongs(data.content)
         setTotalPages(data.page.totalPages)
@@ -64,7 +64,7 @@ export default function Repertoire() {
   // Busca ao mudar de página
   const handlePageChange = (newPage: number) => {
     setLoading(true)
-    songService.findAll({ title: debouncedTitle, genre, page: newPage, size: 12 })
+    songService.findAll({ title: debouncedTitle, genre, page: newPage, size: 9 })
       .then(data => {
         setSongs(data.content)
         setPage(newPage)
